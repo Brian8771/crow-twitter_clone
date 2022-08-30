@@ -11,3 +11,16 @@ class Caw(db.Model):
     user = db.relationship("User", back_populates="caws")
 
     comments = db.relationship('Comment', back_populates='caw', cascade='all, delete')
+
+    def to_dict(self):
+        return {
+        'id': self.id,
+        'userId': self.userId,
+        'caw': self.caw,
+        "user": {
+          "profileImage":self.user.profile_image,
+          "username":self.user.username,
+          'totalCaws': len(self.user.caws),
+        },
+        'totalComments': len(self.comments)
+        }
