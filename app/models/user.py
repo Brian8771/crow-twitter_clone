@@ -7,9 +7,18 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(30), nullable=False)
+    last_name = db.Column(db.String(30), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    profile_image = db.Column(db.String(255), default='https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png')
+    header_image = db.Column(db.String(255))
+    bio = db.Column(db.String(255))
+
+    caws = db.relationship("Caw", back_populates="user", cascade="all, delete")
+
+    comments = db.relationship('Comment', back_populates='user', cascade='all, delete')
 
     @property
     def password(self):
@@ -26,5 +35,10 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'firstName': self.first_name,
+            'lastName': self.last_name,
+            'profileImage': self.profile_image,
+            'headerImage': self.header_image,
+            'bio': self.bio
         }
