@@ -2,10 +2,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+import '../styles/Homepage.css'
 
 const NavBar = () => {
   return (
-    <nav style={{ width: '33.33%', height: '100vh', display: 'flex', justifyContent: 'flex-start', alignItems: 'flex-end', flexDirection: 'column' }}>
+    <nav className='navBar'>
       <div style={{ width: '30%' }}>
         <img style={{ height: '30px', width: '30px' }} src='https://www.kindpng.com/picc/m/347-3478772_bird-gray-black-crow-twitter-bird-icon-png.png' alt='crow-icon' />
       </div>

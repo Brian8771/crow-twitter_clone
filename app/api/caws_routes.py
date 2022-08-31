@@ -7,6 +7,16 @@ from app.forms.create_comment import CreateComment
 
 caw_routes = Blueprint('caws', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
 # get all Caws
 @caw_routes.route('/')
 def all_caws():
@@ -62,7 +72,7 @@ def create_new_caw():
         db.session.commit()
         return caw.to_dict()
 
-    return {'errors': ['content is required']}, 400
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 # update caws
 @caw_routes.route('/<int:id>', methods=['PUT'])
