@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import LoginFormModal from '../LoginFormModal';
 import SignUpFormModal from '../SignUpFormModal';
+import '../../styles/LoginForm.css';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -41,8 +42,13 @@ const LoginForm = () => {
         <div style={{ marginLeft: '25px' }}>
           <h1 style={{ fontFamily: 'TwitterChirpExtendedHeavy, Verdana, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif', display: 'flex', paddingTop: '25%', width: '100%', margin: '0', fontSize: '64px' }}>Happening now</h1>
           <h2 style={{ marginTop: '40px', fontSize: '32px' }}>Join Crow today.</h2>
-          < LoginFormModal />
-          <SignUpFormModal />
+          <div>
+            <SignUpFormModal />
+          </div>
+          <div style={{ marginTop: '30px' }}>
+            <h2 style={{ fontSize: '17px' }}>Already have an account?</h2>
+            <LoginFormModal />
+          </div>
         </div>
       </div>
     </div>
