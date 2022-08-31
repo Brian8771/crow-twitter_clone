@@ -29,6 +29,11 @@ const LoginFormForModal = () => {
         setPassword(e.target.value);
     };
 
+    const demoLogIn = () => {
+        setEmail('demo@aa.io')
+        setPassword('password')
+    }
+
     return (
         <form className='LoginFormModal' onSubmit={onLogin}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100%', width: '50%' }} >
@@ -66,8 +71,13 @@ const LoginFormForModal = () => {
                     <div className='divAroundInputs' style={{ display: 'flex', justifyContent: 'center' }}>
                         <button className='submitButton' type='submit'>Login</button>
                     </div>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        <p>Don't Have an account?</p>
+                    </div>
+                    <div className='divAroundInputs' style={{ display: 'flex', justifyContent: 'center' }}>
+                        <button onClick={() => demoLogIn()} className='submitButton' >Demo User</button>
+                    </div>
                 </div>
-                <p>Don't Have an account? </p>
             </div>
         </form>
     )
