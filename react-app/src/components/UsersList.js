@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 function UsersList() {
   const [users, setUsers] = useState([]);
-  const sessionUser = useSelector(state => state.session.user)
+  // const sessionUser = useSelector(state => state.session.user)
 
   useEffect(() => {
     async function fetchData() {
@@ -16,14 +16,14 @@ function UsersList() {
   }, []);
 
   const userComponents = users.map((user) => {
-    if (user.id !== sessionUser.id) {
-      return (
-        <li key={user.id}>
-          <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
-        </li>
-      );
+    // if (user.id !== sessionUser.id) {
+    return (
+      <li key={user.id}>
+        <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
+      </li>
+    );
 
-    }
+    // }
   });
 
   return (
