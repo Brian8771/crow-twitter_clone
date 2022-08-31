@@ -10,7 +10,8 @@
     width: 100vw;
 }
 
-body {
+body,
+button {
     margin: 0 auto;
     font-family: TwitterChirpExtendedHeavy, Verdana, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     color: #e6e9ea;
