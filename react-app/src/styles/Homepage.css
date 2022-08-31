@@ -1,4 +1,40 @@
 .homePageContainer {
     width: 33.33%;
     height: 100vh;
+    /* border-right: 1px black solid;
+    border-left: 1px black solid; */
+}
+
+.navBar {
+    width: 33%;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    flex-direction: column;
+    position: fixed;
+    left: 0px;
+}
+
+.userList {
+    width: 33%;
+    height: 100vh;
+    position: fixed;
+    right: 0px;
+}
+
+.header {
+    color: black;
+    border-right: .5px black solid;
+    border-left: .5px black solid;
+    margin: 0;
+    padding: 20px 20px;
+}
+
+.pTag {
+    margin: 0;
+    color: black;
+    font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    overflow-wrap: break-word;
 }

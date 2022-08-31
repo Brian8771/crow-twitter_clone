@@ -27,7 +27,7 @@ function UsersList() {
   });
 
   return (
-    <div style={{ width: '33.33%', height: '100vh' }}>
+    <div className='userList' >
       <h1>User List: </h1>
       <ul>{userComponents}</ul>
     </div>
