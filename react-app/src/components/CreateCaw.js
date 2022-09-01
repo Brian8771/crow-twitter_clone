@@ -5,47 +5,46 @@ import { createCaw, getAllCaws } from '../store/caws';
 import '../styles/Homepage.css'
 
 
-const CreateCaw = () => {
+const CreateCaw = ({ setLoaded }) => {
     const [caw, setCaw] = useState('');
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user);
-    const caws = useSelector(state => state.caws.caws);
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // setErrors([]);
         const cawInfo = {
             caw
         }
-        await dispatch(createCaw(cawInfo));
+        let cawCreated = await dispatch(createCaw(cawInfo));
+        if (cawCreated) setLoaded(false);
         await dispatch(getAllCaws());
-
+        setLoaded(true)
         setCaw('');
-        history.push('/1')
-        history.push('/')
-        // console.log(caws)
+        // history.push('/1')
+        // history.push('/')
     }
 
+
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', margin: '0' }}>
             <div>
                 <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={user.profileImage} alt='profilePic' />
             </div>
-            <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
+            <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
                 <form onSubmit={handleSubmit} className='pTag' >
                     <div>
                         <textarea
-                            // style={{ overflow }}
+                            style={{ width: '90%', height: '6rem', border: 'none', resize: 'none' }}
                             type='text'
                             value={caw}
                             placeholder='Post a Caw?'
                             onChange={(e) => setCaw(e.target.value)}
                         />
                     </div>
-                    <div>
-                        <button type='submit'>Post</button>
+                    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                        <button style={{ height: '30px', width: '20%', margin: '0', backgroundColor: 'black', borderRadius: '20px', border: 'none' }} type='submit'>Post</button>
                     </div>
                 </form>
             </div>

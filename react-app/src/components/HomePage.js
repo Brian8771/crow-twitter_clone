@@ -9,12 +9,13 @@ const HomePage = () => {
     const dispatch = useDispatch()
     const [loaded, setLoaded] = useState(false);
     const caws = Object.values(useSelector(state => state.caws.caws))
+    const cawses = useSelector(state => state.caws.caws);
     console.log(caws)
 
 
     useEffect(() => {
         dispatch(getAllCaws()).then(() => setLoaded(true))
-    }, [dispatch, CreateCaw, caws])
+    }, [dispatch, CreateCaw, cawses])
 
 
     return (
@@ -24,12 +25,10 @@ const HomePage = () => {
                     <h1 className='header'>Home</h1>
                 </div>
                 <div style={{ borderBottom: 'black .5px solid' }}>
-
-                    <CreateCaw />
-
+                    <CreateCaw setLoaded={setLoaded} />
                 </div>
                 <div>
-                    {caws &&
+                    {caws && loaded &&
                         caws.map(caw => {
                             return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid' }}>
                                 <div>
