@@ -1,6 +1,8 @@
 const GET_CAW = 'caws/GET_CAW';
 const GET_ALL_CAWS = 'caws/GET_ALL_CAWS';
 const CREATE_CAW = 'caws/CREATE_CAW';
+const EDIT_CAW = 'caws/EDIT_CAW';
+const DELETE_CAW = 'caws/DELETE_CAW';
 
 const getCaw = (caw) => (
     {
@@ -20,6 +22,20 @@ const cawCreation = (caw) => (
     {
         type: CREATE_CAW,
         payload: caw
+    }
+)
+
+const cawEdit = (caw) => (
+    {
+        type: EDIT_CAW,
+        payload: caw
+    }
+)
+
+const cawDeletion = (id) => (
+    {
+        type: DELETE_CAW,
+        payload: id
     }
 )
 
@@ -57,6 +73,34 @@ export const createCaw = (cawInfo) => async dispatch => {
     }
 }
 
+export const cawToEdit = (id, caw) => async dispatch => {
+    const response = await fetch(`api/caws/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(caw)
+    })
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(cawEdit(data))
+    }
+}
+
+export const deleteCaw = (id) => async dispatch => {
+    const response = await fetch(`api/caws/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(cawDeletion(data))
+    }
+}
+
 export default function reducer(state = initialState, action) {
     const newState = { ...state }
     switch (action.type) {
@@ -71,6 +115,11 @@ export default function reducer(state = initialState, action) {
         case CREATE_CAW:
             newState.caws[action.payload.id] = action.payload
             return newState
+        case EDIT_CAW:
+            newState.caws[action.payload.id] = action.payload
+        case DELETE_CAW:
+            delete newState.caws[action.payload];
+            return newState;
         default:
             return state
     }

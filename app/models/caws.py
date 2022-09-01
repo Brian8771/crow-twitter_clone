@@ -21,6 +21,7 @@ class Caw(db.Model):
           "profileImage":self.user.profile_image,
           "username":self.user.username,
           'totalCaws': len(self.user.caws),
+          'id':self.user.id
         },
         'totalComments': len(self.comments)
         }
