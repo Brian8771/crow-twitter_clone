@@ -65,9 +65,10 @@ def create_new_caw():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         caw = Caw(
-            userId = user['id'],
+            # userId = user['id'],
             caw = form.data['caw']
         )
+        caw.userId = user['id']
         db.session.add(caw)
         db.session.commit()
         return caw.to_dict()
