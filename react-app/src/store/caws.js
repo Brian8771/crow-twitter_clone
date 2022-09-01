@@ -97,7 +97,7 @@ export const deleteCaw = (id) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json()
-        dispatch(cawDeletion(data))
+        dispatch(cawDeletion(id))
     }
 }
 
