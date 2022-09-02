@@ -33,14 +33,15 @@ const PostDetail = () => {
     return (
         <div className='homePageContainer'>
             <div>
+                {isLoaded &&
 
-                <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', border: 'black .5px solid' }}>
-                    <NavLink style={{ textDecoration: 'none' }} to='/'>
-                        <img style={{ height: '20px', width: '20px' }} src={backArrow} alt='backarrow' />
-                    </NavLink>
-                    <h2 style={{ marginLeft: '20px', color: 'black' }}>Thread</h2>
-                </div>
-                {isLoaded && caw &&
+                    <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', border: 'black .5px solid' }}>
+                        <NavLink style={{ textDecoration: 'none' }} to='/'>
+                            <img style={{ height: '20px', width: '20px' }} src={backArrow} alt='backarrow' />
+                        </NavLink>
+                        <h2 style={{ marginLeft: '20px', color: 'black' }}>Thread</h2>
+                    </div>
+                {caw &&
                     <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '10rem', borderBottom: 'black .5px solid', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', }}>
                         <div style={{ display: 'flex', flexDirection: 'row' }}>
                             <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
@@ -85,6 +86,7 @@ const PostDetail = () => {
                     }
                 </div>
             </div>
+}
         </div>
 
 
