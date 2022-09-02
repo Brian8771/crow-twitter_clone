@@ -110,7 +110,7 @@ def get_all_comments_by_caw_id(id):
     comments = Comment.query.filter(Comment.cawId == id).all()
 
     if not comments:
-        return {'errors': ['comments can not be found']},404
+        return {'comments': []}
 
     return {'comments': [comment.to_dict() for comment in comments]}
 

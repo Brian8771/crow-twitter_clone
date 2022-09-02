@@ -27,7 +27,7 @@ const CreateComment = ({ setIsLoaded }) => {
 
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', margin: '0' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', margin: '0', height: '5rem' }}>
             <div>
                 <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={user.profileImage} alt='profilePic' />
             </div>
@@ -35,10 +35,10 @@ const CreateComment = ({ setIsLoaded }) => {
                 <form onSubmit={handleSubmit} className='pTag' >
                     <div>
                         <textarea
-                            style={{ width: '90%', height: '6rem', border: 'none', resize: 'none' }}
+                            style={{ width: '90%', height: '3rem', border: 'none', resize: 'none' }}
                             type='text'
                             value={comment}
-                            placeholder='Post a Caw?'
+                            placeholder='Post a comment?'
                             onChange={(e) => setComment(e.target.value)}
                         />
                     </div>
