@@ -8,7 +8,7 @@ function EditFormModal() {
 
     return (
         <>
-            <button style={{ color: 'black', padding: '0', margin: '0', height: '50%', width: '20%', borderRadius: '40px' }} onClick={() => setShowModal(true)}>Edit</button>
+            <button style={{ color: 'black', padding: '0', margin: '0', height: '50%', width: '100%', borderRadius: '40px' }} onClick={() => setShowModal(true)}>Edit</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <EditCaw hideModal={() => setShowModal(false)} />

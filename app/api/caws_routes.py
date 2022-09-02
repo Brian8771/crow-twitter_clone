@@ -137,9 +137,11 @@ def create_comment(id):
             cawId = id,
             data = form.data['comment']
         )
+        comment.userId = user['id']
+        cawId = id
         db.session.add(comment)
         db.session.commit()
-        print(comment.user.to_dict(), '-------')
+        # print(comment.user.to_dict(), '-------')
         return {'comment': comment.to_dict()}
 
 # edit comment by comment id
