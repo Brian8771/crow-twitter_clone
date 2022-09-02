@@ -27,7 +27,7 @@ const HomePage = () => {
                 <div style={{ borderBottom: 'black .5px solid' }}>
                     <CreateCaw setLoaded={setLoaded} />
                 </div>
-                <div>
+                <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
                     {caws && loaded &&
                         caws.map(caw => {
                             return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid' }}>
@@ -42,7 +42,7 @@ const HomePage = () => {
                                 </div>
 
                             </div>
-                        }).reverse()
+                        })
                     }
                 </div>
             </div>
