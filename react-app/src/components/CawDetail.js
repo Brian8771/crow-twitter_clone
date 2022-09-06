@@ -17,11 +17,21 @@ const PostDetail = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const caw = useSelector(state => state.caws.caw);
     const user = useSelector(state => state.session.user);
-    const comments = Object.values(useSelector(state => state.comments.comments))
+    const comments = Object.values(useSelector(state => state.comments.comments)).filter(x => x.caw.id === caw.id)
     const [editModal, setEditModal] = useState(false);
 
+    const specificComments = comments.forEach(comment => {
+        let arr = []
+        console.log(comment.caw.id)
+        console.log(caw.id)
+        if (comment.caw.id === caw.id) {
+            arr.push(comment)
+        }
+        console.log(arr)
+        return arr
+    })
 
-
+    console.log(specificComments)
     const delete_caw = async (id) => {
         await dispatch(deleteCaw(id));
         await dispatch(getAllCaws());
@@ -42,8 +52,8 @@ const PostDetail = () => {
 
     return (
         <div className='homePageContainer'>
-            {isLoaded &&
-                <div>
+            <div>
+                {isLoaded &&
 
                     <div>
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', border: 'black .5px solid' }}>
@@ -74,9 +84,12 @@ const PostDetail = () => {
 
                         }
                     </div>
-                    <div>
-                        <CreateComment setIsLoaded={setIsLoaded} />
-                    </div>
+                }
+
+                <div>
+                    <CreateComment setIsLoaded={setIsLoaded} />
+                </div>
+                {isLoaded &&
                     <div>
                         <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
                             {comments &&
@@ -92,7 +105,7 @@ const PostDetail = () => {
                                             <p className='pTag' >{comment.data}</p>
                                             <div>
                                                 <button onClick={() => delete_comment(comment.id)}>Delete</button>
-                                                {/* <EditCommentModal setShowModal={setEditModal} id={comment.id} /> */}
+                                                <EditCommentModal setIsLoaded={setIsLoaded} setShowModal={setEditModal} id={comment.id} />
                                             </div>
                                         </div>
 
@@ -101,8 +114,8 @@ const PostDetail = () => {
                             }
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
 
 
