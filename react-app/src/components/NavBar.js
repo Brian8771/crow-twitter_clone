@@ -78,7 +78,7 @@ const NavBar = () => {
             <LogoutButton />
           </div>}
           <div style={{ display: 'flex', flexDirection: 'row' }}>
-            <div>
+            <div style={{ marginRight: '6px' }}>
               <img className='imgNav' src={user.profileImage} alt='profile pic' />
             </div>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
