@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
 import { getCawFromId, deleteCaw, getAllCaws } from '../store/caws';
 import EditFormModal from './EditFormModal';
+import EditCommentModal from './EditCommentModal';
 import '../styles/Homepage.css'
 import backArrow from '../images/arrow-back.svg'
-import { getComments } from '../store/comments';
+import { getComments, deleteComment } from '../store/comments';
 import CreateComment from './CreateComment';
+
 
 const PostDetail = () => {
     const history = useHistory();
@@ -17,12 +19,20 @@ const PostDetail = () => {
     const user = useSelector(state => state.session.user);
     const comments = Object.values(useSelector(state => state.comments.comments))
     const [editModal, setEditModal] = useState(false);
-    console.log(caw.id)
-    console.log(id)
+
+
+
     const delete_caw = async (id) => {
         await dispatch(deleteCaw(id));
         await dispatch(getAllCaws());
         history.push('/');
+    }
+
+    const delete_comment = async (identification) => {
+        await dispatch(deleteComment(identification));
+        setIsLoaded(false)
+        await dispatch(getComments(id));
+        setIsLoaded(true)
     }
 
     useEffect(() => {
@@ -69,7 +79,7 @@ const PostDetail = () => {
                     </div>
                     <div>
                         <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
-                            {comments && isLoaded &&
+                            {comments &&
                                 comments.map(comment => {
                                     return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid' }}>
                                         <div>
@@ -80,6 +90,10 @@ const PostDetail = () => {
                                                 <p className='pTag'>{comment.user.username} <span style={{ color: 'gray' }}>Replying to @{caw.user.username}</span></p>
                                             </NavLink>
                                             <p className='pTag' >{comment.data}</p>
+                                            <div>
+                                                <button onClick={() => delete_comment(comment.id)}>Delete</button>
+                                                {/* <EditCommentModal setShowModal={setEditModal} id={comment.id} /> */}
+                                            </div>
                                         </div>
 
                                     </div>
