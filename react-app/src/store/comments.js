@@ -96,11 +96,11 @@ export default function reducer(state = initialState, action) {
     const newState = { ...state }
     switch (action.type) {
         case GET_COMMENTS:
-            // const newestState = { comments: {} }
+            const newestState = { comments: {} }
             action.payload.comments.forEach(comment => {
-                newState.comments[comment.id] = comment
+                newestState.comments[comment.id] = comment
             })
-            return newState;
+            return newestState;
         case ADD_COMMENT:
             newState.comments[action.payload.comment.id] = action.payload.comment;
             return newState;
