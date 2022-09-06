@@ -47,13 +47,13 @@ const PostDetail = () => {
                     <div>
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', border: 'black .5px solid' }}>
                             <NavLink style={{ textDecoration: 'none' }} to='/'>
-                                <img style={{ height: '20px', width: '20px' }} src={backArrow} alt='backarrow' />
+                                <img style={{ height: '20px', width: '20px', margin: '0 10px' }} src={backArrow} alt='backarrow' />
                             </NavLink>
                             <h2 style={{ marginLeft: '20px', color: 'black' }}>Thread</h2>
                         </div>
                         {caw &&
                             <div style={{ display: 'flex', flexDirection: 'column', height: '10rem', borderBottom: 'black .5px solid', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', }}>
-                                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                <div style={{ display: 'flex', flexDirection: 'row', padding: '10px' }}>
                                     <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
                                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
                                         <p className='pTag'>{caw.user.username} <span style={{ color: 'gray' }}>@{caw.user.username}</span></p>
@@ -63,9 +63,9 @@ const PostDetail = () => {
                                     <div style={{ display: 'flex', width: '80%', padding: '10px' }}>
                                         <p className='pTag' >{caw.caw}</p>
                                     </div>
-                                    <div style={{ display: 'flex', flexDirection: 'row', width: '20%', padding: '6px' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'row', width: '25%', padding: '6px' }}>
                                         {caw.user.id === user.id && <EditFormModal setShowModal={setEditModal} caw={caw.id} />}
-                                        {caw.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '25%', width: '100%', borderRadius: '40px' }} onClick={() => delete_caw(caw.id)}>Delete</button>}
+                                        {caw.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '30%', width: '100%', borderRadius: '40px' }} onClick={() => delete_caw(caw.id)}>Delete</button>}
                                     </div>
                                 </div>
 
