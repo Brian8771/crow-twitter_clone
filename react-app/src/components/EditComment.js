@@ -6,7 +6,7 @@ import { editComment } from '../store/comments';
 
 
 
-const EditComment = ({ hideModal, id }) => {
+const EditComment = ({ setIsLoaded, hideModal, id }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const edit_comment = useSelector(state => state.comments.comments[id])
@@ -26,7 +26,9 @@ const EditComment = ({ hideModal, id }) => {
         }
 
         await dispatch(editComment(id, commentInfo));
+        setIsLoaded(false)
         await dispatch(getComments(id));
+        setIsLoaded(true)
         hideModal()
         setComment('');
 
