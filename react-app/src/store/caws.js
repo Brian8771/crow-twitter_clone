@@ -58,6 +58,16 @@ export const getAllCaws = () => async dispatch => {
     }
 }
 
+export const getCawsFromUserId = (id) => async dispatch => {
+    const response = await fetch(`/api/caws/user/caws/${id}`)
+
+    if (response.ok) {
+        const caws = await response.json()
+        dispatch(getCaws(caws))
+
+    }
+}
+
 export const createCaw = (cawInfo) => async dispatch => {
     const response = await fetch('api/caws/new', {
         method: 'POST',
