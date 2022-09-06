@@ -20,18 +20,7 @@ const PostDetail = () => {
     const comments = Object.values(useSelector(state => state.comments.comments)).filter(x => x.caw.id === caw.id)
     const [editModal, setEditModal] = useState(false);
 
-    const specificComments = comments.forEach(comment => {
-        let arr = []
-        console.log(comment.caw.id)
-        console.log(caw.id)
-        if (comment.caw.id === caw.id) {
-            arr.push(comment)
-        }
-        console.log(arr)
-        return arr
-    })
 
-    console.log(specificComments)
     const delete_caw = async (id) => {
         await dispatch(deleteCaw(id));
         await dispatch(getAllCaws());
@@ -63,7 +52,7 @@ const PostDetail = () => {
                             <h2 style={{ marginLeft: '20px', color: 'black' }}>Thread</h2>
                         </div>
                         {caw &&
-                            <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '10rem', borderBottom: 'black .5px solid', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', height: '10rem', borderBottom: 'black .5px solid', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', }}>
                                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                                     <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
                                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
@@ -99,7 +88,7 @@ const PostDetail = () => {
                                             <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={comment.user.profileImage} alt='profilePic' />
                                         </div>
                                         <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
-                                            <NavLink style={{ textDecoration: 'none' }} to={`/${caw.id}`}>
+                                            <NavLink style={{ textDecoration: 'none' }} to={`/users/${comment.user.id}`}>
                                                 <p className='pTag'>{comment.user.username} <span style={{ color: 'gray' }}>Replying to @{caw.user.username}</span></p>
                                             </NavLink>
                                             <p className='pTag' >{comment.data}</p>
