@@ -6,7 +6,7 @@
 }
 
 .navBar {
-    width: 33%;
+    width: 33.33%;
     height: 100vh;
     display: flex;
     justify-content: flex-start;
@@ -14,13 +14,15 @@
     flex-direction: column;
     position: fixed;
     left: 0px;
+    background-color: black;
 }
 
 .userList {
-    width: 32.6%;
+    width: 33.33%;
     height: 100vh;
     position: fixed;
     right: 0px;
+    background-color: black;
 }
 
 .header {
@@ -41,4 +43,37 @@
 
 .toggle {
     color: 'black'
+}
+
+.imgNav {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: white;
+    fill: white;
+}
+
+.navLinks {
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+}
+
+.colorize-orange {
+    -webkit-filter: hue-rotate(40deg) saturate(0.5) brightness(390%) saturate(4);
+    filter: hue-rotate(40deg) saturate(0.5) brightness(390%) saturate(4);
+}
+
+.svgNav {
+    height: 30px;
+    width: 30px;
+}
+
+.svgDiv {
+    display: inline-flex;
+    align-items: flex-start;
+}
+
+.navDiv {
+    padding: 5px 0;
 }

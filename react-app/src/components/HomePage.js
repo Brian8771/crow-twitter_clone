@@ -35,10 +35,13 @@ const HomePage = () => {
                                     <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
                                 </div>
                                 <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
-                                    <NavLink style={{ textDecoration: 'none' }} to={`/${caw.id}`}>
+                                    <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
+
                                         <p className='pTag'>{caw.user.username} <span style={{ color: 'gray' }}>@{caw.user.username}</span></p>
                                     </NavLink>
-                                    <p className='pTag' >{caw.caw}</p>
+                                    <NavLink style={{ textDecoration: 'none' }} to={`/${caw.id}`}>
+                                        <p className='pTag' >{caw.caw}</p>
+                                    </NavLink>
                                 </div>
 
                             </div>
