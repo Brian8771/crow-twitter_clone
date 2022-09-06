@@ -10,7 +10,6 @@ const CreateComment = ({ setIsLoaded }) => {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user);
     const caw = useSelector(state => state.caws.caw)
-    console.log(caw)
     const { id } = useParams()
     const handleSubmit = async (e) => {
         e.preventDefault();

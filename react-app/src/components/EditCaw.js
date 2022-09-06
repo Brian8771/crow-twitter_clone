@@ -20,7 +20,7 @@ const EditCaw = ({ hideModal }) => {
         await dispatch(cawToEdit(edit_caw.id, cawInfo));
         await dispatch(getCawFromId(edit_caw.id));
         hideModal()
-        history.push(`/${edit_caw.id}`)
+        // history.push(`/${edit_caw.id}`)
         setCaw('');
         // history.push('/1')
         // history.push('/')
@@ -31,7 +31,6 @@ const EditCaw = ({ hideModal }) => {
         <form onSubmit={handleSubmit}>
             <div>
                 <input
-                    placeholder='First Name'
                     type='text'
                     name='firstName'
                     value={caw}
