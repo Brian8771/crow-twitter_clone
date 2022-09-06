@@ -52,8 +52,8 @@ const PostDetail = () => {
 
     return (
         <div className='homePageContainer'>
-            <div>
-                {isLoaded &&
+            {isLoaded &&
+                <div>
 
                     <div>
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', border: 'black .5px solid' }}>
@@ -84,12 +84,12 @@ const PostDetail = () => {
 
                         }
                     </div>
-                }
 
-                <div>
-                    <CreateComment setIsLoaded={setIsLoaded} />
-                </div>
-                {isLoaded &&
+
+                    <div>
+                        <CreateComment setIsLoaded={setIsLoaded} />
+                    </div>
+
                     <div>
                         <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
                             {comments &&
@@ -114,8 +114,8 @@ const PostDetail = () => {
                             }
                         </div>
                     </div>
-                }
-            </div>
+                </div>
+            }
         </div>
 
 
