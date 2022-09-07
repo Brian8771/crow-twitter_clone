@@ -62,7 +62,7 @@ const SignUpForm = () => {
         <div>
           {
             errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+              <div style={{ color: 'red' }} key={ind}>{error}</div>
             ))
           }
         </div>

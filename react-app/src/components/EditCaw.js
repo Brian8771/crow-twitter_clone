@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getCawFromId } from '../store/caws';
 import { cawToEdit } from '../store/caws';
+import '../styles/LoginForm.css';
 
 
 const EditCaw = ({ hideModal }) => {
@@ -17,10 +18,6 @@ const EditCaw = ({ hideModal }) => {
         const cawInfo = {
             caw
         }
-        if (caw.length > 180) {
-            setErrors(['Cannot be longer than 180 characters']);
-            return
-        }
         await dispatch(cawToEdit(edit_caw.id, cawInfo));
         await dispatch(getCawFromId(edit_caw.id));
         hideModal()
@@ -30,24 +27,37 @@ const EditCaw = ({ hideModal }) => {
         // history.push('/')
     }
 
+    useEffect(() => {
+        if (caw.length > 180) {
+            setErrors(["Caw can't be more than 180 characters"])
+        }
+        else setErrors(null);
+    }, [caw])
+
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                {errors &&
-                    errors.map((error, ind) => (
-                        <div key={ind}>{error}</div>
-                    ))
-                }
-            </div>
-            <div>
-                <input
-                    type='text'
-                    name='firstName'
-                    value={caw}
-                    onChange={(e) => setCaw(e.target.value)}
-                />
-                <button type='submit'>Edit</button>
+        <form className='editFormModal' onSubmit={handleSubmit}>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', width: '100%' }}>
+                <div>
+                    <h2>Edit Caw</h2>
+                </div>
+                <div>
+                    {errors &&
+                        errors.map((error, ind) => (
+                            <div style={{ color: 'red', marginBottom: '10px' }} key={ind}>{error}</div>
+                        ))
+                    }
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', width: '70%', alignItems: 'center' }}>
+                    <textarea
+                        style={{ width: '90%', height: '5rem', border: 'none', resize: 'none', marginBottom: '10px' }}
+                        type='text'
+                        name='firstName'
+                        value={caw}
+                        onChange={(e) => setCaw(e.target.value)}
+                    />
+                    <button className='submitButton' disabled={errors ? true : false} type='submit'>Edit</button>
+                </div>
             </div>
         </form>
     )

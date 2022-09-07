@@ -8,6 +8,17 @@
     border-radius: 20px;
 }
 
+.editFormModal {
+    border: .5px white solid;
+    height: 20rem;
+    width: 30rem;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
 .headerForLogin {
     color: white;
     font-size: 31px;
@@ -34,11 +45,21 @@ input:focus {
     border-radius: 30px;
     background-color: #eff3f4;
     color: black;
+    cursor: pointer;
 }
 
 .submitButton:hover,
 .loginButton:hover {
     background-color: white;
+}
+
+.submitButton:disabled {
+    width: 225px;
+    height: 35px;
+    border-radius: 30px;
+    background-color: black;
+    color: black;
+    border: none;
 }
 
 .imgInForm {
