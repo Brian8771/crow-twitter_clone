@@ -53,6 +53,7 @@
     border-radius: 20px;
     border: none;
     color: black;
+    cursor: default;
 }
 
 .submitButtonForCaw {
@@ -63,6 +64,7 @@
     border-radius: 20px;
     border: none;
     color: white;
+    cursor: pointer;
 }
 
 .submitButtonForComment {
@@ -83,6 +85,7 @@
     border-radius: 20px;
     border: none;
     color: black;
+    cursor: default;
 }
 
 /* .submitButtonForCaw {

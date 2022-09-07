@@ -60,6 +60,7 @@ input:focus {
     background-color: black;
     color: black;
     border: none;
+    cursor: default;
 }
 
 .imgInForm {

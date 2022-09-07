@@ -10,7 +10,6 @@ const HomePage = () => {
     const [loaded, setLoaded] = useState(false);
     const caws = Object.values(useSelector(state => state.caws.caws))
     const cawses = useSelector(state => state.caws.caws);
-    console.log(caws)
 
 
     useEffect(() => {
