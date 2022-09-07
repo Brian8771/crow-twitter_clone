@@ -11,4 +11,4 @@ def check_length(form, field):
 
 class CreateCawForm(FlaskForm):
     # userId = IntegerField('userId', validators=[DataRequired()])
-    caw = StringField('Caw', validators=[DataRequired(), check_length])
+    caw = StringField('Caw', validators=[DataRequired('Caw can not be empty'), check_length])

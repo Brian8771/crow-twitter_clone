@@ -6,6 +6,7 @@ import '../styles/Homepage.css'
 
 
 const CreateCaw = ({ setLoaded }) => {
+    const [errors, setErrors] = useState([]);
     const [caw, setCaw] = useState('');
     const dispatch = useDispatch()
     const history = useHistory()
@@ -18,9 +19,11 @@ const CreateCaw = ({ setLoaded }) => {
             caw
         }
         let cawCreated = await dispatch(createCaw(cawInfo));
-        if (cawCreated) setLoaded(false);
+        await setLoaded(false);
         await dispatch(getAllCaws());
-        setLoaded(true)
+        await setLoaded(true)
+        await setErrors(cawCreated)
+        console.log(errors)
         setCaw('');
         // history.push('/1')
         // history.push('/')
@@ -34,6 +37,13 @@ const CreateCaw = ({ setLoaded }) => {
             </div>
             <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
                 <form onSubmit={handleSubmit} className='pTag' >
+                    <div>
+                        {errors &&
+                            errors.map((error, ind) => (
+                                <div key={ind}>{error}</div>
+                            ))
+                        }
+                    </div>
                     <div>
                         <textarea
                             style={{ width: '90%', height: '6rem', border: 'none', resize: 'none' }}
