@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_image = db.Column(db.String(255), default='https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png')
-    header_image = db.Column(db.String(255))
+    header_image = db.Column(db.String(255), default='https://upload.wikimedia.org/wikipedia/commons/6/68/Solid_black.png')
     bio = db.Column(db.String(255))
 
     caws = db.relationship("Caw", back_populates="user", cascade="all, delete")
