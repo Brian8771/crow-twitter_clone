@@ -41,6 +41,10 @@
     overflow-wrap: break-word;
 }
 
+.font {
+    font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
 .toggle {
     color: 'black'
 }
