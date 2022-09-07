@@ -13,11 +13,8 @@ function User() {
   const [loaded, setLoaded] = useState(false);
   const { userId } = useParams();
   const user = useSelector(state => state.session.currentUserProfile);
-  // const cawses = Object.values(useSelector(state => state.caws.caws))
   const caws = Object.values(useSelector(state => state.caws.caws)).filter(x => x.userId === user.id)
-  console.log(user.id)
-  console.log(caws)
-  // console.log(cawses)
+
   useEffect(() => {
     dispatch(getCurretProfile(userId)).then(dispatch(getAllCaws())).then(() => setIsLoaded(true)).then(() => setLoaded(true))
   }, [dispatch, isLoaded, userId, loaded]);
