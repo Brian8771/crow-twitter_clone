@@ -9,16 +9,21 @@ import '../styles/Homepage.css'
 function User() {
   const dispatch = useDispatch()
   const [isLoaded, setIsLoaded] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const { userId } = useParams();
   const user = useSelector(state => state.session.currentUserProfile);
+  // const cawses = Object.values(useSelector(state => state.caws.caws))
   const caws = Object.values(useSelector(state => state.caws.caws)).filter(x => x.userId === user.id)
+  console.log(user.id)
+  console.log(caws)
+  // console.log(cawses)
   useEffect(() => {
-    dispatch(getCurretProfile(userId)).then(dispatch(getAllCaws())).then(() => setIsLoaded(true))
-  }, []);
+    dispatch(getCurretProfile(userId)).then(dispatch(getAllCaws())).then(() => setIsLoaded(true)).then(() => setLoaded(true))
+  }, [dispatch, isLoaded, userId, loaded]);
 
-  if (!user) {
-    return null;
-  }
+  // if (!user) {
+  //   return null;
+  // }
 
   return (
     <div className='homePageContainer'>
@@ -33,12 +38,13 @@ function User() {
               <p style={{ marginTop: '8px', marginBottom: '8px', marginLeft: '16px', color: 'black', fontSize: '15px' }}>@{user.username}</p>
             </div>
             <div>
-              <strong>Email</strong> {user.email}
+              <p style={{ marginLeft: '16px', color: 'black', fontSize: '15px' }}>{user.bio}</p>
             </div>
           </div>}
       </div>
       <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
-        {caws && isLoaded &&
+
+        {caws.length > 0 && isLoaded &&
           caws.map(caw => {
             return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
               <div>
@@ -57,6 +63,9 @@ function User() {
             </div>
           })
         }
+        <div className='font' style={{ display: 'flex', justifyContent: 'center', borderBottom: '.5px black solid', fontSize: '15px', color: 'black' }}>
+          <p >Caws</p>
+        </div>
       </div>
     </div>
   );
