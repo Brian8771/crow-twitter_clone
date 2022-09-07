@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
-import { getAllCaws, getCawsFromUserId } from '../store/caws';
-import { authenticate, getCurretProfile } from '../store/session';
+import { getAllCaws } from '../store/caws';
+import { getCurretProfile } from '../store/session';
 import '../styles/Homepage.css'
 
 
