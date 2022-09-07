@@ -4,6 +4,7 @@ import { NavLink, useParams } from 'react-router-dom';
 import { getAllCaws } from '../store/caws';
 import { getCurretProfile } from '../store/session';
 import '../styles/Homepage.css'
+import backArrow from '../images/arrow-back.svg'
 
 
 function User() {
@@ -30,6 +31,17 @@ function User() {
       <div>
         {isLoaded &&
           <div>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <NavLink style={{ textDecoration: 'none' }} to='/'>
+                  <img style={{ height: '20px', width: '20px', margin: '0 10px' }} src={backArrow} alt='backarrow' />
+                </NavLink>
+              </div>
+              <div style={{ height: '3rem' }}>
+                <p style={{ margin: '0', fontSize: '20px', color: 'black' }}>{user.firstName}</p>
+                <p style={{ margin: '0', fontSize: '13px', color: 'black' }}>{caws.length} Caws</p>
+              </div>
+            </div>
             <div style={{ display: 'flex', backgroundImage: `url(${user.headerImage})`, height: '8rem', width: '100%', alignItems: 'flex-end', marginBottom: '70px' }}>
               <img style={{ marginLeft: '20px', position: 'relative', top: '60px', height: '133.5px', width: '133.5px' }} className='imgNav' src={user.profileImage} />
             </div>
