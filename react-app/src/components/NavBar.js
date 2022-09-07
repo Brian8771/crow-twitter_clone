@@ -6,6 +6,7 @@ import '../styles/Homepage.css'
 import crow from '../images/crow.png'
 import { useSelector } from 'react-redux';
 import home from '../images/home.svg'
+import dots from '../images/3dots.svg';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
@@ -15,11 +16,11 @@ const NavBar = () => {
 
   return (
     <nav className='navBar'>
-      <div style={{ width: '30%', height: '30%' }}>
+      <div style={{ width: '40%', height: '30%' }}>
         <img className='imgNav' style={{ height: '30px', width: '30px' }} src={crow} alt='crow-icon' />
       </div>
 
-      <div style={{ width: '30%', display: 'flex', alignItems: 'flex-start', height: '60%' }}>
+      <div style={{ width: '40%', display: 'flex', alignItems: 'flex-start', height: '60%' }}>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div className='navDiv'>
             <NavLink className='navLinks' to='/' exact={true} activeClassName='active'>
@@ -59,7 +60,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', width: '30%', height: '30%', alignItems: 'flex-end' }} >
+      <div style={{ display: 'flex', justifyContent: 'center', width: '40%', height: '30%', alignItems: 'flex-end' }} >
         <div style={{ width: '100%' }}>
 
           {<div className={showDiv ? 'show' : 'dont'} >
@@ -82,11 +83,17 @@ const NavBar = () => {
             </div>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div style={{ marginRight: '7px' }}>
-                <p style={{ color: 'white' }} className='pTag'>{user.firstName}</p>
+                <div style={{ display: 'flex', flexDirection: 'row' }}>
+                  <p style={{ color: 'white' }} className='pTag'>{user.firstName}</p>
+                  <button className='showButton' onClick={() => setShowDiv(!showDiv)}>
+                    <img style={{ height: '6px', width: '6px ' }} src={dots} alt='3dots' />
+                    <img style={{ height: '6px', width: '6px ' }} src={dots} alt='3dots' />
+                    <img style={{ height: '6px', width: '6px ' }} src={dots} alt='3dots' />
+                  </button>
+                </div>
                 <p style={{ color: 'white' }} className='pTag'>@{user.username}</p>
               </div>
               <div>
-                <button className='showButton' onClick={() => setShowDiv(!showDiv)}>...</button>
               </div>
             </div>
           </div>

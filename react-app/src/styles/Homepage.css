@@ -25,6 +25,16 @@
     background-color: black;
 }
 
+.userPTag {
+    margin: .2em 0;
+    color: white;
+}
+
+.userListDiv {
+    margin-left: 1em;
+
+}
+
 .header {
     color: black;
     border-right: .5px black solid;
@@ -110,6 +120,12 @@
     fill: white;
 }
 
+.profileDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .navLinks {
     text-decoration: none;
     color: white;
@@ -153,4 +169,7 @@
     background-color: black;
     border: none;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

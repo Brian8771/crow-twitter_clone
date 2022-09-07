@@ -83,18 +83,23 @@ const PostDetail = () => {
                         <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
                             {comments &&
                                 comments.map(comment => {
-                                    return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid' }}>
+                                    { console.log(comment) }
+                                    return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
                                         <div>
                                             <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={comment.user.profileImage} alt='profilePic' />
                                         </div>
-                                        <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start' }}>
+                                        <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
                                             <NavLink style={{ textDecoration: 'none' }} to={`/users/${comment.user.id}`}>
                                                 <p className='pTag'>{comment.user.username} <span style={{ color: 'gray' }}>Replying to @{caw.user.username}</span></p>
                                             </NavLink>
-                                            <p className='pTag' >{comment.data}</p>
-                                            <div>
-                                                <button onClick={() => delete_comment(comment.id)}>Delete</button>
-                                                <EditCommentModal setIsLoaded={setIsLoaded} setShowModal={setEditModal} id={comment.id} />
+                                            <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
+                                                <div style={{ width: '100%' }}>
+                                                    <p style={{ wordBreak: 'break-word' }} className='pTag' >{comment.data}</p>
+                                                </div>
+                                                <div style={{ display: 'flex', flexDirection: 'row', width: '100%', padding: '0', justifyContent: 'center', height: '20%' }}>
+                                                    {comment.user.id === user.id && <EditCommentModal setIsLoaded={setIsLoaded} setShowModal={setEditModal} id={comment.id} />}
+                                                    {comment.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '20px', width: '60px', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_comment(comment.id)}>Delete</button>}
+                                                </div>
                                             </div>
                                         </div>
 
@@ -105,7 +110,7 @@ const PostDetail = () => {
                     </div>
                 </div>
             }
-        </div>
+        </div >
 
 
     )
