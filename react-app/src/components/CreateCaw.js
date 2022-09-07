@@ -15,6 +15,9 @@ const CreateCaw = ({ setLoaded }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (caw.length === 0) {
+            return setErrors(["Can't post an empty caw"])
+        }
         const cawInfo = {
             caw
         }

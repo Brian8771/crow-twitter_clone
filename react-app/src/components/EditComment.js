@@ -28,6 +28,9 @@ const EditComment = ({ setIsLoaded, hideModal, id }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (comment.length === 0) {
+            return setErrors(['Comment cannot be empty'])
+        }
         const commentInfo = {
             comment
         }
