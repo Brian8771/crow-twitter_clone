@@ -15,6 +15,9 @@ const EditCaw = ({ hideModal }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (caw.length === 0) {
+            return setErrors(["Caw post an empty Caw"])
+        }
         const cawInfo = {
             caw
         }

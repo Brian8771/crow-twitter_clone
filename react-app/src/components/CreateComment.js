@@ -14,6 +14,9 @@ const CreateComment = ({ setIsLoaded }) => {
     const { id } = useParams()
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (comment.length === 0) {
+            return setErrors(['Comment cannot be empty'])
+        }
         const commentInfo = {
             comment
         }
