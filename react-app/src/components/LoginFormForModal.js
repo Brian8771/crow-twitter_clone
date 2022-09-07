@@ -41,7 +41,7 @@ const LoginFormForModal = () => {
                 <h2 className='headerForLogin'>Sign in to Crow</h2>
                 <div className='divAroundInputs'>
                     {errors.map((error, ind) => (
-                        <div key={ind}>{error}</div>
+                        <div style={{ color: 'red' }} key={ind}>{error}</div>
                     ))}
                 </div>
                 <div className='divForInputs' style={{ marginTop: '20%' }}>

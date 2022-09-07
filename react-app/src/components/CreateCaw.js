@@ -22,13 +22,18 @@ const CreateCaw = ({ setLoaded }) => {
         await setLoaded(false);
         await dispatch(getAllCaws());
         await setLoaded(true)
-        await setErrors(cawCreated)
-        console.log(errors)
+        // await setErrors(cawCreated)
         setCaw('');
         // history.push('/1')
         // history.push('/')
     }
 
+    useEffect(() => {
+        if (caw.length > 180) {
+            setErrors(["Can't be more than 180 characters"])
+        }
+        else setErrors(null);
+    }, [caw])
 
     return (
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', margin: '0' }}>
@@ -40,7 +45,7 @@ const CreateCaw = ({ setLoaded }) => {
                     <div>
                         {errors &&
                             errors.map((error, ind) => (
-                                <div key={ind}>{error}</div>
+                                <div style={{ color: 'red' }} key={ind}>{error}</div>
                             ))
                         }
                     </div>
@@ -54,7 +59,7 @@ const CreateCaw = ({ setLoaded }) => {
                         />
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <button style={{ height: '30px', width: '20%', margin: '0', backgroundColor: 'black', borderRadius: '20px', border: 'none' }} type='submit'>Post</button>
+                        <button disabled={errors ? true : false} className='submitButtonForCaw' type='submit'>Post</button>
                     </div>
                 </form>
             </div>

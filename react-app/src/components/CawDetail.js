@@ -52,7 +52,7 @@ const PostDetail = () => {
                             <h2 style={{ marginLeft: '20px', color: 'black' }}>Thread</h2>
                         </div>
                         {caw &&
-                            <div style={{ display: 'flex', flexDirection: 'column', height: '10rem', borderBottom: 'black .5px solid', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', height: '10rem', borderBottom: 'black .5px solid', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', padding: '10px 0' }}>
                                 <div style={{ display: 'flex', flexDirection: 'row', padding: '10px' }}>
                                     <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
                                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
@@ -65,7 +65,7 @@ const PostDetail = () => {
                                     </div>
                                     <div style={{ display: 'flex', flexDirection: 'row', width: '25%', padding: '6px' }}>
                                         {caw.user.id === user.id && <EditFormModal setShowModal={setEditModal} caw={caw.id} />}
-                                        {caw.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '30%', width: '100%', borderRadius: '40px' }} onClick={() => delete_caw(caw.id)}>Delete</button>}
+                                        {caw.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '30%', width: '100%', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_caw(caw.id)}>Delete</button>}
                                     </div>
                                 </div>
 
