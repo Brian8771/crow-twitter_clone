@@ -61,7 +61,7 @@ const PostDetail = () => {
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '6rem' }}>
                                     <div style={{ display: 'flex', width: '80%', padding: '10px' }}>
-                                        <p className='pTag' >{caw.caw}</p>
+                                        <p style={{ wordBreak: 'break-word' }} className='pTag' >{caw.caw}</p>
                                     </div>
                                     <div style={{ display: 'flex', flexDirection: 'row', width: '25%', padding: '6px' }}>
                                         {caw.user.id === user.id && <EditFormModal setShowModal={setEditModal} caw={caw.id} />}

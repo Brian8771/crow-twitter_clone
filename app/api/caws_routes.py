@@ -14,7 +14,7 @@ def validation_errors_to_error_messages(validation_errors):
     errorMessages = []
     for field in validation_errors:
         for error in validation_errors[field]:
-            errorMessages.append(f'{field} : {error}')
+            errorMessages.append(f'{error}')
     return errorMessages
 
 # get all Caws
@@ -143,6 +143,8 @@ def create_comment(id):
         db.session.commit()
         # print(comment.user.to_dict(), '-------')
         return {'comment': comment.to_dict()}
+
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 # edit comment by comment id
 @caw_routes.route('/comment/<int:id>', methods=['PUT'])
