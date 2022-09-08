@@ -14,20 +14,13 @@ const CreateCaw = ({ setLoaded }) => {
 
 
     const handleSubmit = async (e) => {
-        const variables = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
         e.preventDefault();
         if (caw.length === 0) {
             return setErrors(["Can't post an empty caw"])
         }
-        if (caw.length > 0) {
-            let arr = [];
-            for (let el of caw) {
-                if (variables.includes(el)) arr.push(el)
-            }
-            if (arr.length === 0) {
-                return setErrors(["Can't post an empty caw"])
 
-            }
+        if (caw.match(/^\s*$/)) {
+            return setErrors(["Can't post an empty caw"])
         }
         const cawInfo = {
             caw
