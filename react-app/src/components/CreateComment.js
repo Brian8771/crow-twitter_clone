@@ -12,6 +12,7 @@ const CreateComment = ({ setIsLoaded }) => {
     const user = useSelector(state => state.session.user);
     const caw = useSelector(state => state.caws.caw)
     const { id } = useParams()
+    let amount = caw.totalComments
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (comment.length === 0) {
@@ -56,7 +57,7 @@ const CreateComment = ({ setIsLoaded }) => {
                             style={{ width: '90%', height: '4.2rem', border: 'none', resize: 'none' }}
                             type='text'
                             value={comment}
-                            placeholder={caw.totalComments === 0 ? 'Be the first to comment?' : 'Post a comment?'}
+                            placeholder='Post a comment?'
                             onChange={(e) => setComment(e.target.value)}
                         />
                     </div>
