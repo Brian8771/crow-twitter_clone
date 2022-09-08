@@ -5,6 +5,8 @@ import { login } from '../../store/session';
 import LoginFormModal from '../LoginFormModal';
 import SignUpFormModal from '../SignUpFormModal';
 import '../../styles/LoginForm.css';
+import github from '../../images/github.png';
+import linkedIn from '../../images/linkedIn.png';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -50,6 +52,10 @@ const LoginForm = () => {
             <LoginFormModal />
           </div>
         </div>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'space-around', width: '100vw', position: 'fixed', bottom: '0', backgroundColor: 'white' }}>
+        <a href='https://github.com/Brian8771'><img style={{ height: '60px', width: '60px' }} src={github} /></a>
+        <a href='https://www.linkedin.com/in/brian-aguilar-088438247/'><img style={{ height: '60px', width: '60px' }} src={linkedIn} /></a>
       </div>
     </div>
   );
