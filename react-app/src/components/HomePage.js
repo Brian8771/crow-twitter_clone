@@ -4,6 +4,7 @@ import { getAllCaws, getCawFromId } from '../store/caws';
 import { NavLink } from 'react-router-dom';
 import CreateCaw from './CreateCaw';
 import '../styles/Homepage.css'
+import comment from '../images/comment.png';
 
 const HomePage = () => {
     const dispatch = useDispatch()
@@ -40,6 +41,10 @@ const HomePage = () => {
                                     </NavLink>
                                     <NavLink style={{ textDecoration: 'none' }} to={`/${caw.id}`}>
                                         <p className='pTag' >{caw.caw}</p>
+                                        <div style={{ display: 'flex', flexDirection: 'row', marginTop: '30px', justifyContent: 'flex-start', alignItems: 'center' }}>
+                                            <img style={{ height: '16px', backgroundColor: 'white' }} src={comment} alt='comment' />
+                                            <p style={{ marginLeft: '8px', color: 'black' }}>{caw.totalComments}</p>
+                                        </div>
                                     </NavLink>
                                 </div>
 
