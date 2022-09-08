@@ -15,20 +15,11 @@ const CreateComment = ({ setIsLoaded }) => {
     let amount = caw.totalComments
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const variables = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
         if (comment.length === 0) {
             return setErrors(['Comment cannot be empty'])
         }
-        if (comment.length > 0) {
-            let arr = [];
-            for (let el of comment) {
-                if (variables.includes(el)) arr.push(el)
-            }
-            if (arr.length === 0) {
-                return setErrors(["Can't post an empty comment"])
-
-            }
+        if (comment.match(/^\s*$/)) {
+            return setErrors(["Can't post an empty caw"])
         }
         const commentInfo = {
             comment

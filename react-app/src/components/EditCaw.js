@@ -15,20 +15,14 @@ const EditCaw = ({ hideModal }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const variables = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
         if (caw.length === 0) {
             return setErrors(["Can't post an empty Caw"])
         }
-        if (caw.length > 0) {
-            let arr = [];
-            for (let el of caw) {
-                if (variables.includes(el)) arr.push(el)
-            }
-            if (arr.length === 0) {
-                return setErrors(["Can't post an empty caw"])
 
-            }
+        if (caw.match(/^\s*$/)) {
+            return setErrors(["Can't post an empty caw"])
         }
+
         const cawInfo = {
             caw
         }
