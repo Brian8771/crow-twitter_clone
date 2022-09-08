@@ -30,6 +30,10 @@
     color: white;
 }
 
+.userPTag:hover {
+    text-decoration: underline;
+}
+
 .userListDiv {
     margin-left: 1em;
 
@@ -148,8 +152,18 @@
 }
 
 .navDiv {
-    padding: 5px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 5px 3px 5px;
+    border-radius: 25px;
 }
+
+.navDiv:hover {
+    background-color: darkgrey;
+}
+
+
 
 .show {
     visibility: visible;
