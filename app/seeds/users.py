@@ -19,6 +19,8 @@ def seed_users():
         username='Rebecca2256',first_name='Rebecca',last_name='Smith', email='rebecca@aa.io', password='password6', profile_image='https://cdn-icons-png.flaticon.com/128/3135/3135823.png', bio='I am new to this site')
     hank = User(
         username='Hank_Propane',first_name='Hank',last_name='Hill', email='hank@aa.io', password='password7', profile_image='https://cdn-icons-png.flaticon.com/128/206/206853.png', bio='Propane > Charcoal')
+    maddie = User(
+        username='Maddie_28',first_name='Maddie',last_name='Cichocki', email='maddie@aa.io', password='password8', profile_image='https://cdn-icons-png.flaticon.com/128/8398/8398242.png', bio="I'm a nice fun girl")
 
 
     db.session.add(demo)
@@ -29,6 +31,7 @@ def seed_users():
     db.session.add(eric)
     db.session.add(rebecca)
     db.session.add(hank)
+    db.session.add(maddie)
 
     db.session.commit()
 
