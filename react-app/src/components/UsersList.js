@@ -5,8 +5,6 @@ import { NavLink } from 'react-router-dom';
 function UsersList() {
   const [users, setUsers] = useState([]);
   const sessionUser = useSelector(state => state.session.user)
-  console.log(users)
-  console.log(sessionUser)
   let allUsers = [];
   if (sessionUser) {
     allUsers = users.filter(x => x.id !== sessionUser.id);
@@ -17,7 +15,6 @@ function UsersList() {
     async function fetchData() {
       const response = await fetch('/api/users/');
       const responseData = await response.json();
-      console.log(responseData)
       setUsers(responseData.users);
     }
     fetchData();
