@@ -9,7 +9,7 @@ const LogoutButton = () => {
     await dispatch(logout());
   };
 
-  return <button style={{ color: 'white', border: 'none', backgroundColor: 'black' }} onClick={onLogout}>Logout @{user.username}</button>;
+  return <button style={{ color: 'white', border: 'none', backgroundColor: 'black', cursor: 'pointer' }} onClick={onLogout}>Logout @{user.username}</button>;
 };
 
 export default LogoutButton;
