@@ -17,7 +17,9 @@ const NavBar = () => {
   return (
     <nav className='navBar'>
       <div style={{ width: '40%', height: '30%' }}>
-        <img className='imgNav' style={{ height: '30px', width: '30px' }} src={crow} alt='crow-icon' />
+        <NavLink to='/'>
+          <img className='imgNav' style={{ height: '30px', width: '30px' }} src={crow} alt='crow-icon' />
+        </NavLink>
       </div>
 
       <div style={{ width: '40%', display: 'flex', alignItems: 'flex-start', height: '60%' }}>

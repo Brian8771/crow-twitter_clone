@@ -14,6 +14,7 @@ const PostDetail = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const { id } = useParams()
+    console.log(id)
     const [isLoaded, setIsLoaded] = useState(false);
     const caw = useSelector(state => state.caws.caw);
     const user = useSelector(state => state.session.user);
@@ -35,6 +36,7 @@ const PostDetail = () => {
     }
 
     useEffect(() => {
+        console.log(id)
         dispatch(getCawFromId(id)).then(() => dispatch(getComments(id))).then(() => setIsLoaded(true))
     }, [dispatch, id]);
 
