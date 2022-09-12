@@ -5,6 +5,7 @@ import { getAllCaws } from '../store/caws';
 import { getCurretProfile } from '../store/session';
 import '../styles/Homepage.css'
 import backArrow from '../images/arrow-back.svg'
+import comment from '../images/comment.png';
 
 
 function User() {
@@ -66,6 +67,10 @@ function User() {
                 </NavLink>
                 <NavLink style={{ textDecoration: 'none' }} to={`/${caw.id}`}>
                   <p className='pTag' >{caw.caw}</p>
+                  <div style={{ display: 'flex', flexDirection: 'row', marginTop: '30px', justifyContent: 'flex-start', alignItems: 'center' }}>
+                    <img style={{ height: '16px', backgroundColor: 'white' }} src={comment} alt='comment' />
+                    <p style={{ marginLeft: '8px', color: 'black' }}>{caw.totalComments}</p>
+                  </div>
                 </NavLink>
               </div>
 
