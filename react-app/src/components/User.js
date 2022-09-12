@@ -5,6 +5,7 @@ import { getAllCaws } from '../store/caws';
 import { getCurretProfile } from '../store/session';
 import '../styles/Homepage.css'
 import backArrow from '../images/arrow-back.svg'
+import EditUserModal from './EditUserModal';
 
 
 function User() {
@@ -13,11 +14,12 @@ function User() {
   const [loaded, setLoaded] = useState(false);
   const { userId } = useParams();
   const user = useSelector(state => state.session.currentUserProfile);
+  const session = useSelector(state => state.session.user);
   const caws = Object.values(useSelector(state => state.caws.caws)).filter(x => x.userId === user.id)
 
   useEffect(() => {
     dispatch(getCurretProfile(userId)).then(dispatch(getAllCaws())).then(() => setIsLoaded(true)).then(() => setLoaded(true))
-  }, [dispatch, isLoaded, userId, loaded]);
+  }, [dispatch, isLoaded, userId, loaded, EditUserModal]);
 
   // if (!user) {
   //   return null;
@@ -42,12 +44,17 @@ function User() {
             <div style={{ display: 'flex', backgroundImage: `url(${user.headerImage})`, height: '8rem', width: '100%', alignItems: 'flex-end', marginBottom: '70px' }}>
               <img style={{ marginLeft: '20px', position: 'relative', top: '60px', height: '133.5px', width: '133.5px' }} className='imgNav' src={user.profileImage} />
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              <p style={{ marginTop: '8px', marginBottom: '8px', marginLeft: '16px', color: 'black', fontSize: '20px' }}>{user.firstName}</p>
-              <p style={{ marginTop: '8px', marginBottom: '8px', marginLeft: '16px', color: 'black', fontSize: '15px' }}>@{user.username}</p>
+            <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <p style={{ marginTop: '8px', marginBottom: '8px', marginLeft: '16px', color: 'black', fontSize: '20px' }}>{user.firstName}</p>
+                <p style={{ marginTop: '8px', marginBottom: '8px', marginLeft: '16px', color: 'black', fontSize: '15px' }}>@{user.username}</p>
+              </div>
+              <div style={{ width: '20%', marginRight: '8px' }}>
+                {session.id == user.id && <EditUserModal setLoaded={setLoaded} />}
+              </div>
             </div>
-            <div>
-              <p style={{ marginLeft: '16px', color: 'black', fontSize: '15px' }}>{user.bio}</p>
+            <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
+              <p style={{ marginLeft: '16px', color: 'black', fontSize: '15px', width: '100%', wordBreak: 'break-word', paddingRight: '6px' }}>{user.bio}</p>
             </div>
           </div>}
       </div>

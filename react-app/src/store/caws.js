@@ -125,6 +125,7 @@ export default function reducer(state = initialState, action) {
             newState.caw = action.payload.Caw
             return newState
         case GET_ALL_CAWS:
+            newState.caws = {}
             action.payload.Caws.forEach(caw => {
                 newState.caws[caw.id] = caw
             })

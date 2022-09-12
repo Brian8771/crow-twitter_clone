@@ -5,17 +5,20 @@ import { NavLink } from 'react-router-dom';
 import CreateCaw from './CreateCaw';
 import '../styles/Homepage.css'
 import comment from '../images/comment.png';
+import { getAllUsers } from '../store/session';
+import EditCaw from './EditCaw';
 
 const HomePage = () => {
     const dispatch = useDispatch()
     const [loaded, setLoaded] = useState(false);
     const caws = Object.values(useSelector(state => state.caws.caws))
     const cawses = useSelector(state => state.caws.caws);
+    const users = useSelector(state => state.session.users);
 
 
     useEffect(() => {
-        dispatch(getAllCaws()).then(() => setLoaded(true))
-    }, [dispatch, CreateCaw, cawses])
+        dispatch(getAllCaws()).then(dispatch(getAllUsers())).then(() => setLoaded(true))
+    }, [dispatch, CreateCaw])
 
 
     return (
@@ -28,7 +31,7 @@ const HomePage = () => {
                     <CreateCaw setLoaded={setLoaded} />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
-                    {caws && loaded &&
+                    {caws && users && loaded &&
                         caws.map(caw => {
                             return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid' }}>
                                 <div>

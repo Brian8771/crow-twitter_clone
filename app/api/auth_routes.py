@@ -76,6 +76,25 @@ def sign_up():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+@auth_routes.route('/edit/<int:id>', methods=['PUT'])
+def edit_user(id):
+    user = User.query.get(id)
+
+    if user.id != current_user.id:
+        return {'errors': ['Unauthorized']}, 401
+
+    form = SignUpForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    user.username = form.data['username']
+    user.profile_image = form.data['profile_image']
+    user.header_image = form.data['header_image']
+    user.bio = form.data['bio']
+    db.session.commit()
+
+    return user.to_dict()
+
+
 @auth_routes.route('/unauthorized')
 def unauthorized():
     """
