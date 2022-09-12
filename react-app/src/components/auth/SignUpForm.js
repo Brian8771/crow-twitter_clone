@@ -53,7 +53,6 @@ const SignUpForm = () => {
   if (user) {
     return <Redirect to='/' />;
   }
-  console.log(errors)
   return (
     <form style={{ height: '45rem' }} className='LoginFormModal' onSubmit={onSignUp}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100%', width: '50%' }}>
