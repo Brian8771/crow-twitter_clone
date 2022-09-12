@@ -16,10 +16,10 @@ const CreateComment = ({ setIsLoaded }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (comment.length === 0) {
-            return setErrors(['Comment cannot be empty'])
+            return setErrors(["Can't post an empty comment"])
         }
         if (comment.match(/^\s*$/)) {
-            return setErrors(["Can't post an empty caw"])
+            return setErrors(["Can't post an empty comment"])
         }
         const commentInfo = {
             comment
