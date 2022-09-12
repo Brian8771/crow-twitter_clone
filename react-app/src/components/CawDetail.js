@@ -14,7 +14,6 @@ const PostDetail = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const { id } = useParams()
-    console.log(id)
     const [isLoaded, setIsLoaded] = useState(false);
     const caw = useSelector(state => state.caws.caw);
     const user = useSelector(state => state.session.user);
@@ -36,7 +35,6 @@ const PostDetail = () => {
     }
 
     useEffect(() => {
-        console.log(id)
         dispatch(getCawFromId(id)).then(() => dispatch(getComments(id))).then(() => setIsLoaded(true))
     }, [dispatch, id]);
 
@@ -87,7 +85,6 @@ const PostDetail = () => {
                         <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
                             {comments &&
                                 comments.map(comment => {
-                                    { console.log(comment) }
                                     return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
                                         <div>
                                             <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={comment.user.profileImage} alt='profilePic' />
