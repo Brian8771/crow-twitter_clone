@@ -87,6 +87,36 @@ each of the following variables:
 # Crow Twitter Clone
 Crow is a twitter clone designed by Brian Aguilar that is at this moment able to post caws(tweets) and comment under a specified caw.
 
+
+
+# Login Page
+![](react-app/src/images/login.jpg)
+
+# Homepage
+![](react-app/src/images/homepage.jpg)
+
+# Profile Page
+
+![](react-app/src/images/profile.jpg)
+
+# Features that are implemented
+* User page
+   * Able to see all the caws from a specific user as well as their header image and bio on their unique profile page
+   * Adding edit profile button where you will be able to change username, bio, profile image and header image
+
+* Caws
+   * Able to post a Caw(tweet) that is up to 180 characters
+   * Edit Caw by going into the caw details page
+   * Delete Caw
+   * And view all caws
+
+* Comments
+   * Able to post a comment underneath caws that are up to 180 characters
+   * Can edit comments
+   * Delete comments
+   * View all comments from the caw details page
+
+
 # Features that are planned to be added on are
 * Follows
    * You will be able to follow/unfollow users
