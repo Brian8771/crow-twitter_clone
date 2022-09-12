@@ -67,7 +67,7 @@ function User() {
                 </NavLink>
                 <NavLink style={{ textDecoration: 'none' }} to={`/${caw.id}`}>
                   <p className='pTag' >{caw.caw}</p>
-                  <div style={{ display: 'flex', flexDirection: 'row', marginTop: '30px', justifyContent: 'flex-start', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0px', justifyContent: 'flex-start', alignItems: 'center' }}>
                     <img style={{ height: '16px', backgroundColor: 'white' }} src={comment} alt='comment' />
                     <p style={{ marginLeft: '8px', color: 'black' }}>{caw.totalComments}</p>
                   </div>
