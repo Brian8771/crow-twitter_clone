@@ -37,7 +37,7 @@ const CreateCaw = ({ setLoaded }) => {
 
     useEffect(() => {
         if (caw.length > 180) {
-            setErrors(["Can't be more than 180 characters"])
+            setErrors(["Caw can't be more than 180 characters"])
         }
         else setErrors(null);
     }, [caw])
