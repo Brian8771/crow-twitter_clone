@@ -69,7 +69,7 @@ export const getCawsFromUserId = (id) => async dispatch => {
 }
 
 export const createCaw = (cawInfo) => async dispatch => {
-    const response = await fetch('api/caws/new', {
+    const response = await fetch('/api/caws/new', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -91,7 +91,7 @@ export const createCaw = (cawInfo) => async dispatch => {
 }
 
 export const cawToEdit = (id, caw) => async dispatch => {
-    const response = await fetch(`api/caws/${id}`, {
+    const response = await fetch(`/api/caws/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -105,7 +105,7 @@ export const cawToEdit = (id, caw) => async dispatch => {
 }
 
 export const deleteCaw = (id) => async dispatch => {
-    const response = await fetch(`api/caws/${id}`, {
+    const response = await fetch(`/api/caws/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json'
