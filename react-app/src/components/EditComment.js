@@ -29,10 +29,10 @@ const EditComment = ({ setIsLoaded, hideModal, id }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (comment.length === 0) {
-            return setErrors(["Can't post an empty comment"])
+            return setErrors(['Comment cannot be empty'])
         }
         if (comment.match(/^\s*$/)) {
-            return setErrors(["Can't post an empty comment"])
+            return setErrors(["Comment cannot be empty"])
         }
         const commentInfo = {
             comment
