@@ -43,7 +43,7 @@ const cawDeletion = (id) => (
 const initialState = { caw: {}, caws: {} }
 
 export const getCawFromId = (id) => async dispatch => {
-    const response = await fetch(`api/caws/caw/${id}`)
+    const response = await fetch(`/api/caws/caw/${id}`)
     if (response.ok) {
         const caw = await response.json()
         dispatch(getCaw(caw))

@@ -65,9 +65,9 @@ function User() {
 
                   <p className='pTag'>{caw.user.username} <span style={{ color: 'gray' }}>@{caw.user.username}</span></p>
                 </NavLink>
-                <NavLink style={{ textDecoration: 'none' }} to={`/${caw.id}`}>
-                  <p className='pTag' >{caw.caw}</p>
-                  <div style={{ display: 'flex', flexDirection: 'row', marginTop: '30px', justifyContent: 'flex-start', alignItems: 'center' }}>
+                <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
+                  <p className='pTag' style={{ paddingTop: '10px' }} >{caw.caw}</p>
+                  <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0px', justifyContent: 'flex-start', alignItems: 'center' }}>
                     <img style={{ height: '16px', backgroundColor: 'white' }} src={comment} alt='comment' />
                     <p style={{ marginLeft: '8px', color: 'black' }}>{caw.totalComments}</p>
                   </div>
@@ -78,7 +78,7 @@ function User() {
           })
         }
         <div className='font' style={{ display: 'flex', justifyContent: 'center', borderBottom: '.5px black solid', fontSize: '15px', color: 'black' }}>
-          <p >Caws</p>
+          <p>Caws</p>
         </div>
       </div>
     </div>
