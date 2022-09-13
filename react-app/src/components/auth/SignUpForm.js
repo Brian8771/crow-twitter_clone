@@ -17,13 +17,17 @@ const SignUpForm = () => {
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
+    let errArr = [];
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(firstName, lastName, username, email, password));
-      if (data) {
-        setErrors(data)
-      }
+    if (password !== repeatPassword) {
+      errArr.push('Passwords must match')
     }
+    const data = await dispatch(signUp(firstName, lastName, username, email, password));
+    if (data) {
+      errArr.push(...data)
+    }
+
+    setErrors(errArr)
   };
 
   const updatedFirstName = (e) => {
@@ -49,6 +53,7 @@ const SignUpForm = () => {
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
   };
+
 
   if (user) {
     return <Redirect to='/' />;
