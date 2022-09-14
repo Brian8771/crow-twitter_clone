@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
-import { getAllCaws } from '../store/caws';
+import { getAllCaws, likeCawThunk } from '../store/caws';
 import { getCurretProfile } from '../store/session';
 import '../styles/Homepage.css'
 import backArrow from '../images/arrow-back.svg'
 import comment from '../images/comment.png';
+import likeIcon from '../images/like.png';
+import likedIcon from '../images/liked.png'
 
 
 function User() {
@@ -15,6 +17,14 @@ function User() {
   const { userId } = useParams();
   const user = useSelector(state => state.session.currentUserProfile);
   const caws = Object.values(useSelector(state => state.caws.caws)).filter(x => x.userId === user.id)
+
+  const handleLikes = async (id) => {
+    await dispatch(likeCawThunk(id))
+    setLoaded(false)
+    await getAllCaws()
+    setLoaded(true)
+
+  }
 
   useEffect(() => {
     dispatch(getCurretProfile(userId)).then(dispatch(getAllCaws())).then(() => setIsLoaded(true)).then(() => setLoaded(true))
@@ -60,18 +70,30 @@ function User() {
               <div>
                 <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
               </div>
-              <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
+              <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
                 <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
 
                   <p className='pTag'>{caw.user.username} <span style={{ color: 'gray' }}>@{caw.user.username}</span></p>
                 </NavLink>
                 <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
-                  <p className='pTag' style={{ paddingTop: '10px' }} >{caw.caw}</p>
-                  <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0px', justifyContent: 'flex-start', alignItems: 'center' }}>
-                    <img style={{ height: '16px', backgroundColor: 'white' }} src={comment} alt='comment' />
-                    <p style={{ marginLeft: '8px', color: 'black' }}>{caw.totalComments}</p>
-                  </div>
+                  <p className='pTag' style={{ paddingTop: '10px', width: '100%', marginRight: '0' }} >{caw.caw}</p>
                 </NavLink>
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+                  <div onClick={() => handleLikes(caw.id)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    {caw.likeStatus === 1 ?
+                      <img src={likedIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
+                      :
+                      <img src={likeIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
+                    }
+                    <p style={{ marginLeft: '8px', color: 'black', cursor: 'pointer' }}>{caw.totalLikes}</p>
+                  </div>
+                  <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
+                    <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0px', justifyContent: 'flex-start', alignItems: 'center' }}>
+                      <img style={{ height: '16px', backgroundColor: 'white' }} src={comment} alt='comment' />
+                      <p style={{ marginLeft: '8px', color: 'black' }}>{caw.totalComments}</p>
+                    </div>
+                  </NavLink>
+                </div>
               </div>
 
             </div>

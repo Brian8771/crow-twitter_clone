@@ -12,7 +12,7 @@ const CreateComment = ({ setIsLoaded }) => {
     const user = useSelector(state => state.session.user);
     const caw = useSelector(state => state.caws.caw)
     const { id } = useParams()
-    let amount = caw.totalComments
+    // let amount = caw.totalComments
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (comment.length === 0) {

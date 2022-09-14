@@ -1,25 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
-import { getCawFromId, deleteCaw, getAllCaws } from '../store/caws';
+import { getCawFromId, deleteCaw, getAllCaws, likeCawThunk } from '../store/caws';
 import EditFormModal from './EditFormModal';
 import EditCommentModal from './EditCommentModal';
 import '../styles/Homepage.css'
 import backArrow from '../images/arrow-back.svg'
 import { getComments, deleteComment } from '../store/comments';
 import CreateComment from './CreateComment';
-
+import comment from '../images/comment.png';
+import likeIcon from '../images/like.png';
+import likedIcon from '../images/liked.png'
 
 const PostDetail = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const { id } = useParams()
+    const [loaded, setLoaded] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false);
     const caw = useSelector(state => state.caws.caw);
+    const likeStatus = useSelector(state => state.caws.caws[id].likeStatus)
+    const totalLikes = useSelector(state => state.caws.caws[id].totalLikes)
     const user = useSelector(state => state.session.user);
     const comments = Object.values(useSelector(state => state.comments.comments)).filter(x => x.caw.id === caw.id)
     const [editModal, setEditModal] = useState(false);
 
+    const handleLikes = async (id) => {
+        await dispatch(likeCawThunk(id))
+        setIsLoaded(false)
+        await getAllCaws()
+        setIsLoaded(true)
+
+    }
 
     const delete_caw = async (id) => {
         await dispatch(deleteCaw(id));
@@ -29,19 +41,19 @@ const PostDetail = () => {
 
     const delete_comment = async (identification) => {
         await dispatch(deleteComment(identification));
-        setIsLoaded(false)
+        setLoaded(false)
         await dispatch(getComments(id));
-        setIsLoaded(true)
+        setLoaded(true)
     }
 
     useEffect(() => {
-        dispatch(getCawFromId(id)).then(() => dispatch(getComments(id))).then(() => setIsLoaded(true))
+        dispatch(getAllCaws()).then(dispatch(getCawFromId(id))).then(() => dispatch(getComments(id))).then(() => setIsLoaded(true)).then(() => setLoaded(true))
     }, [dispatch, id]);
 
 
     return (
         <div className='homePageContainer'>
-            {isLoaded &&
+            {caw && isLoaded &&
                 <div>
 
                     <div>
@@ -52,7 +64,7 @@ const PostDetail = () => {
                             <h2 style={{ marginLeft: '20px', color: 'black' }}>Thread</h2>
                         </div>
                         {caw &&
-                            <div style={{ display: 'flex', flexDirection: 'column', height: '14rem', borderBottom: 'black .5px solid', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', padding: '10px 0' }}>
+                            <div style={{ display: 'flex', flexDirection: 'column', height: 'auto', borderBottom: 'black .5px solid', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', padding: '10px 0' }}>
                                 <div style={{ display: 'flex', flexDirection: 'row', padding: '10px' }}>
                                     <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
                                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
@@ -61,14 +73,30 @@ const PostDetail = () => {
                                         </NavLink>
                                     </div>
                                 </div>
-                                <div style={{ display: 'flex', flexDirection: 'row', width: '100%', height: '6rem' }}>
-                                    <div style={{ display: 'flex', width: '80%', padding: '10px' }}>
-                                        <p style={{ wordBreak: 'break-word', height: '80%', paddingLeft: '10px' }} className='pTag' >{caw.caw}</p>
+                                <div style={{ display: 'flex', flexDirection: 'row', width: '100%', height: 'auto' }}>
+                                    <div style={{ display: 'flex', width: '80%', padding: '10px', height: '100%' }}>
+                                        <p style={{ wordBreak: 'break-word', height: 'auto', paddingLeft: '10px' }} className='pTag' >{caw.caw}</p>
                                     </div>
                                     <div style={{ display: 'flex', flexDirection: 'row', width: '25%', padding: '6px' }}>
                                         {caw.user.id === user.id && <EditFormModal setShowModal={setEditModal} caw={caw.id} />}
-                                        {caw.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '30%', width: '100%', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_caw(caw.id)}>Delete</button>}
+                                        {caw.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '24px', width: '100%', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_caw(caw.id)}>Delete</button>}
                                     </div>
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+                                    {loaded && <div onClick={() => handleLikes(caw.id)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                                        {likeStatus === 1 ?
+                                            <img src={likedIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
+                                            :
+                                            <img src={likeIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
+                                        }
+                                        <p style={{ marginLeft: '8px', color: 'black', cursor: 'pointer' }}>{console.log(totalLikes)}{totalLikes}</p>
+                                    </div>}
+                                    <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
+                                        <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0px', justifyContent: 'flex-start', alignItems: 'center' }}>
+                                            <img style={{ height: '16px', backgroundColor: 'white' }} src={comment} alt='comment' />
+                                            <p style={{ marginLeft: '8px', color: 'black' }}>{caw.totalComments}</p>
+                                        </div>
+                                    </NavLink>
                                 </div>
 
                             </div>

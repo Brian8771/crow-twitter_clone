@@ -1,6 +1,8 @@
+
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .caws import caw_likes
 
 
 class User(db.Model, UserMixin):
@@ -19,6 +21,13 @@ class User(db.Model, UserMixin):
     caws = db.relationship("Caw", back_populates="user", cascade="all, delete")
 
     comments = db.relationship('Comment', back_populates='user', cascade='all, delete')
+
+    like_caws = db.relationship(
+        "Caw",
+        secondary=caw_likes,
+        back_populates='caw_like_users',
+        cascade='all, delete'
+    )
 
     @property
     def password(self):

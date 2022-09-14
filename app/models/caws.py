@@ -1,5 +1,11 @@
 from .db import db
 
+caw_likes = db.Table(
+  "caw_likes",
+  db.Column("cawId", db.Integer, db.ForeignKey("caws.id", ondelete="CASCADE"), primary_key=True),
+  db.Column("userId", db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
+)
+
 
 class Caw(db.Model):
     __tablename__ = 'caws'
@@ -12,6 +18,13 @@ class Caw(db.Model):
 
     comments = db.relationship('Comment', back_populates='caw', cascade='all, delete')
 
+    caw_like_users = db.relationship(
+      "User",
+      secondary=caw_likes,
+      back_populates='like_caws',
+      passive_deletes=True
+    )
+
     def to_dict(self):
         return {
         'id': self.id,
@@ -23,5 +36,6 @@ class Caw(db.Model):
           'totalCaws': len(self.user.caws),
           'id':self.user.id
         },
-        'totalComments': len(self.comments)
+        'totalComments': len(self.comments),
+        'totalLikes': len(self.caw_like_users)
         }
