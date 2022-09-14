@@ -3,6 +3,7 @@ const GET_ALL_CAWS = 'caws/GET_ALL_CAWS';
 const CREATE_CAW = 'caws/CREATE_CAW';
 const EDIT_CAW = 'caws/EDIT_CAW';
 const DELETE_CAW = 'caws/DELETE_CAW';
+const LIKE_CAW = 'caws/LIKE_CAW';
 
 const getCaw = (caw) => (
     {
@@ -39,6 +40,14 @@ const cawDeletion = (id) => (
     }
 )
 
+const likeCaw = (id, totalLikes, likeStatus) => {
+    return {
+        type: LIKE_CAW,
+        id,
+        totalLikes,
+        likeStatus
+    }
+}
 
 const initialState = { caw: {}, caws: {} }
 
@@ -118,6 +127,22 @@ export const deleteCaw = (id) => async dispatch => {
     }
 }
 
+export const likeCawThunk = (id) => async dispatch => {
+    const response = await fetch(`/api/caws/${id}/likes`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+    });
+    if (response.ok) {
+        const data = await response.json();
+
+        dispatch(likeCaw(id, data.totalLikes, data.likeStatus))
+    }
+    return response
+}
+
 export default function reducer(state = initialState, action) {
     const newState = { ...state }
     switch (action.type) {
@@ -134,9 +159,13 @@ export default function reducer(state = initialState, action) {
             return newState
         case EDIT_CAW:
             newState.caws[action.payload.id] = action.payload
+            return newState
         case DELETE_CAW:
             delete newState.caws[action.payload];
             return newState;
+        case LIKE_CAW:
+            newState.caws[action.id] = { ...newState.caws[action.id], totalLikes: action.totalLikes, likeStatus: action.likeStatus }
+            return newState
         default:
             return state
     }
