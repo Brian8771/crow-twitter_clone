@@ -19,11 +19,12 @@ const PostDetail = () => {
     const [loaded, setLoaded] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false);
     const caw = useSelector(state => state.caws.caw);
-    const likeStatus = useSelector(state => state.caws.caws[id].likeStatus)
-    const totalLikes = useSelector(state => state.caws.caws[id].totalLikes)
+    const likeStatus = useSelector(state => state.caws.caw.likeStatus)
+    const totalLikes = useSelector(state => state.caws.caw.totalLikes)
     const user = useSelector(state => state.session.user);
     const comments = Object.values(useSelector(state => state.comments.comments)).filter(x => x.caw.id === caw.id)
     const [editModal, setEditModal] = useState(false);
+
 
     const handleLikes = async (id) => {
         await dispatch(likeCawThunk(id))
@@ -33,10 +34,11 @@ const PostDetail = () => {
 
     }
 
-    const delete_caw = async (id) => {
-        await dispatch(deleteCaw(id));
-        await dispatch(getAllCaws());
-        history.push('/');
+    const delete_caw = (id) => {
+        // await dispatch(deleteCaw(id));
+        dispatch(deleteCaw(id)).then(() => dispatch(getAllCaws())).then(() => history.push('/'))
+        // await dispatch(getAllCaws());
+        // return history.push('/');
     }
 
     const delete_comment = async (identification) => {
@@ -47,7 +49,7 @@ const PostDetail = () => {
     }
 
     useEffect(() => {
-        dispatch(getAllCaws()).then(dispatch(getCawFromId(id))).then(() => dispatch(getComments(id))).then(() => setIsLoaded(true)).then(() => setLoaded(true))
+        dispatch(getCawFromId(id)).then(dispatch(getAllCaws())).then(() => dispatch(getComments(id))).then(() => setIsLoaded(true)).then(() => setLoaded(true))
     }, [dispatch, id]);
 
 
@@ -79,17 +81,18 @@ const PostDetail = () => {
                                     </div>
                                     <div style={{ display: 'flex', flexDirection: 'row', width: '25%', padding: '6px' }}>
                                         {caw.user.id === user.id && <EditFormModal setShowModal={setEditModal} caw={caw.id} />}
+                                        {console.log(caw.id)}
                                         {caw.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '24px', width: '100%', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_caw(caw.id)}>Delete</button>}
                                     </div>
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
-                                    {loaded && <div onClick={() => handleLikes(caw.id)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                                    {caw && loaded && <div onClick={() => handleLikes(caw.id)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                         {likeStatus === 1 ?
                                             <img src={likedIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
                                             :
                                             <img src={likeIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
                                         }
-                                        <p style={{ marginLeft: '8px', color: 'black', cursor: 'pointer' }}>{console.log(totalLikes)}{totalLikes}</p>
+                                        <p style={{ marginLeft: '8px', color: 'black', cursor: 'pointer' }}>{totalLikes}</p>
                                     </div>}
                                     <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
                                         <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0px', justifyContent: 'flex-start', alignItems: 'center' }}>

@@ -3,6 +3,11 @@
     height: 100vh;
     /* border-right: 1px black solid;
     border-left: 1px black solid; */
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 .navBar {
