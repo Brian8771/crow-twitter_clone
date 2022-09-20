@@ -99,7 +99,9 @@ def create_new_caw():
         db.session.add(caw)
         db.session.commit()
         newCaw = caw.to_dict()
-        caw['likeStatus'] = 0
+        newCaw['likeStatus'] = 0
+        newCaw['totalLikes'] = 0
+        return {'Caw': newCaw}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -116,8 +118,11 @@ def update_caw(id):
 
     caw.caw = form.data['caw']
     db.session.commit()
+    like_status=list(filter(lambda user: user.id==current_user.id, caw.caw_like_users))
+    newCaw = caw.to_dict()
+    newCaw['likeStatus'] = 1 if len(like_status) > 0 else 0
 
-    return caw.to_dict()
+    return newCaw
 
 # delete caws
 @caw_routes.route('/<int:id>', methods=['DELETE'])
@@ -126,7 +131,9 @@ def delete_caw(id):
 
     if not caw:
         return {'errors': ['caw can not be found']},404
-
+    newCaw = caw.to_dict()
+    newCaw['likeStatus'] = 0
+    newCaw['totalLikes'] = 0
     db.session.delete(caw)
     db.session.commit()
 
@@ -159,7 +166,6 @@ def create_comment(id):
     form = CreateComment()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print(id, '-------------------')
         comment = Comment(
             userId = user['id'],
             cawId = id,
@@ -169,7 +175,6 @@ def create_comment(id):
         cawId = id
         db.session.add(comment)
         db.session.commit()
-        # print(comment.user.to_dict(), '-------')
         return {'comment': comment.to_dict()}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

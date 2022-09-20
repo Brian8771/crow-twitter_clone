@@ -121,10 +121,11 @@ export const deleteCaw = (id) => async dispatch => {
         }
     })
 
+    const data = await response.json()
     if (response.ok) {
-        const data = await response.json()
         dispatch(cawDeletion(id))
     }
+    return data
 }
 
 export const likeCawThunk = (id) => async dispatch => {
@@ -155,15 +156,20 @@ export default function reducer(state = initialState, action) {
             })
             return newState
         case CREATE_CAW:
-            newState.caws[action.payload.id] = action.payload
+            // console.log(action.payload.Caw.id)
+            newState.caws[action.payload.Caw.id] = action.payload.Caw
             return newState
         case EDIT_CAW:
             newState.caws[action.payload.id] = action.payload
             return newState
         case DELETE_CAW:
+            // console.log(action.payload)
+            // console.log(newState.caws[action.payload])
+            // delete newState.caw
             delete newState.caws[action.payload];
             return newState;
         case LIKE_CAW:
+            newState.caw = { ...newState.caws[action.id], totalLikes: action.totalLikes, likeStatus: action.likeStatus }
             newState.caws[action.id] = { ...newState.caws[action.id], totalLikes: action.totalLikes, likeStatus: action.likeStatus }
             return newState
         default:
