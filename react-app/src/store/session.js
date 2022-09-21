@@ -1,5 +1,7 @@
 // constants
 const SET_USER = 'session/SET_USER';
+const EDIT_USER = 'session/EDIT_USER';
+const GET_ALL_USERS = 'session/GET_ALL_USERS';
 const SET_USER_PROFILE = 'session/SET_USER_PROFILE';
 const REMOVE_USER = 'session/REMOVE_USER';
 
@@ -7,6 +9,16 @@ const setUser = (user) => ({
   type: SET_USER,
   payload: user
 });
+
+const edit_user = (user) => ({
+  type: SET_USER,
+  payload: user
+})
+
+const get_all_users = (users) => ({
+  type: GET_ALL_USERS,
+  payload: users
+})
 
 const removeUser = () => ({
   type: REMOVE_USER,
@@ -20,7 +32,7 @@ const setCurrentUser = (user) => (
 )
 
 
-const initialState = { user: null, currentUserProfile: {} };
+const initialState = { user: null, currentUserProfile: {}, users: {} };
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
@@ -64,6 +76,30 @@ export const login = (email, password) => async (dispatch) => {
     return ['An error occurred. Please try again.']
   }
 
+}
+
+export const getAllUsers = () => async dispatch => {
+  const response = await fetch('/api/users/')
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(get_all_users(data))
+  }
+}
+
+export const editUser = (id, userInfo) => async dispatch => {
+  const response = await fetch(`/api/auth/edit/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(userInfo)
+  })
+
+  if (response.ok) {
+    const user = await response.json();
+    dispatch(edit_user(user))
+  }
 }
 
 export const getCurretProfile = (id) => async dispatch => {
@@ -123,6 +159,16 @@ export default function reducer(state = initialState, action) {
     case SET_USER:
       newState.user = action.payload
       return newState
+    case EDIT_USER:
+      newState.currentUserProfile = action.payload;
+      newState.users[action.payload.id] = action.payload;
+      return newState;
+    case GET_ALL_USERS:
+      action.payload.users.forEach(user => {
+        console.log(user)
+        newState.users[user.id] = user
+      })
+      return newState;
     case SET_USER_PROFILE:
       newState.currentUserProfile = action.payload;
       return newState

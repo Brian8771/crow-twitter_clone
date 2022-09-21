@@ -19,6 +19,18 @@
     border-radius: 10px;
 }
 
+.editUserModal {
+    border: .5px white solid;
+    height: 36rem;
+    width: 30rem;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+
 .headerForLogin {
     color: white;
     font-size: 31px;
