@@ -18,6 +18,7 @@ const PostDetail = () => {
     const { id } = useParams()
     const [loaded, setLoaded] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false);
+    const [refresh, setRefresh] = useState(true);
     const caw = useSelector(state => state.caws.caw);
     const likeStatus = useSelector(state => state.caws.caw.likeStatus)
     const totalLikes = useSelector(state => state.caws.caw.totalLikes)
@@ -28,17 +29,17 @@ const PostDetail = () => {
 
     const handleLikes = async (id) => {
         await dispatch(likeCawThunk(id))
-        setIsLoaded(false)
+        setRefresh(false)
         await getAllCaws()
-        setIsLoaded(true)
+        setRefresh(true)
 
     }
 
     const handleCommentLikes = async (commentId) => {
         await dispatch(likeCommentThunk(commentId))
-        setIsLoaded(false)
+        setRefresh(false)
         await getComments(id)
-        setIsLoaded(true)
+        setRefresh(true)
     }
 
     const delete_caw = (id) => {
@@ -93,7 +94,7 @@ const PostDetail = () => {
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
                                     {caw && loaded && <div onClick={() => handleLikes(caw.id)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                                        {likeStatus === 1 ?
+                                        {refresh && likeStatus === 1 ?
                                             <img src={likedIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
                                             :
                                             <img src={likeIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
@@ -140,7 +141,7 @@ const PostDetail = () => {
                                                 </div>
                                             </div>
                                             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: '.3rem' }} onClick={() => handleCommentLikes(comment.id)}>
-                                                {comment.likeStatus === 1 ?
+                                                {refresh && comment.likeStatus === 1 ?
                                                     <img src={likedIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
                                                     :
                                                     <img src={likeIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
