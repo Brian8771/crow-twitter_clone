@@ -2,6 +2,7 @@ const GET_COMMENTS = 'comments/GET_COMMENTS';
 const ADD_COMMENT = 'comments/ADD_COMMENT';
 const EDIT_COMMENT = 'comments/EDIT_COMMENT';
 const DELETE_COMMENT = 'comments/DELETE_COMMENT';
+const LIKE_COMMENT = 'comments/LIKE_COMMENT';
 
 const getAllComments = (comments) => (
     {
@@ -30,6 +31,15 @@ const deleteAComment = (id) => (
         payload: id
     }
 )
+
+const likeComment = (id, totalLikes, likeStatus) => {
+    return {
+        type: LIKE_COMMENT,
+        id,
+        totalLikes,
+        likeStatus
+    }
+}
 
 
 const initialState = { comments: {} };
@@ -91,6 +101,22 @@ export const deleteComment = (id) => async dispatch => {
     }
 }
 
+export const likeCommentThunk = (id) => async dispatch => {
+    const response = await fetch(`/api/caws/comment/${id}/likes`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+    });
+    if (response.ok) {
+        const data = await response.json();
+
+        dispatch(likeComment(id, data.totalLikes, data.likeStatus))
+    }
+    return response
+}
+
 
 export default function reducer(state = initialState, action) {
     const newState = { ...state }
@@ -110,6 +136,9 @@ export default function reducer(state = initialState, action) {
         case DELETE_COMMENT:
             delete newState.comments[action.payload]
             return newState;
+        case LIKE_COMMENT:
+            newState.comments[action.id] = { ...newState.comments[action.id], totalLikes: action.totalLikes, likeStatus: action.likeStatus }
+            return newState
         default:
             return state;
 

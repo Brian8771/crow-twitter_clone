@@ -6,7 +6,7 @@ import EditFormModal from './EditFormModal';
 import EditCommentModal from './EditCommentModal';
 import '../styles/Homepage.css'
 import backArrow from '../images/arrow-back.svg'
-import { getComments, deleteComment } from '../store/comments';
+import { getComments, deleteComment, likeCommentThunk } from '../store/comments';
 import CreateComment from './CreateComment';
 import comment from '../images/comment.png';
 import likeIcon from '../images/like.png';
@@ -32,6 +32,13 @@ const PostDetail = () => {
         await getAllCaws()
         setIsLoaded(true)
 
+    }
+
+    const handleCommentLikes = async (commentId) => {
+        await dispatch(likeCommentThunk(commentId))
+        setIsLoaded(false)
+        await getComments(id)
+        setIsLoaded(true)
     }
 
     const delete_caw = (id) => {
@@ -81,7 +88,6 @@ const PostDetail = () => {
                                     </div>
                                     <div style={{ display: 'flex', flexDirection: 'row', width: '25%', padding: '6px' }}>
                                         {caw.user.id === user.id && <EditFormModal setShowModal={setEditModal} caw={caw.id} />}
-                                        {console.log(caw.id)}
                                         {caw.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '24px', width: '100%', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_caw(caw.id)}>Delete</button>}
                                     </div>
                                 </div>
@@ -114,7 +120,7 @@ const PostDetail = () => {
 
                     <div>
                         <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
-                            {comments &&
+                            {comments && isLoaded &&
                                 comments.map(comment => {
                                     return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
                                         <div>
@@ -132,6 +138,14 @@ const PostDetail = () => {
                                                     {comment.user.id === user.id && <EditCommentModal setIsLoaded={setIsLoaded} setShowModal={setEditModal} id={comment.id} />}
                                                     {comment.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '20px', width: '60px', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_comment(comment.id)}>Delete</button>}
                                                 </div>
+                                            </div>
+                                            <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: '.3rem' }} onClick={() => handleCommentLikes(comment.id)}>
+                                                {comment.likeStatus === 1 ?
+                                                    <img src={likedIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
+                                                    :
+                                                    <img src={likeIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
+                                                }
+                                                <p style={{ marginLeft: '8px', color: 'black', cursor: 'pointer' }}>{comment.totalLikes}</p>
                                             </div>
                                         </div>
 

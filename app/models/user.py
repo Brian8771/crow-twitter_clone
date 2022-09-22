@@ -3,6 +3,7 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from .caws import caw_likes
+from .comments import comment_likes
 
 
 class User(db.Model, UserMixin):
@@ -27,6 +28,13 @@ class User(db.Model, UserMixin):
         secondary=caw_likes,
         back_populates='caw_like_users',
         cascade='all, delete'
+    )
+
+    like_comments = db.relationship(
+        "Comment",
+        secondary=comment_likes,
+        back_populates="comment_like_users",
+        cascade="all, delete"
     )
 
     @property
