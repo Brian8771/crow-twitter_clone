@@ -146,8 +146,13 @@ def get_all_comments_by_caw_id(id):
 
     if not comments:
         return {'comments': []}
-
-    return {'comments': [comment.to_dict() for comment in comments]}
+    commentArr = []
+    for comment in comments:
+        like_status=list(filter(lambda user: user.id==current_user.id, comment.comment_like_users))
+        newComment = comment.to_dict()
+        newComment['likeStatus'] = 1 if len(like_status) > 0 else 0
+        commentArr.append(newComment)
+    return {'comments': commentArr}
 
 # get all comment by user id
 @caw_routes.route('/user/<int:id>/comments')
@@ -156,8 +161,13 @@ def get_all_comment_by_user_id(id):
 
     if not comments:
         return {'errors': ['comments can not be found']},404
-
-    return {'comments': [comment.to_dict() for comment in comments]}
+    commentArr = []
+    for comment in comments:
+        like_status=list(filter(lambda user: user.id==current_user.id, comment.comment_like_users))
+        newComment = comment.to_dict()
+        newComment['likeStatus'] = 1 if len(like_status) > 0 else 0
+        commentArr.append(newComment)
+    return {'comments': commentArr}
 
 # Create Comment
 @caw_routes.route('/<int:id>/comments', methods=['POST'])
@@ -175,7 +185,9 @@ def create_comment(id):
         cawId = id
         db.session.add(comment)
         db.session.commit()
-        return {'comment': comment.to_dict()}
+        newComment = comment.to_dict()
+        newComment['likeStatus'] = 0
+        return {'comment': newComment}
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
@@ -192,8 +204,10 @@ def edit_comment_by_id(id):
 
     comment.data = form.data['comment']
     db.session.commit()
-
-    return comment.to_dict()
+    like_status=list(filter(lambda user: user.id==current_user.id, comment.comment_like_users))
+    newComment = comment.to_dict()
+    newComment['likeStatus'] = 1 if len(like_status) > 0 else 0
+    return newComment
 
 # delete comment by comment id
 @caw_routes.route('/comment/<int:id>', methods=['DELETE'])
@@ -202,7 +216,9 @@ def delete_comment_by_id(id):
 
     if comment.userId != current_user.id:
         return {"errors": ['Unauthorized']}, 401
-
+    newComment = comment.to_dict()
+    newComment['likeStatus'] = 0
+    newComment['totalLikes'] = 0
     db.session.delete(comment)
     db.session.commit()
 
@@ -243,3 +259,24 @@ def update_caw_likes(id):
     updated_current_user_like = list(filter(lambda user: user.id == current_user.id, updated_like_users))
     current_user_like_status = 1 if len(updated_current_user_like) else 0
     return {"cawId": id, "likeStatus": current_user_like_status, "totalLikes": len(updated_caw.caw_like_users)}
+
+#Update the like status for a specified comment
+@caw_routes.route('/comment/<int:id>/likes', methods=['PUT'])
+def update_comment_likes(id):
+    comment = Comment.query.get(id)
+
+    like_users = list(comment.comment_like_users)
+    current_user_like = list(filter(lambda user: user.id == current_user.id, like_users))
+    if len(current_user_like) == 0:
+        comment.comment_like_users.append(current_user)
+        db.session.commit()
+
+    else:
+        comment.comment_like_users.remove(current_user)
+        db.session.commit()
+
+    updated_comment = Comment.query.get(id)
+    updated_like_users = list(updated_comment.comment_like_users)
+    updated_current_user_like = list(filter(lambda user: user.id == current_user.id, updated_like_users))
+    current_user_like_status = 1 if len(updated_current_user_like) else 0
+    return {"commentId": id, "likeStatus": current_user_like_status, "totalLikes": len(updated_comment.comment_like_users)}
