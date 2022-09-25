@@ -14,12 +14,12 @@ const LikeUsers = ({ id }) => {
         dispatch(likeUsersThunk(id)).then(setIsLoaded(true))
     }, [id])
     return (
-        <div className="editFormModal" style={{ flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+        <div className="editFormModal" style={{ flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', overflowY: 'scroll' }}>
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', marginLeft: '1rem' }}>
-                <div>
+                <div style={{ position: 'sticky', top: '0', backgroundColor: 'black', width: '100%' }}>
                     <h2>Liked by</h2>
                 </div>
-                <div>
+                <div >
                     {users && isLoaded && users.map(user => {
                         return <NavLink style={{ textDecoration: 'none' }} to={`/users/${user.id}`}>
                             <div className='profileDiv'>
