@@ -4,6 +4,8 @@ const EDIT_USER = 'session/EDIT_USER';
 const GET_ALL_USERS = 'session/GET_ALL_USERS';
 const SET_USER_PROFILE = 'session/SET_USER_PROFILE';
 const REMOVE_USER = 'session/REMOVE_USER';
+const FOLLOW_USER = 'session/FOLLOW_USER';
+const UNFOLLOW_USER = 'session/UNFOLLOW_USER';
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -31,6 +33,17 @@ const setCurrentUser = (user) => (
   }
 )
 
+const follow_user = (user) => (
+  {
+    type: FOLLOW_USER,
+    payload: user
+  }
+)
+
+const unfollow_user = (user) => ({
+  type: UNFOLLOW_USER,
+  payload: user
+})
 
 const initialState = { user: null, currentUserProfile: {}, users: {} };
 
@@ -153,6 +166,36 @@ export const signUp = (firstName, lastName, username, email, password) => async 
   }
 }
 
+export const followUser = (username) => async dispatch => {
+  const response = await fetch(`/api/users/follow/${username}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({}),
+  })
+
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(follow_user(data))
+  }
+}
+
+export const unfollowUser = (username) => async dispatch => {
+  const response = await fetch(`/api/users/unfollow/${username}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({}),
+  })
+
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(unfollow_user(data))
+  }
+}
+
 export default function reducer(state = initialState, action) {
   const newState = { ...state };
   switch (action.type) {
@@ -168,6 +211,12 @@ export default function reducer(state = initialState, action) {
         newState.users[user.id] = user
       })
       return newState;
+    case FOLLOW_USER:
+      newState.currentUserProfile = action.payload
+      return newState
+    case UNFOLLOW_USER:
+      newState.currentUserProfile = action.payload
+      return newState
     case SET_USER_PROFILE:
       newState.currentUserProfile = action.payload;
       return newState

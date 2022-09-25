@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { getAllCaws, likeCawThunk } from '../store/caws';
-import { getCurretProfile } from '../store/session';
+import { followUser, getCurretProfile, unfollowUser } from '../store/session';
 import '../styles/Homepage.css'
 import backArrow from '../images/arrow-back.svg'
 import comment from '../images/comment.png';
@@ -26,6 +26,32 @@ function User() {
     await getAllCaws()
     setLoaded(true)
 
+  }
+
+  const ifFollows = () => {
+    const follows = user.followers
+    let arr = []
+    for (let follow of follows) {
+      arr.push(follow.id)
+    }
+    if (arr.includes(session.id)) {
+      return true
+    }
+    return false;
+  }
+
+  const followingUser = async () => {
+    await dispatch(followUser(user.username))
+    await setIsLoaded(false)
+    await dispatch(getCurretProfile(userId))
+    await setIsLoaded(true)
+  }
+
+  const unfollowingUser = async () => {
+    await dispatch(unfollowUser(user.username))
+    await setIsLoaded(false)
+    await dispatch(getCurretProfile(userId))
+    await setIsLoaded(true)
   }
 
   useEffect(() => {
@@ -60,12 +86,20 @@ function User() {
                 <p style={{ marginTop: '8px', marginBottom: '8px', marginLeft: '16px', color: 'black', fontSize: '20px' }}>{user.firstName}</p>
                 <p style={{ marginTop: '8px', marginBottom: '8px', marginLeft: '16px', color: 'black', fontSize: '15px' }}>@{user.username}</p>
               </div>
-              <div style={{ width: '20%', marginRight: '8px' }}>
-                {session.id == user.id && <EditUserModal setLoaded={setLoaded} />}
-              </div>
+
+              {session.id == user.id ? <div style={{ display: 'flex', width: '20%', marginRight: '8px', flexDirection: 'row' }}>
+                <EditUserModal setLoaded={setLoaded} />
+              </div> :
+                <div style={{ display: 'flex', width: '20%', marginRight: '8px', flexDirection: 'row' }}>
+                  {!ifFollows() ? <button onClick={() => followingUser(user.username)} style={{ color: 'black', padding: '0', margin: '0', height: '30%', width: '90%', borderRadius: '40px', cursor: 'pointer' }}>Follow</button> : <button onClick={() => unfollowingUser(user.username)} style={{ color: 'black', padding: '0', margin: '0', height: '30%', width: '90%', borderRadius: '40px', cursor: 'pointer' }}>Unfollow</button>}
+                </div>}
             </div>
             <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
               <p style={{ marginLeft: '16px', color: 'black', fontSize: '15px', width: '100%', wordBreak: 'break-word', paddingRight: '6px' }}>{user.bio}</p>
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'row', width: '100%', }}>
+              <p style={{ marginLeft: '16px', color: 'black', fontSize: '15px', wordBreak: 'break-word', paddingRight: '6px' }}>{user.followingCount} Following</p>
+              <p style={{ color: 'black', fontSize: '15px', wordBreak: 'break-word', paddingRight: '6px' }}>{user.followerCount} Followers</p>
             </div>
           </div>}
       </div>
@@ -110,7 +144,7 @@ function User() {
           <p>Caws</p>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 export default User;
