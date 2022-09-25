@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory, useParams } from 'react-router-dom';
-import { getCawFromId, deleteCaw, getAllCaws, likeCawThunk } from '../store/caws';
+import { getCawFromId, deleteCaw, getAllCaws, likeCawThunk, likeUsersThunk } from '../store/caws';
 import EditFormModal from './EditFormModal';
 import EditCommentModal from './EditCommentModal';
 import '../styles/Homepage.css'
@@ -11,6 +11,8 @@ import CreateComment from './CreateComment';
 import comment from '../images/comment.png';
 import likeIcon from '../images/like.png';
 import likedIcon from '../images/liked.png'
+import LikeUser from './LikeUserModal';
+import LikeUsers from './LikeUsers';
 
 const PostDetail = () => {
     const history = useHistory();
@@ -31,8 +33,8 @@ const PostDetail = () => {
         await dispatch(likeCawThunk(id))
         setRefresh(false)
         await getAllCaws()
+        await dispatch(likeUsersThunk(id))
         setRefresh(true)
-
     }
 
     const handleCommentLikes = async (commentId) => {
@@ -92,6 +94,9 @@ const PostDetail = () => {
                                         {caw.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '24px', width: '100%', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_caw(caw.id)}>Delete</button>}
                                     </div>
                                 </div>
+                                <div style={{ marginLeft: '8px', margin: '0 1rem', borderTop: '.5px solid black', borderBottom: '.5px solid black' }}>
+                                    <p style={{ marginLeft: '8px', color: 'black', cursor: 'pointer' }}><LikeUser totalLikes={totalLikes} loaded={loaded} id={id} /></p>
+                                </div>
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
                                     {caw && loaded && <div onClick={() => handleLikes(caw.id)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                         {refresh && likeStatus === 1 ?
@@ -99,7 +104,6 @@ const PostDetail = () => {
                                             :
                                             <img src={likeIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
                                         }
-                                        <p style={{ marginLeft: '8px', color: 'black', cursor: 'pointer' }}>{totalLikes}</p>
                                     </div>}
                                     <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
                                         <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0px', justifyContent: 'flex-start', alignItems: 'center' }}>
