@@ -165,7 +165,6 @@ export default function reducer(state = initialState, action) {
       return newState;
     case GET_ALL_USERS:
       action.payload.users.forEach(user => {
-        console.log(user)
         newState.users[user.id] = user
       })
       return newState;
