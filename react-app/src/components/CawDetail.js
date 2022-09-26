@@ -21,6 +21,7 @@ const PostDetail = () => {
     const [loaded, setLoaded] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false);
     const [refresh, setRefresh] = useState(true);
+    const [like, setLike] = useState(true);
     const caw = useSelector(state => state.caws.caw);
     const likeStatus = useSelector(state => state.caws.caw.likeStatus)
     const totalLikes = useSelector(state => state.caws.caw.totalLikes)
@@ -31,10 +32,10 @@ const PostDetail = () => {
 
     const handleLikes = async (id) => {
         await dispatch(likeCawThunk(id))
-        setRefresh(false)
+        setLike(false)
         await getAllCaws()
         await dispatch(likeUsersThunk(id))
-        setRefresh(true)
+        setLike(true)
     }
 
     const handleCommentLikes = async (commentId) => {
@@ -99,7 +100,7 @@ const PostDetail = () => {
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
                                     {caw && loaded && <div onClick={() => handleLikes(caw.id)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-                                        {refresh && likeStatus === 1 ?
+                                        {like && likeStatus === 1 ?
                                             <img src={likedIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
                                             :
                                             <img src={likeIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
