@@ -15,6 +15,7 @@ function User() {
   const dispatch = useDispatch()
   const [isLoaded, setIsLoaded] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [refresh, setRefresh] = useState(true);
   const { userId } = useParams();
   const user = useSelector(state => state.session.currentUserProfile);
   const caws = Object.values(useSelector(state => state.caws.caws)).filter(x => x.userId === user.id)
@@ -42,16 +43,16 @@ function User() {
 
   const followingUser = async () => {
     await dispatch(followUser(user.username))
-    await setIsLoaded(false)
+    await setRefresh(false)
     await dispatch(getCurretProfile(userId))
-    await setIsLoaded(true)
+    await setRefresh(true)
   }
 
   const unfollowingUser = async () => {
     await dispatch(unfollowUser(user.username))
-    await setIsLoaded(false)
+    await setRefresh(false)
     await dispatch(getCurretProfile(userId))
-    await setIsLoaded(true)
+    await setRefresh(true)
   }
 
   useEffect(() => {
@@ -91,16 +92,18 @@ function User() {
                 <EditUserModal setLoaded={setLoaded} />
               </div> :
                 <div style={{ display: 'flex', width: '20%', marginRight: '8px', flexDirection: 'row' }}>
-                  {!ifFollows() ? <button onClick={() => followingUser(user.username)} style={{ color: 'black', padding: '0', margin: '0', height: '30%', width: '90%', borderRadius: '40px', cursor: 'pointer' }}>Follow</button> : <button onClick={() => unfollowingUser(user.username)} style={{ color: 'black', padding: '0', margin: '0', height: '30%', width: '90%', borderRadius: '40px', cursor: 'pointer' }}>Unfollow</button>}
+                  {!ifFollows() && refresh ? <button onClick={() => followingUser(user.username)} style={{ color: 'black', padding: '0', margin: '0', height: '30%', width: '90%', borderRadius: '40px', cursor: 'pointer' }}>Follow</button> : <button onClick={() => unfollowingUser(user.username)} style={{ color: 'black', padding: '0', margin: '0', height: '30%', width: '90%', borderRadius: '40px', cursor: 'pointer' }}>Unfollow</button>}
                 </div>}
             </div>
             <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
               <p style={{ marginLeft: '16px', color: 'black', fontSize: '15px', width: '100%', wordBreak: 'break-word', paddingRight: '6px' }}>{user.bio}</p>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'row', width: '100%', }}>
-              <p style={{ marginLeft: '16px', color: 'black', fontSize: '15px', wordBreak: 'break-word', paddingRight: '6px' }}>{user.followingCount} Following</p>
-              <p style={{ color: 'black', fontSize: '15px', wordBreak: 'break-word', paddingRight: '6px' }}>{user.followerCount} Followers</p>
-            </div>
+            {<div style={{ display: 'flex', flexDirection: 'row', width: '100%', }}>
+              <p style={{ marginLeft: '16px', color: 'black', fontSize: '15px', wordBreak: 'break-word', paddingRight: '6px' }}>{user.followingCount}</p>
+              <p style={{ color: 'black', fontSize: '15px', wordBreak: 'break-word', paddingRight: '6px' }}>Following</p>
+              <p style={{ color: 'black', fontSize: '15px', wordBreak: 'break-word', paddingRight: '6px' }}>{user.followerCount}</p>
+              <p style={{ color: 'black', fontSize: '15px', wordBreak: 'break-word', paddingRight: '6px' }}>Followers</p>
+            </div>}
           </div>}
       </div>
       <div style={{ display: 'flex', flexDirection: 'column-reverse', width: '100%' }}>
