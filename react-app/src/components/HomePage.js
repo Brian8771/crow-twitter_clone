@@ -33,8 +33,8 @@ const HomePage = () => {
     return (
         <div className='homePageContainer' >
             <div >
-                <div>
-                    <h1 className='header'>Home</h1>
+                <div style={{ position: 'sticky', top: '0' }}>
+                    <h1 className='header' style={{ fontSize: '20px', color: 'white', backgroundColor: 'black' }}>Home</h1>
                 </div>
                 <div style={{ borderBottom: 'black .5px solid' }}>
                     <CreateCaw setLoaded={setLoaded} />

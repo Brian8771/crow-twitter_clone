@@ -43,16 +43,16 @@ function User() {
 
   const followingUser = async () => {
     await dispatch(followUser(user.username))
-    await setRefresh(false)
+    // await setRefresh(false)
     await dispatch(getCurretProfile(userId))
-    await setRefresh(true)
+    // await setRefresh(true)
   }
 
   const unfollowingUser = async () => {
     await dispatch(unfollowUser(user.username))
-    await setRefresh(false)
+    // await setRefresh(false)
     await dispatch(getCurretProfile(userId))
-    await setRefresh(true)
+    // await setRefresh(true)
   }
 
   useEffect(() => {
