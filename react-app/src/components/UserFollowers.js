@@ -10,7 +10,7 @@ const UserFollowers = ({ id }) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const users = Object.values(useSelector(state => state.session.followers))
     useEffect(() => {
-        dispatch(getFollowers(id)).then(setIsLoaded(true))
+        dispatch(getFollowers(id)).then(() => setIsLoaded(true))
     }, [id])
     return (
         <div className="editFormModal" style={{ flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', overflowY: 'scroll' }}>
