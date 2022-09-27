@@ -6,6 +6,8 @@ const SET_USER_PROFILE = 'session/SET_USER_PROFILE';
 const REMOVE_USER = 'session/REMOVE_USER';
 const FOLLOW_USER = 'session/FOLLOW_USER';
 const UNFOLLOW_USER = 'session/UNFOLLOW_USER';
+const GET_FOLLOWERS = 'session/GET_FOLLOWERS';
+const GET_FOLLOWINGS = 'session/GET_FOLLOWINGS';
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -45,7 +47,18 @@ const unfollow_user = (user) => ({
   payload: user
 })
 
-const initialState = { user: null, currentUserProfile: {}, users: {} };
+const get_followers = (users) => ({
+  type: GET_FOLLOWERS,
+  payload: users
+})
+
+const get_followings = (users) => ({
+  type: GET_FOLLOWINGS,
+  payload: users
+})
+
+
+const initialState = { user: null, currentUserProfile: {}, users: {}, followers: {}, followings: {} };
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
@@ -196,6 +209,24 @@ export const unfollowUser = (username) => async dispatch => {
   }
 }
 
+export const getFollowers = (id) => async dispatch => {
+  const response = await fetch(`/api/users/${id}/followers`)
+
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(get_followers(data))
+  }
+}
+
+export const getFollowings = (id) => async dispatch => {
+  const response = await fetch(`/api/users/${id}/following`)
+
+  if (response.ok) {
+    const data = await response.json()
+    dispatch(get_followings(data))
+  }
+}
+
 export default function reducer(state = initialState, action) {
   const newState = { ...state };
   switch (action.type) {
@@ -222,6 +253,18 @@ export default function reducer(state = initialState, action) {
       return newState
     case REMOVE_USER:
       newState.user = null
+      return newState
+    case GET_FOLLOWERS:
+      newState.followers = {}
+      action.payload.followers.forEach(user => {
+        newState.followers[user.id] = user
+      })
+      return newState
+    case GET_FOLLOWINGS:
+      newState.followings = {}
+      action.payload.following.forEach(user => {
+        newState.followings[user.id] = user
+      })
       return newState
     default:
       return state;
