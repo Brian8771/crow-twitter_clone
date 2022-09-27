@@ -2,13 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { getAllCaws, likeCawThunk } from '../store/caws';
-import { followUser, getCurretProfile, unfollowUser } from '../store/session';
+import { followUser, getCurretProfile, getFollowers, getFollowings, unfollowUser } from '../store/session';
 import '../styles/Homepage.css'
 import backArrow from '../images/arrow-back.svg'
 import comment from '../images/comment.png';
 import likeIcon from '../images/like.png';
 import likedIcon from '../images/liked.png'
 import EditUserModal from './EditUserModal';
+import UserFollowersModal from './UserFollowersModal';
+import UserFollowingsModal from './UserFollowingsModal';
+
 
 
 function User() {
@@ -99,10 +102,8 @@ function User() {
               <p style={{ marginLeft: '16px', color: 'black', fontSize: '15px', width: '100%', wordBreak: 'break-word', paddingRight: '6px' }}>{user.bio}</p>
             </div>
             {<div style={{ display: 'flex', flexDirection: 'row', width: '100%', }}>
-              <p style={{ marginLeft: '16px', color: 'black', fontSize: '15px', wordBreak: 'break-word', paddingRight: '6px' }}>{user.followingCount}</p>
-              <p style={{ color: 'black', fontSize: '15px', wordBreak: 'break-word', paddingRight: '6px' }}>Following</p>
-              <p style={{ color: 'black', fontSize: '15px', wordBreak: 'break-word', paddingRight: '6px' }}>{user.followerCount}</p>
-              <p style={{ color: 'black', fontSize: '15px', wordBreak: 'break-word', paddingRight: '6px' }}>Followers</p>
+              <UserFollowingsModal id={user.id} totalFollowings={user.followingCount} />
+              <UserFollowersModal id={user.id} totalFollowers={user.followerCount} />
             </div>}
           </div>}
       </div>

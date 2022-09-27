@@ -65,7 +65,7 @@ def get_followings(id):
 
     return {'following': res}
 
-# displays all users follwing user
+# displays all users following user
 @user_routes.route('/<int:id>/followers')
 def get_followers(id):
     user = User.query.get(id)
