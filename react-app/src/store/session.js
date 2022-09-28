@@ -243,9 +243,11 @@ export default function reducer(state = initialState, action) {
       })
       return newState;
     case FOLLOW_USER:
+      newState.users[action.payload.id] = action.payload
       newState.currentUserProfile = action.payload
       return newState
     case UNFOLLOW_USER:
+      newState.users[action.payload.id] = action.payload
       newState.currentUserProfile = action.payload
       return newState
     case SET_USER_PROFILE:

@@ -47,14 +47,14 @@ function User() {
   const followingUser = async () => {
     await dispatch(followUser(user.username))
     // await setRefresh(false)
-    await dispatch(getCurretProfile(userId))
+    // await dispatch(getCurretProfile(userId))
     // await setRefresh(true)
   }
 
   const unfollowingUser = async () => {
     await dispatch(unfollowUser(user.username))
     // await setRefresh(false)
-    await dispatch(getCurretProfile(userId))
+    // await dispatch(getCurretProfile(userId))
     // await setRefresh(true)
   }
 
@@ -95,7 +95,7 @@ function User() {
                 <EditUserModal setLoaded={setLoaded} />
               </div> :
                 <div style={{ display: 'flex', width: '20%', marginRight: '8px', flexDirection: 'row' }}>
-                  {!ifFollows() && refresh ? <button onClick={() => followingUser(user.username)} style={{ color: 'black', padding: '0', margin: '0', height: '30%', width: '90%', borderRadius: '40px', cursor: 'pointer' }}>Follow</button> : <button onClick={() => unfollowingUser(user.username)} style={{ color: 'black', padding: '0', margin: '0', height: '30%', width: '90%', borderRadius: '40px', cursor: 'pointer' }}>Unfollow</button>}
+                  {!ifFollows() && refresh ? <button onClick={() => followingUser(user.username)} style={{ color: 'black', backgroundColor: 'white', padding: '0', margin: '0', height: '30%', width: '90%', borderRadius: '40px', cursor: 'pointer' }}>Follow</button> : <button onClick={() => unfollowingUser(user.username)} style={{ color: 'white', backgroundColor: 'black', padding: '0', margin: '0', height: '30%', width: '90%', borderRadius: '40px', cursor: 'pointer' }}>Unfollow</button>}
                 </div>}
             </div>
             <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
