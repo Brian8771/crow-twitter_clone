@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { likeUsersThunk } from "../store/caws";
-import { followUser, getCurretProfile, unfollowUser } from "../store/session";
+import { followUser, unfollowUser } from "../store/session";
 
 
 

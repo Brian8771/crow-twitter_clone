@@ -5,7 +5,6 @@ import LogoutButton from './auth/LogoutButton';
 import '../styles/Homepage.css'
 import crow from '../images/crow.png'
 import { useSelector } from 'react-redux';
-import home from '../images/home.svg'
 import dots from '../images/3dots.svg';
 
 const NavBar = () => {
