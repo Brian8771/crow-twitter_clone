@@ -5,7 +5,7 @@ import { getFollowings } from "../store/session";
 
 
 
-const UserFollowings = ({ id }) => {
+const UserFollowings = ({ id, hideModal }) => {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const users = Object.values(useSelector(state => state.session.followings))
@@ -20,7 +20,7 @@ const UserFollowings = ({ id }) => {
                 </div>
                 <div >
                     {users && isLoaded && users.map(user => {
-                        return <NavLink style={{ textDecoration: 'none' }} to={`/users/${user.id}`}>
+                        return <NavLink onClick={hideModal} style={{ textDecoration: 'none' }} to={`/users/${user.id}`}>
                             <div className='profileDiv'>
                                 <div>
                                     <img className='imgNav' src={user.profileImage} />

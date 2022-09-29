@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllCaws, getCawFromId, likeCawThunk } from '../store/caws';
+import { getAllCaws, likeCawThunk } from '../store/caws';
 import { NavLink } from 'react-router-dom';
 import CreateCaw from './CreateCaw';
 import '../styles/Homepage.css'
 import comment from '../images/comment.png';
 import likeIcon from '../images/like.png';
 import likedIcon from '../images/liked.png'
-import { getAllUsers } from '../store/session';
-import EditCaw from './EditCaw';
+import { getAllUsers, getFollowings } from '../store/session';
 
 const HomePage = () => {
     const dispatch = useDispatch()
@@ -16,6 +15,8 @@ const HomePage = () => {
     const caws = Object.values(useSelector(state => state.caws.caws))
     const cawses = useSelector(state => state.caws.caws);
     const users = useSelector(state => state.session.users);
+    const session = useSelector(state => state.session.user);
+    const following = Object.values(useSelector(state => state.session.followings))
 
     const handleLikes = async (id) => {
         await dispatch(likeCawThunk(id))
@@ -25,8 +26,25 @@ const HomePage = () => {
 
     }
 
+    const followerCaws = () => {
+        let arr = []
+        arr.push(session.id)
+        let newArr = []
+        for (let user of following) arr.push(user.id)
+        // console.log('arr', arr)
+        for (let caw of caws) {
+            // console.log('caw', caw)
+            // console.log(follows)
+            if (arr.includes(caw.user.id)) newArr.push(caw)
+        }
+        return newArr
+    }
+
+    console.log(followerCaws())
+    console.log(caws)
+
     useEffect(() => {
-        dispatch(getAllCaws()).then(dispatch(getAllUsers())).then(() => setLoaded(true))
+        dispatch(getAllCaws()).then(dispatch(getAllUsers())).then(dispatch(getFollowings(session.id))).then(() => setLoaded(true))
     }, [dispatch, CreateCaw])
 
 
@@ -40,8 +58,8 @@ const HomePage = () => {
                     <CreateCaw setLoaded={setLoaded} />
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
-                    {caws && users && loaded &&
-                        caws.map(caw => {
+                    {followerCaws().length > 0 && caws && users && loaded ?
+                        followerCaws().map(caw => {
                             return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid' }}>
                                 <div>
                                     <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
@@ -73,11 +91,16 @@ const HomePage = () => {
                                 </div>
 
                             </div>
-                        })
+                        }) :
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                            <div style={{ width: '90%', display: 'flex', justifyContent: 'center' }}>
+                                {loaded && <h1 style={{ color: 'black', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>Follow Users to see their Caws</h1>}
+                            </div>
+                        </div>
                     }
                 </div>
             </div>
-        </div>
+        </div >
 
     )
 }

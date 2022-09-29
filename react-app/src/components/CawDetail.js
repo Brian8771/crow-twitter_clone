@@ -12,7 +12,6 @@ import comment from '../images/comment.png';
 import likeIcon from '../images/like.png';
 import likedIcon from '../images/liked.png'
 import LikeUser from './LikeUserModal';
-import LikeUsers from './LikeUsers';
 
 const PostDetail = () => {
     const history = useHistory();
