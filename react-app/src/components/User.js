@@ -124,8 +124,8 @@ function User() {
           </div>}
       </div>
       <div className='font' style={{ display: 'flex', justifyContent: 'space-around', borderBottom: '.5px black solid', fontSize: '15px', color: 'black' }}>
-        <p className={option === 'Caws' ? 'activated' : ''} onClick={() => setOption('Caws')}>Caws</p>
-        <p className={option === 'Likes' ? 'activated' : ''} onClick={() => setOption('Likes')}>Likes</p>
+        <p style={{ cursor: 'pointer' }} className={option === 'Caws' ? 'activated' : ''} onClick={() => setOption('Caws')}>Caws</p>
+        <p style={{ cursor: 'pointer' }} className={option === 'Likes' ? 'activated' : ''} onClick={() => setOption('Likes')}>Likes</p>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column-reverse', width: '100%' }}>
 
@@ -164,7 +164,7 @@ function User() {
             </div>
           })
         }
-        {option === 'Likes' && user.caw_likes && isLoaded &&
+        {option === 'Likes' && user.like_caws && isLoaded &&
           getLikedCaws().map(caw => {
             return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '96.8%' }}>
               <div>
