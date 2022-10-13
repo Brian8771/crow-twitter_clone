@@ -13,6 +13,7 @@ class Caw(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
     caw = db.Column(db.String(180), nullable=False)
+    image = db.Column(db.String(180))
 
     user = db.relationship("User", back_populates="caws")
 
@@ -30,6 +31,7 @@ class Caw(db.Model):
         'id': self.id,
         'userId': self.userId,
         'caw': self.caw,
+        'image': self.image,
         "user": {
           "profileImage":self.user.profile_image,
           "username":self.user.username,

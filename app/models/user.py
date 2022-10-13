@@ -85,6 +85,7 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'firstName': self.first_name,
             'lastName': self.last_name,
+            'like_caws': [caw.to_dict() for caw in self.like_caws],
             'profileImage': self.profile_image,
             'headerImage': self.header_image,
             'bio': self.bio,

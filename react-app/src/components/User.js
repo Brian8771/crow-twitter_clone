@@ -19,10 +19,26 @@ function User() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [refresh, setRefresh] = useState(true);
+  const [option, setOption] = useState('Caws');
   const { userId } = useParams();
   const user = useSelector(state => state.session.currentUserProfile);
   const caws = Object.values(useSelector(state => state.caws.caws)).filter(x => x.userId === user.id)
+  const allCaws = Object.values(useSelector(state => state.caws.caws))
   const session = useSelector(state => state.session.user);
+
+  const getLikedCaws = () => {
+    let arr = []
+    for (let caw of user.like_caws) {
+      arr.push(caw.id)
+    }
+    let cawsNeeded = []
+    for (let caw of allCaws) {
+      if (arr.includes(caw.id)) cawsNeeded.push(caw)
+    }
+    return cawsNeeded
+  }
+
+  // console.log(getLikedCaws());
 
   const handleLikes = async (id) => {
     await dispatch(likeCawThunk(id))
@@ -59,7 +75,7 @@ function User() {
   }
 
   useEffect(() => {
-    dispatch(getCurretProfile(userId)).then(dispatch(getAllCaws())).then(() => setIsLoaded(true)).then(() => setLoaded(true))
+    dispatch(getCurretProfile(userId)).then(dispatch(getAllCaws())).then(() => setIsLoaded(true)).then(() => setOption('Caws')).then(() => setLoaded(true))
   }, [dispatch, isLoaded, userId, loaded, EditUserModal]);
 
   // if (!user) {
@@ -107,9 +123,13 @@ function User() {
             </div>}
           </div>}
       </div>
+      <div className='font' style={{ display: 'flex', justifyContent: 'space-around', borderBottom: '.5px black solid', fontSize: '15px', color: 'black' }}>
+        <p className={option === 'Caws' ? 'activated' : ''} onClick={() => setOption('Caws')}>Caws</p>
+        <p className={option === 'Likes' ? 'activated' : ''} onClick={() => setOption('Likes')}>Likes</p>
+      </div>
       <div style={{ display: 'flex', flexDirection: 'column-reverse', width: '100%' }}>
 
-        {caws.length > 0 && isLoaded &&
+        {option === 'Caws' && caws.length > 0 && isLoaded &&
           caws.map(caw => {
             return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '96.8%' }}>
               <div>
@@ -144,9 +164,42 @@ function User() {
             </div>
           })
         }
-        <div className='font' style={{ display: 'flex', justifyContent: 'center', borderBottom: '.5px black solid', fontSize: '15px', color: 'black' }}>
-          <p>Caws</p>
-        </div>
+        {option === 'Likes' && user.caw_likes && isLoaded &&
+          getLikedCaws().map(caw => {
+            return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '96.8%' }}>
+              <div>
+                <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
+              </div>
+              <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
+                <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
+
+                  <p className='pTag'>{caw.user.username} <span style={{ color: 'gray' }}>@{caw.user.username}</span></p>
+                </NavLink>
+                <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
+                  <p className='pTag' style={{ paddingTop: '10px', width: '100%', marginRight: '0' }} >{caw.caw}</p>
+                </NavLink>
+                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+                  <div onClick={() => handleLikes(caw.id)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    {caw.likeStatus === 1 ?
+                      <img src={likedIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
+                      :
+                      <img src={likeIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
+                    }
+                    <p style={{ marginLeft: '8px', color: 'black', cursor: 'pointer' }}>{caw.totalLikes}</p>
+                  </div>
+                  <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
+                    <div style={{ display: 'flex', flexDirection: 'row', marginTop: '0px', justifyContent: 'flex-start', alignItems: 'center' }}>
+                      <img style={{ height: '16px', backgroundColor: 'white' }} src={comment} alt='comment' />
+                      <p style={{ marginLeft: '8px', color: 'black' }}>{caw.totalComments}</p>
+                    </div>
+                  </NavLink>
+                </div>
+              </div>
+
+            </div>
+          })
+        }
+
       </div>
     </div >
   );

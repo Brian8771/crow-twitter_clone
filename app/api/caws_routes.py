@@ -94,7 +94,10 @@ def create_new_caw():
         caw = Caw(
             # userId = user['id'],
             caw = form.data['caw']
+
         )
+        if form.data['image']:
+                caw.image = form.data['image']
         caw.userId = user['id']
         db.session.add(caw)
         db.session.commit()
