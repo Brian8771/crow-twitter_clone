@@ -116,20 +116,23 @@ Crow is a twitter clone designed by Brian Aguilar that is at this moment able to
    * Delete comments
    * View all comments from the caw details page
 
-
-# Features that are planned to be added on are
 * Follows
-   * You will be able to follow/unfollow users
-   * You will see follower count on user profiles
-   * A follow button will be added to user profiles for this feature
+   * Able to follow/unfollow users
+   * Able see follower count on user profiles
+   * Follow button in user profiles
+   * Able to see followers and following in each users profile
 
 * Likes
    * If you enjoy what a user said but have nothing to comment you will be able to like it as well.
    * Like button will be under users caw as well as comments.
+   * Can view who likes each caw.
 
 * Edit User Profiles
-   * At this point you are only able to create an account and can not change profile picture, bio, or header image.
-   * An edit button profile button will be added so that these changes can be made to make it more personable to the user.
+   * Can change Username, header/profile image, and bio.
+   * Edit button in user profiles to make accounts more personable to show your personality.
+
+
+
 
 Website link is https://crow-app-clone.herokuapp.com/
 
