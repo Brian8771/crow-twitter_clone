@@ -15,7 +15,7 @@ const NavBar = () => {
 
   return (
     <nav className='navBar'>
-      <div style={{ width: '40%', height: '30%' }}>
+      <div style={{ width: '40%', height: '30%', marginTop: '1em' }}>
         <NavLink to='/'>
           <img className='imgNav' style={{ height: '30px', width: '30px' }} src={crow} alt='crow-icon' />
         </NavLink>
@@ -61,7 +61,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', width: '40%', height: '30%', alignItems: 'flex-end' }} >
+      <div style={{ display: 'flex', justifyContent: 'center', width: '40%', height: '30%', alignItems: 'flex-end', marginBottom: '2em' }} >
         <div style={{ width: '100%' }}>
 
           {<div className={showDiv ? 'show' : 'dont'} >
