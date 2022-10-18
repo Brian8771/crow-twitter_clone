@@ -44,7 +44,7 @@ function UsersList() {
   return (
     <div className='userList' >
       <div className='userListDiv'>
-        <h1>Other users on Caw </h1>
+        <h1>Other users on Crow </h1>
         <div>{userComponents}</div>
       </div>
     </div>
