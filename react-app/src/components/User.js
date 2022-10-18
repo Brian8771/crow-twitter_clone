@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { getAllCaws, likeCawThunk } from '../store/caws';
@@ -19,7 +19,7 @@ function User() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [refresh, setRefresh] = useState(true);
-  const [option, setOption] = useState('Caws');
+  const [option, setOption] = useState('');
   const { userId } = useParams();
   const user = useSelector(state => state.session.currentUserProfile);
   const caws = Object.values(useSelector(state => state.caws.caws)).filter(x => x.userId === user.id)
@@ -74,8 +74,12 @@ function User() {
     // await setRefresh(true)
   }
 
+  useMemo(() => {
+    setOption('Caws')
+  }, [userId])
+
   useEffect(() => {
-    dispatch(getCurretProfile(userId)).then(dispatch(getAllCaws())).then(() => setIsLoaded(true)).then(() => setOption('Caws')).then(() => setLoaded(true))
+    dispatch(getCurretProfile(userId)).then(dispatch(getAllCaws())).then(() => setIsLoaded(true)).then(() => setLoaded(true))
   }, [dispatch, isLoaded, userId, loaded, EditUserModal]);
 
   // if (!user) {
