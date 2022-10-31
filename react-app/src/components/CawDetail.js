@@ -94,7 +94,7 @@ const PostDetail = () => {
                                         {caw.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '24px', width: '100%', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_caw(caw.id)}>Delete</button>}
                                     </div>
                                 </div>
-                                <div style={{ marginLeft: '8px', margin: '0 1rem', borderTop: '.5px solid black', borderBottom: '.5px solid black' }}>
+                                <div style={{ marginLeft: '8px', margin: '0 1rem', borderTop: '#2f3336 1px solid', borderBottom: '#2f3336 1px solid' }}>
                                     <p style={{ marginLeft: '8px', color: '#464a4c', cursor: 'pointer' }}><LikeUser totalLikes={totalLikes} loaded={loaded} id={id} /></p>
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
