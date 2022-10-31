@@ -61,10 +61,10 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'center', width: '40%', height: '30%', alignItems: 'flex-end', marginBottom: '2em' }} >
+      <div style={{ display: 'flex', justifyContent: 'center', width: '40%', height: '30%', alignItems: 'flex-end', marginBottom: '1.5em' }} >
         <div style={{ width: '100%' }}>
 
-          {<div className={showDiv ? 'show' : 'dont'} >
+          {<div style={{marginBottom: '.5rem'}} className={showDiv ? 'show' : 'dont'} >
             {/* <div >
               <img className='imgNav' src={user.profileImage} alt='profile pic' />
             </div>
@@ -86,15 +86,15 @@ const NavBar = () => {
               <div style={{ marginRight: '7px' }}>
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                   <p style={{ color: 'white' }} className='pTag'>{user.firstName}</p>
+                </div>
+                <p style={{ color: 'grey' }} className='pTag'>@{user.username}</p>
+              </div>
+              <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                   <button className='showButton' onClick={() => setShowDiv(!showDiv)}>
                     <img style={{ height: '6px', width: '6px ' }} src={dots} alt='3dots' />
                     <img style={{ height: '6px', width: '6px ' }} src={dots} alt='3dots' />
                     <img style={{ height: '6px', width: '6px ' }} src={dots} alt='3dots' />
                   </button>
-                </div>
-                <p style={{ color: 'white' }} className='pTag'>@{user.username}</p>
-              </div>
-              <div>
               </div>
             </div>
           </div>
