@@ -32,6 +32,7 @@ class Comment(db.Model):
     'createdAt': self.created_at,
     'userid': self.userId,
     'cawId': self.cawId,
+    'createdAt': self.created_at,
     'user': {
         'id': self.user.id,
         "profileImage":self.user.profile_image,

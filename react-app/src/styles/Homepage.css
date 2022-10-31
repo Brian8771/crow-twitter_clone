@@ -1,12 +1,12 @@
 .homePageContainer {
-    width: 40%;
+    width: 39%;
     height: 100%;
-    /* border-right: 1px black solid;
-    border-left: 1px black solid; */
+    border-right: 1px #2f3336 solid;
+    border-left: 1px #2f3336 solid;
     overflow-x: hidden;
 }
 
-::-webkit-scrollbar {
+.homePageContainer::-webkit-scrollbar {
     display: none;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .submitButtonForCaw:disabled {
-    background-color: lightgray;
+    background-color: black;
     height: 30px;
     width: 20%;
     margin: 0;
@@ -79,10 +79,10 @@
     height: 30px;
     width: 20%;
     margin: 0;
-    background-color: black;
+    background-color: white;
     border-radius: 20px;
     border: none;
-    color: white;
+    color: black;
     cursor: pointer;
 }
 
@@ -90,7 +90,8 @@
     height: 30px;
     width: 20%;
     margin: 0;
-    background-color: black;
+    background-color: white;
+    color: black;
     border-radius: 20px;
     border: none;
     cursor: pointer;
@@ -100,7 +101,7 @@
     height: 30px;
     width: 20%;
     margin: 0;
-    background-color: lightgray;
+    background-color: black;
     border-radius: 20px;
     border: none;
     color: black;

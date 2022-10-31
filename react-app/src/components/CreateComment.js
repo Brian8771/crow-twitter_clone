@@ -41,7 +41,7 @@ const CreateComment = ({ setIsLoaded }) => {
 
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: 'black .5px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', margin: '0', height: '7.2rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', margin: '0', height: '7.2rem' }}>
             <div>
                 <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={user.profileImage} alt='profilePic' />
             </div>
@@ -56,7 +56,7 @@ const CreateComment = ({ setIsLoaded }) => {
                     </div>
                     <div>
                         <textarea
-                            style={{ width: '90%', height: '4.2rem', border: 'none', resize: 'none' }}
+                            style={{ width: '90%', height: '4.2rem', border: 'none', resize: 'none', backgroundColor: 'black' }}
                             type='text'
                             value={comment}
                             placeholder='Post a comment?'
@@ -64,7 +64,7 @@ const CreateComment = ({ setIsLoaded }) => {
                         />
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <button disabled={errors ? true : false} className='submitButtonForComment' type='submit'>Post</button>
+                        <button disabled={errors ? true : false} className='submitButtonForComment' type='submit'>Reply</button>
                     </div>
                 </form>
             </div>
