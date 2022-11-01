@@ -49,12 +49,12 @@ const EditUser = ({ hideModal, setLoaded }) => {
         if (username.match(/^\s*$/) && username.length > 0) {
             newErrors.push('Username cannot be empty')
         }
-        if (!profile_image.endsWith('.png')) {
-            newErrors.push('Profile Image must end with .png')
-        }
-        if (!header_image.endsWith('.png')) {
-            newErrors.push('Header Image must end with .png')
-        }
+        // if (!profile_image.endsWith('.png') || !profile_image.endsWith('.jpg')) {
+        //     newErrors.push('Profile Image must end with .png')
+        // }
+        // if (!header_image.endsWith('.png') || !header_image.endsWith('.jpg')) {
+        //     newErrors.push('Header Image must end with .png')
+        // }
         if (bio.length === 0) {
             newErrors.push('Bio cannot be empty')
         }
