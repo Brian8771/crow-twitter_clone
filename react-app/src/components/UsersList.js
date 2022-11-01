@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import github from '../images/github.png';
+import linkedIn from '../images/linkedIn.png';
 
 function UsersList() {
   const [users, setUsers] = useState([]);
@@ -44,8 +46,14 @@ function UsersList() {
   return (
     <div className='userList' >
       <div className='userListDiv'>
+        <div>
         <h1>Other users on Crow </h1>
         <div>{userComponents}</div>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-around', width: '30vw', position: 'fixed', bottom: '0',right: '0', backgroundColor: 'transparent' }}>
+        <a href='https://github.com/Brian8771'><img style={{ height: '60px', width: '60px' }} src={github} /></a>
+        <a href='https://www.linkedin.com/in/brian-aguilar-088438247/'><img style={{ height: '60px', width: '60px', backgroundColor: 'white', borderRadius:'50%' }} src={linkedIn} /></a>
+        </div>
       </div>
     </div>
   );
