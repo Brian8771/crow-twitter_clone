@@ -135,9 +135,14 @@ const PostDetail = () => {
                                             <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={comment.user.profileImage} alt='profilePic' />
                                         </div>
                                         <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
+                                            <div style={{display: 'flex'}}>
                                             <NavLink style={{ textDecoration: 'none' }} to={`/users/${comment.user.id}`}>
-                                                <p style={{color: 'white'}} className='pTag'>{comment.user.username} <span style={{ color: 'gray' }}>Replying to @{caw.user.username}</span></p>
+                                                <p style={{color: 'white'}} className='pTag'>{comment.user.username}</p>
                                             </NavLink>
+                                            <NavLink style={{textDecoration: 'none', marginLeft: '6px'}} to={`/users/${caw.user.id}`}>
+                                             <span style={{ color: 'gray' }}>Replying to @{caw.user.username}</span>
+                                            </NavLink>
+                                            </div>
                                             <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
                                                 <div style={{ width: '100%' }}>
                                                     <p style={{ wordBreak: 'break-word', color: 'white' }} className='pTag' >{comment.data}</p>
