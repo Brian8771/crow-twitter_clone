@@ -8,9 +8,11 @@ import backArrow from '../images/arrow-back.svg'
 import comment from '../images/comment.png';
 import likeIcon from '../images/like.png';
 import likedIcon from '../images/liked.png'
+import { likeCommentThunk } from '../store/comments';
 import EditUserModal from './EditUserModal';
 import UserFollowersModal from './UserFollowersModal';
 import UserFollowingsModal from './UserFollowingsModal';
+import { getAllCommentsByUserId } from '../store/comments';
 
 
 
@@ -23,6 +25,7 @@ function User() {
   const { userId } = useParams();
   const user = useSelector(state => state.session.currentUserProfile);
   const caws = Object.values(useSelector(state => state.caws.caws)).filter(x => x.userId === user.id)
+  const comments = Object.values(useSelector(state => state.comments.comments));
   const allCaws = Object.values(useSelector(state => state.caws.caws))
   const session = useSelector(state => state.session.user);
 
@@ -37,6 +40,13 @@ function User() {
     }
     return cawsNeeded
   }
+
+  const handleCommentLikes = async (commentId) => {
+    await dispatch(likeCommentThunk(commentId))
+    setRefresh(false)
+    await getAllCommentsByUserId(userId)
+    setRefresh(true)
+}
 
   // console.log(getLikedCaws());
 
@@ -106,7 +116,7 @@ function User() {
   }, [userId])
 
   useEffect(() => {
-    dispatch(getCurretProfile(userId)).then(dispatch(getAllCaws())).then(() => setIsLoaded(true)).then(() => setLoaded(true))
+    dispatch(getCurretProfile(userId)).then(dispatch(getAllCaws())).then(dispatch(getAllCommentsByUserId(userId))).then(() => setIsLoaded(true)).then(() => setLoaded(true))
   }, [dispatch, isLoaded, userId, loaded, EditUserModal]);
 
   // if (!user) {
@@ -155,8 +165,9 @@ function User() {
           </div>}
       </div>
       <div className='font' style={{ display: 'flex', justifyContent: 'space-around', borderBottom: '#2f3336 1px solid', fontSize: '15px', color: 'black' }}>
-        <p style={{ cursor: 'pointer', color: 'white' }} className={option === 'Caws' ? 'activated' : ''} onClick={() => setOption('Caws')}>Caws</p>
-        <p style={{ cursor: 'pointer', color: 'white' }} className={option === 'Likes' ? 'activated' : ''} onClick={() => setOption('Likes')}>Likes</p>
+        <p className={option === 'Caws' ? 'activated' : 'notActivated'} onClick={() => setOption('Caws')}>Caws</p>
+        <p className={option === 'Comments' ? 'activated' : 'notActivated'} onClick={() => setOption('Comments')}>Replies</p>
+        <p className={option === 'Likes' ? 'activated' : 'notActivated'} onClick={() => setOption('Likes')}>Likes</p>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column-reverse', width: '100%' }}>
 
@@ -236,6 +247,39 @@ function User() {
                       <p style={{ marginLeft: '8px', color: '#464a4c' }}>{caw.totalComments}</p>
                     </div>
                   </NavLink>
+                </div>
+              </div>
+
+            </div>
+          })
+        }
+
+{option === 'Comments' && comments && isLoaded &&
+          comments.map(comment => {
+            return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '96.8%' }}>
+              <div>
+                <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={comment.user.profileImage} alt='profilePic' />
+              </div>
+              <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
+                <NavLink style={{ textDecoration: 'none' }} to={`/users/${comment.userId}`}>
+
+                  <p style={{color: 'white'}} className='pTag'>{comment.user.username} <span style={{ color: 'gray' }}>@{comment.caw.username}</span><span style={{marginLeft: '6px', color: 'gray'}}>{timeAfterCreated(comment)}</span></p>
+                </NavLink>
+                <NavLink style={{ textDecoration: 'none' }} to={`/caw/${comment.caw.id}`}>
+                  <p className='pTag' style={{ paddingTop: '10px', width: '100%', marginRight: '0', color: 'white' }} >{comment.data}</p>
+                </NavLink>
+                <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                  <div onClick={() => handleCommentLikes(comment.id)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                    {comment.likeStatus === 1 ?
+                      <img src={likedIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
+                      :
+                      // <img src={likeIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
+                      <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 93 87" fill="none">
+                                                <path d="M46.0625 86.6892H45.9983C34.1596 86.4692 0 55.605 0 26.3725C0 12.3292 11.5729 0 24.7637 0C35.2596 0 42.3179 7.24167 46.0579 12.5125C49.7887 7.25083 56.8471 0 67.3475 0C80.5475 0 92.1158 12.3292 92.1158 26.3771C92.1158 55.6004 57.9517 86.4646 46.1129 86.68H46.0625V86.6892ZM24.7683 6.87958C15.235 6.87958 6.87958 15.9912 6.87958 26.3817C6.87958 52.69 39.1187 79.53 46.0671 79.8142C53.0246 79.53 85.2546 52.6946 85.2546 26.3817C85.2546 15.9912 76.8992 6.87958 67.3658 6.87958C55.7792 6.87958 49.3075 20.3362 49.2525 20.4692C48.1983 23.045 43.9542 23.045 42.8954 20.4692C42.8312 20.3317 36.3642 6.87958 24.7729 6.87958H24.7683Z" fill="#71767A"/>
+                                                </svg>
+                    }
+                    <p style={{ marginLeft: '8px', color: '#464a4c', cursor: 'pointer' }}>{comment.totalLikes}</p>
+                  </div>
                 </div>
               </div>
 
