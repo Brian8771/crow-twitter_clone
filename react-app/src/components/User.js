@@ -103,7 +103,7 @@ function User() {
               </div>
             </div>
             <div style={{ display: 'flex', backgroundImage: `url(${user.headerImage})`, height: '8rem', width: '100%', alignItems: 'flex-end', marginBottom: '70px' }}>
-              <img style={{ marginLeft: '20px', position: 'relative', top: '60px', height: '133.5px', width: '133.5px' }} className='imgNav' src={user.profileImage} />
+              <img style={{ marginLeft: '20px', position: 'relative', top: '60px', height: '133.5px', width: '133.5px', objectFit: 'fill' }} className='imgNav' src={user.profileImage} />
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
