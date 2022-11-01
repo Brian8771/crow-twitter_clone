@@ -1,4 +1,5 @@
 const GET_COMMENTS = 'comments/GET_COMMENTS';
+// const GET_COMMENTS_BY_USERID = 'comments/GET_COMMENTS_BY_USERID';
 const ADD_COMMENT = 'comments/ADD_COMMENT';
 const EDIT_COMMENT = 'comments/EDIT_COMMENT';
 const DELETE_COMMENT = 'comments/DELETE_COMMENT';
@@ -10,6 +11,13 @@ const getAllComments = (comments) => (
         payload: comments
     }
 )
+
+// const getAllCommentsByUser_id = (comments) => (
+//     {
+//         type: GET_COMMENTS_BY_USERID,
+//         payload: comments
+//     }
+// )
 
 const addAComment = (comment) => (
     {
@@ -50,6 +58,15 @@ export const getComments = (id) => async dispatch => {
 
     if (response.ok) {
         const data = await response.json();
+        dispatch(getAllComments(data))
+    }
+}
+
+export const getAllCommentsByUserId = (id) => async dispatch => {
+    const response = await fetch(`/api/caws/user/${id}/comments`)
+
+    if (response.ok) {
+        const data = await response.json()
         dispatch(getAllComments(data))
     }
 }
@@ -119,10 +136,10 @@ export const likeCommentThunk = (id) => async dispatch => {
 
 
 export default function reducer(state = initialState, action) {
-    const newState = { ...state }
+    let newState = { ...state }
     switch (action.type) {
         case GET_COMMENTS:
-            // const newestState = { comments: {} }
+            newState = { comments: {}}
             action.payload.comments.forEach(comment => {
                 newState.comments[comment.id] = comment
             })

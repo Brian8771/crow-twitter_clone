@@ -216,4 +216,10 @@
 
 .activated {
     border-bottom: 1px solid white;
+    color: white;
+}
+
+.notActivated {
+    cursor: pointer;
+    color: grey;
 }
