@@ -103,7 +103,7 @@ function User() {
               </div>
             </div>
             <div style={{ display: 'flex', backgroundImage: `url(${user.headerImage})`, height: '8rem', width: '100%', alignItems: 'flex-end', marginBottom: '70px', objectFit: 'contain' }}>
-              <img style={{ marginLeft: '20px', position: 'relative', top: '60px', height: '133.5px', width: '133.5px', objectFit: 'fill' }} className='imgNav' src={user.profileImage} />
+              <img style={{ marginLeft: '20px', position: 'relative', top: '68px', height: '133.5px', width: '133.5px', objectFit: 'fill' }} className='imgNav' src={user.profileImage} />
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -115,7 +115,7 @@ function User() {
                 <EditUserModal setLoaded={setLoaded} />
               </div> :
                 <div style={{ display: 'flex', width: '20%', marginRight: '8px', flexDirection: 'row' }}>
-                  {!ifFollows() && refresh ? <button onClick={() => followingUser(user.username)} style={{ color: 'black', backgroundColor: 'white', padding: '0', margin: '0', height: '30%', width: '90%', borderRadius: '40px', cursor: 'pointer' }}>Follow</button> : <button onClick={() => unfollowingUser(user.username)} style={{ color: 'white', backgroundColor: 'black', padding: '0', margin: '0', height: '30%', width: '90%', borderRadius: '40px', cursor: 'pointer' }}>Unfollow</button>}
+                  {!ifFollows() && refresh ? <button onClick={() => followingUser(user.username)} style={{ color: 'black', backgroundColor: 'white', padding: '0', margin: '0', height: '50%', width: '90%', borderRadius: '40px', cursor: 'pointer', fontSize:'15px', border: 'none' }}>Follow</button> : <button onClick={() => unfollowingUser(user.username)} style={{ color: 'white', backgroundColor: 'black', padding: '0', margin: '0', height: '50%', width: '90%', borderRadius: '40px', cursor: 'pointer', fontSize: '15px', border: '.5px solid white' }}>Unfollow</button>}
                 </div>}
             </div>
             <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
