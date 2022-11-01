@@ -44,6 +44,33 @@ const PostDetail = () => {
         setRefresh(true)
     }
 
+    const timeAfterCreated = (caw) => {
+        const age = Date.now() - Date.parse(caw.createdAt);
+        let res;
+        const second = Math.floor(age / 1000)
+        const minute = Math.floor(second / 60);
+        const hour = Math.floor(minute / 60);
+        const day = Math.floor(hour / 24);
+        const week = Math.floor(day / 7)
+        if (week > 0) {
+            res = `${week}w`
+        }
+        else if (day > 0) {
+            res = `${day}d`
+        }
+        else if (hour > 0) {
+            res = `${hour}h`
+        }
+        else if (minute > 0) {
+            res = `${minute}m`
+        }
+        else {
+            res = `${second}s`
+        }
+
+        return res
+    }
+
     const delete_caw = (id) => {
         // await dispatch(deleteCaw(id));
         dispatch(deleteCaw(id)).then(() => dispatch(getAllCaws())).then(() => history.push('/'))
@@ -81,7 +108,7 @@ const PostDetail = () => {
                                     <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
                                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
                                         <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
-                                            <p style={{color: 'white'}} className='pTag'>{caw.user.username} <span style={{ color: 'gray' }}>@{caw.user.username}</span></p>
+                                            <p style={{color: 'white'}} className='pTag'>{caw.user.username} <span style={{ color: 'gray' }}>@{caw.user.username}</span> <span style={{marginLeft: '6px', color: 'gray'}}>{timeAfterCreated(caw)}</span></p>
                                         </NavLink>
                                     </div>
                                 </div>
@@ -142,6 +169,9 @@ const PostDetail = () => {
                                             <NavLink style={{textDecoration: 'none', marginLeft: '6px'}} to={`/users/${caw.user.id}`}>
                                              <span style={{ color: 'gray' }}>Replying to @{caw.user.username}</span>
                                             </NavLink>
+                                            <span style={{color: 'gray', marginLeft: '6px'}}>
+                                            {timeAfterCreated(comment)}
+                                            </span>
                                             </div>
                                             <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
                                                 <div style={{ width: '100%' }}>

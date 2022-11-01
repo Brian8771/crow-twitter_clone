@@ -40,8 +40,35 @@ const HomePage = () => {
         return newArr
     }
 
-    console.log(followerCaws())
-    console.log(caws)
+    const timeAfterCreated = (caw) => {
+        const age = Date.now() - Date.parse(caw.createdAt);
+        let res;
+        const second = Math.floor(age / 1000)
+        const minute = Math.floor(second / 60);
+        const hour = Math.floor(minute / 60);
+        const day = Math.floor(hour / 24);
+        const week = Math.floor(day / 7)
+        if (week > 0) {
+            res = `${week}w`
+        }
+        else if (day > 0) {
+            res = `${day}d`
+        }
+        else if (hour > 0) {
+            res = `${hour}h`
+        }
+        else if (minute > 0) {
+            res = `${minute}m`
+        }
+        else {
+            res = `${second}s`
+        }
+
+        return res
+    }
+
+    // console.log(followerCaws())
+    // console.log(caws)
 
     useEffect(() => {
         dispatch(getAllCaws()).then(dispatch(getAllUsers())).then(dispatch(getFollowings(session.id))).then(() => setLoaded(true))
@@ -67,7 +94,7 @@ const HomePage = () => {
                                 <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '85%' }}>
                                     <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
 
-                                        <p style={{color: 'white'}} className='pTag'>{caw.user.username} <span style={{ color: 'gray' }}>@{caw.user.username}</span></p>
+                                        <p style={{color: 'white'}} className='pTag'>{caw.user.username} <span style={{ color: 'gray' }}>@{caw.user.username} <span style={{marginLeft: '6px'}}>{timeAfterCreated(caw)}</span></span></p>
                                     </NavLink>
                                     <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
                                         <p className='pTag' style={{ paddingTop: '10px', color: 'white' }} >{caw.caw}</p>
