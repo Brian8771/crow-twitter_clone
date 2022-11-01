@@ -35,10 +35,6 @@
     color: white;
 }
 
-.userPTag:hover {
-    text-decoration: underline;
-}
-
 .userListDiv {
     margin-left: 1em;
 
@@ -133,10 +129,17 @@
 }
 
 .profileDiv {
+    width:fit-content;
+    padding: 5px 10px;
+    border-radius: 50px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: .25em;
+    /* margin-bottom: .25em; */
+}
+
+.profileDiv:hover {
+    background-color: darkgray;
 }
 
 .navLinks {
@@ -168,10 +171,25 @@
     border-radius: 25px;
 }
 
-.navDiv:hover {
+.navDiv:hover{
     background-color: darkgrey;
 }
 
+.editProfileButton:hover {
+    opacity:92%;
+}
+
+.editProfileButton {
+    color: black;
+    padding: 0;
+    margin: 0;
+    height: 50%;
+    width: 90%;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 15px;
+    border:none;
+}
 
 
 .show {
