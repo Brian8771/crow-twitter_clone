@@ -25,7 +25,7 @@ function UsersList() {
   const userComponents = allUsers.map((user) => {
     // if (user.id !== sessionUser.id) {
     return (
-      <div key={user.id}>
+      <div style={{width: '100%'}} key={user.id}>
         <NavLink style={{ textDecoration: 'none' }} to={`/users/${user.id}`}>
           <div className='profileDiv'>
             <div>
