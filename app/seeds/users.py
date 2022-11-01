@@ -15,8 +15,8 @@ def seed_users():
         username='Eric23',first_name='Eric',last_name='Hernandez', email='eric@aa.io', password='password5', profile_image='https://cdn.pixabay.com/photo/2022/10/11/07/23/crow-7513601__480.jpg', bio="I'm on this site 24/7")
     rebecca = User(
         username='Rebecca2256',first_name='Rebecca',last_name='Smith', email='rebecca@aa.io', password='password6', profile_image='https://cdn.pixabay.com/photo/2018/04/24/18/34/crow-3347677_1280.jpg', bio='I am new to this site')
-    hank = User(
-        username='Hank_Propane',first_name='Hank',last_name='Hill', email='hank@aa.io', password='password7', profile_image='https://cdn.pixabay.com/photo/2019/02/23/19/50/raven-4016367_1280.jpg', bio='Propane > Charcoal')
+    crow = User(
+        username='CrowFacts',first_name='Crow',last_name='Facts', email='crow@aa.io', password='password7', profile_image='https://cdn.pixabay.com/photo/2019/02/23/19/50/raven-4016367_1280.jpg', bio='I post crow facts')
     maddie = User(
         username='Maddie_28',first_name='Maddie',last_name='Cichocki', email='maddie@aa.io', password='password8', profile_image='https://cdn.pixabay.com/photo/2019/07/03/15/42/crow-4314822_1280.jpg', bio="I'm a nice fun girl")
     demo = User(
@@ -30,8 +30,14 @@ def seed_users():
     db.session.add(test)
     db.session.add(eric)
     db.session.add(rebecca)
-    db.session.add(hank)
+    db.session.add(crow)
     db.session.add(maddie)
+    demo.followed = [marnie, bobbie, brian, test, eric, rebecca, maddie, crow];
+    # brian.followed = [maddie, rebecca, eric, crow];
+    # maddie.followed = [brian, eric, demo];
+    # bobbie.followed = [crow, rebecca];
+    # marnie.followed = [demo];
+    # eric.followed = [brian, maddie, demo];
 
     db.session.commit()
 
