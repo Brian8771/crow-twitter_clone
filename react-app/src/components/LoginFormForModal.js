@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../store/session';
 import '../styles/LoginForm.css'
-import crow from '../images/crow.png'
+import crow from '../images/logo.png'
 
 
 const LoginFormForModal = () => {

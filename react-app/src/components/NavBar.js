@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import '../styles/Homepage.css'
-import crow from '../images/crow.png'
+import crow from '../images/logo.png'
 import { useSelector } from 'react-redux';
 import dots from '../images/3dots.svg';
 
@@ -17,7 +17,7 @@ const NavBar = () => {
     <nav className='navBar'>
       <div style={{ width: '40%', height: '30%', marginTop: '1em' }}>
         <NavLink to='/'>
-          <img className='imgNav' style={{ height: '30px', width: '30px' }} src={crow} alt='crow-icon' />
+          <img className='imgNav' style={{ height: '40px', width: '40px' }} src={crow} alt='crow-icon' />
         </NavLink>
       </div>
 
