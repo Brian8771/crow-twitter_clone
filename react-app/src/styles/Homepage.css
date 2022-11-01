@@ -126,8 +126,9 @@
     height: 30px;
     width: 30px;
     border-radius: 50%;
-    background-color: white;
-    fill: white;
+    border: 4px solid black;
+    /* background-color: black; */
+    /* fill: white; */
 }
 
 .profileDiv {

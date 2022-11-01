@@ -20,7 +20,7 @@ def seed_users():
     maddie = User(
         username='Maddie_28',first_name='Maddie',last_name='Cichocki', email='maddie@aa.io', password='password8', profile_image='https://cdn.pixabay.com/photo/2019/07/03/15/42/crow-4314822_1280.jpg', bio="I'm a nice fun girl")
     demo = User(
-        username='Demo1234',first_name='Demo',last_name='User', email='demo@aa.io', password='password', profile_image='https://cdn.mos.cms.futurecdn.net/PqHzRT5FnGPSoEUMfmGSWH.jpg', header_image='https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Purple_website.svg/640px-Purple_website.svg.png', bio='Im just a demo user :)')
+        username='Demo1234',first_name='Demo',last_name='User', email='demo@aa.io', password='password', profile_image='https://cdn.mos.cms.futurecdn.net/PqHzRT5FnGPSoEUMfmGSWH.jpg', bio='Im just a demo user :)')
 
 
     db.session.add(demo)

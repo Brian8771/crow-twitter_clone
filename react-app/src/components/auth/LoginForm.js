@@ -6,7 +6,8 @@ import LoginFormModal from '../LoginFormModal';
 import SignUpFormModal from '../SignUpFormModal';
 import '../../styles/LoginForm.css';
 import github from '../../images/github.png';
-import linkedIn from '../../images/linkedIn.png';
+import linkedIn from '../../images/linkedIn.png'
+import logo from '../../images/logo.png';
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -36,9 +37,9 @@ const LoginForm = () => {
   }
 
   return (
-    <div style={{ display: 'flex', height: '100vh', width: '100vw', flexDirection: 'row' }}>
+    <div style={{ display: 'flex', height: '100vh', width: '100vw', flexDirection: 'row', overflowX: 'hidden', overflowY: 'hidden' }}>
       <div style={{ height: '100%', width: '60%' }}>
-        <img style={{ height: '100%', width: '100%' }} src='https://www.kindpng.com/picc/m/347-3478772_bird-gray-black-crow-twitter-bird-icon-png.png'></img>
+        <img style={{ height: '100%', width: '100%' }} src={logo}></img>
       </div>
       <div style={{ backgroundColor: 'black', height: '100%', width: '50%' }}>
         <div style={{ marginLeft: '25px' }}>
@@ -53,9 +54,9 @@ const LoginForm = () => {
           </div>
         </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-around', width: '100vw', position: 'fixed', bottom: '0', backgroundColor: 'white' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-around', width: '100vw', position: 'fixed', bottom: '0', backgroundColor: 'transparent' }}>
         <a href='https://github.com/Brian8771'><img style={{ height: '60px', width: '60px' }} src={github} /></a>
-        <a href='https://www.linkedin.com/in/brian-aguilar-088438247/'><img style={{ height: '60px', width: '60px' }} src={linkedIn} /></a>
+        <a href='https://www.linkedin.com/in/brian-aguilar-088438247/'><img style={{ height: '60px', width: '60px', backgroundColor: 'white', borderRadius:'50%' }} src={linkedIn} /></a>
       </div>
     </div>
   );

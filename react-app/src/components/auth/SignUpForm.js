@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
 import '../../styles/LoginForm.css'
-import crow from '../../images/crow.png'
+import crow from '../../images/logo.png'
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);

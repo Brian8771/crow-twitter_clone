@@ -81,7 +81,7 @@ const PostDetail = () => {
                                     <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
                                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
                                         <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
-                                            <p className='pTag'>{caw.user.username} <span style={{ color: 'gray' }}>@{caw.user.username}</span></p>
+                                            <p style={{color: 'white'}} className='pTag'>{caw.user.username} <span style={{ color: 'gray' }}>@{caw.user.username}</span></p>
                                         </NavLink>
                                     </div>
                                 </div>
