@@ -60,6 +60,33 @@ function User() {
     return false;
   }
 
+  const timeAfterCreated = (caw) => {
+    const age = Date.now() - Date.parse(caw.createdAt);
+    let res;
+    const second = Math.floor(age / 1000)
+    const minute = Math.floor(second / 60);
+    const hour = Math.floor(minute / 60);
+    const day = Math.floor(hour / 24);
+    const week = Math.floor(day / 7)
+    if (week > 0) {
+        res = `${week}w`
+    }
+    else if (day > 0) {
+        res = `${day}d`
+    }
+    else if (hour > 0) {
+        res = `${hour}h`
+    }
+    else if (minute > 0) {
+        res = `${minute}m`
+    }
+    else {
+        res = `${second}s`
+    }
+
+    return res
+}
+
   const followingUser = async () => {
     await dispatch(followUser(user.username))
     // await setRefresh(false)
@@ -142,7 +169,7 @@ function User() {
               <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
                 <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
 
-                  <p style={{color: 'white'}} className='pTag'>{caw.user.username} <span style={{ color: 'gray' }}>@{caw.user.username}</span></p>
+                  <p style={{color: 'white'}} className='pTag'>{caw.user.username} <span style={{ color: 'gray' }}>@{caw.user.username}</span><span style={{marginLeft: '6px', color: 'gray'}}>{timeAfterCreated(caw)}</span></p>
                 </NavLink>
                 <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
                   <p className='pTag' style={{ paddingTop: '10px', width: '100%', marginRight: '0', color: 'white' }} >{caw.caw}</p>
@@ -183,7 +210,7 @@ function User() {
               <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
                 <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
 
-                  <p style={{color: 'white'}} className='pTag'>{caw.user.username} <span style={{ color: 'gray' }}>@{caw.user.username}</span></p>
+                  <p style={{color: 'white'}} className='pTag'>{caw.user.username} <span style={{ color: 'gray' }}>@{caw.user.username}</span><span style={{marginLeft: '6px', color: 'gray'}}>{timeAfterCreated(caw)}</span></p>
                 </NavLink>
                 <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
                   <p className='pTag' style={{ paddingTop: '10px', width: '100%', marginRight: '0', color: 'white' }} >{caw.caw}</p>

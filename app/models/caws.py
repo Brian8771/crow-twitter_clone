@@ -14,6 +14,7 @@ class Caw(db.Model):
     userId = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
     caw = db.Column(db.String(180), nullable=False)
     image = db.Column(db.String(180))
+    created_at = db.Column(db.DateTime(timezone=True), server_default=db.func.now())
 
     user = db.relationship("User", back_populates="caws")
 
@@ -32,6 +33,7 @@ class Caw(db.Model):
         'userId': self.userId,
         'caw': self.caw,
         'image': self.image,
+        'createdAt': self.created_at,
         "user": {
           "profileImage":self.user.profile_image,
           "username":self.user.username,
