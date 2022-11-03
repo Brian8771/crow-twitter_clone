@@ -129,7 +129,7 @@
 }
 
 .profileDiv {
-    width:fit-content;
+    width: fit-content;
     padding: 5px 10px;
     border-radius: 50px;
     display: flex;
@@ -171,13 +171,11 @@
     border-radius: 25px;
 }
 
-.navDiv:hover{
+.navDiv:hover {
     background-color: darkgrey;
 }
 
-.editProfileButton:hover {
-    opacity:92%;
-}
+
 
 .editProfileButton {
     color: black;
@@ -188,7 +186,7 @@
     border-radius: 40px;
     cursor: pointer;
     font-size: 15px;
-    border:none;
+    border: none;
 }
 
 
