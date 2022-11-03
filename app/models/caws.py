@@ -35,6 +35,7 @@ class Caw(db.Model):
         'image': self.image,
         'createdAt': self.created_at,
         "user": {
+          "firstName": self.user.first_name,
           "profileImage":self.user.profile_image,
           "username":self.user.username,
           'totalCaws': len(self.user.caws),

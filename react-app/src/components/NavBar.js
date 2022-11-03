@@ -64,7 +64,7 @@ const NavBar = () => {
       <div style={{ display: 'flex', justifyContent: 'center', width: '40%', height: '30%', alignItems: 'flex-end', marginBottom: '1.5em' }} >
         <div style={{ width: '100%' }}>
 
-          {<div style={{marginBottom: '.5rem'}} className={showDiv ? 'show' : 'dont'} >
+          {<div style={{ marginBottom: '.5rem' }} className={showDiv ? 'show' : 'dont'} >
             {/* <div >
               <img className='imgNav' src={user.profileImage} alt='profile pic' />
             </div>
@@ -89,12 +89,10 @@ const NavBar = () => {
                 </div>
                 <p style={{ color: 'grey' }} className='pTag'>@{user.username}</p>
               </div>
-              <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                  <button className='showButton' onClick={() => setShowDiv(!showDiv)}>
-                    <img style={{ height: '6px', width: '6px ' }} src={dots} alt='3dots' />
-                    <img style={{ height: '6px', width: '6px ' }} src={dots} alt='3dots' />
-                    <img style={{ height: '6px', width: '6px ' }} src={dots} alt='3dots' />
-                  </button>
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <button className='showButton' onClick={() => setShowDiv(!showDiv)}>
+                  <svg fill='white' height='20px' viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
+                </button>
               </div>
             </div>
           </div>
