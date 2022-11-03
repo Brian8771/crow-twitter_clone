@@ -6,7 +6,7 @@ import { editComment } from '../store/comments';
 
 
 
-const EditComment = ({ setIsLoaded, hideModal, id }) => {
+const EditComment = ({ setRefreshComment, hideModal, id }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [errors, setErrors] = useState([]);
@@ -39,9 +39,9 @@ const EditComment = ({ setIsLoaded, hideModal, id }) => {
         }
 
         await dispatch(editComment(id, commentInfo));
-        setIsLoaded(false)
+        await setRefreshComment(false)
         await dispatch(getComments(id));
-        setIsLoaded(true)
+        await setRefreshComment(true)
         hideModal()
         setComment('');
 

@@ -24,11 +24,11 @@ function User() {
   const [option, setOption] = useState('');
   const { userId } = useParams();
   const user = useSelector(state => state.session.currentUserProfile);
-  const caws = Object.values(useSelector(state => state.caws.caws)).filter(x => x.userId === user.id)
-  const comments = Object.values(useSelector(state => state.comments.comments));
+  const caws = Object.values(useSelector(state => state.caws.caws)).filter(x => x.userId === user.id);
+  const comments = Object.values(useSelector(state => state.comments.comments)).filter(x => x.userid === user.id);
   const allCaws = Object.values(useSelector(state => state.caws.caws))
   const session = useSelector(state => state.session.user);
-
+  console.log(comments);
   const getLikedCaws = () => {
     let arr = []
     for (let caw of user.like_caws) {
