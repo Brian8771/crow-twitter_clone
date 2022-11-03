@@ -2,7 +2,7 @@ from app.models import db, Caw
 
 
 def seed_caws():
-    caw1 = Caw(userId=1, caw='Is this working???')
+    caw1 = Caw(userId=1, caw='Is this working???', image='https://cdn.musebycl.io/2021-04/cream_disraeligears.jpg')
     caw2 = Caw(userId=2, caw='Testing...')
     caw3 = Caw(userId=3, caw='I love crow')
     caw4 = Caw(userId=4, caw='I love app academy')

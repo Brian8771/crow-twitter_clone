@@ -56,7 +56,7 @@ const CreateComment = ({ setIsLoaded }) => {
                     </div>
                     <div>
                         <textarea
-                            style={{ width: '90%', height: '4.2rem', border: 'none', resize: 'none', backgroundColor: 'black' }}
+                            style={{ width: '90%', height: '4.2rem', border: 'none', resize: 'none', backgroundColor: 'black', color:'white' }}
                             type='text'
                             value={comment}
                             placeholder='Post a comment?'
