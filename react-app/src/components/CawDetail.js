@@ -21,6 +21,8 @@ const PostDetail = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [refresh, setRefresh] = useState(true);
     const [like, setLike] = useState(true);
+    const [showButtons, setShowButtons] = useState(false);
+    const [showCommentButtons, setShowCommentButtons] = useState(false);
     const caw = useSelector(state => state.caws.caw);
     const likeStatus = useSelector(state => state.caws.caw.likeStatus)
     const totalLikes = useSelector(state => state.caws.caw.totalLikes)
@@ -104,18 +106,21 @@ const PostDetail = () => {
                         </div>
                         {caw &&
                             <div style={{ display: 'flex', flexDirection: 'column', height: 'auto', borderBottom: '#2f3336 1px solid', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', padding: '10px 0' }}>
-                                <div style={{ display: 'flex', flexDirection: 'row', padding: '10px' }}>
+                                <div style={{ display: 'flex', flexDirection: 'row', padding: '10px', alignItems: 'center' }}>
                                     <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
                                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
                                         <NavLink style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} to={`/users/${caw.user.id}`}>
-                                            <p style={{ color: 'white', marginTop: '10px' }} className='pTag'>{caw.user.username}</p>
+                                            <p style={{ color: 'white' }} className='pTag'>{caw.user.firstName}</p>
                                             <p style={{ color: 'gray', margin: '0', fontSize: '15px' }}>@{caw.user.username}</p>
                                         </NavLink>
                                     </div>
-                                    <div style={{ display: 'flex', flexDirection: 'row', width: '25%', padding: '6px', height: 'fit-content' }}>
+                                    {!showButtons && caw.userId === user.id && <div onClick={() => setShowButtons(true)} style={{ display: 'flex', cursor: 'pointer', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: '6px', height: 'fit-content' }}>
+                                        <svg fill='white' height='20px' viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
+                                    </div>}
+                                    {showButtons && <div style={{ display: 'flex', flexDirection: 'row', width: '25%', padding: '6px', height: 'fit-content' }}>
                                         {caw.user.id === user.id && <EditFormModal setShowModal={setEditModal} caw={caw.id} />}
                                         {caw.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '24px', width: '100%', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_caw(caw.id)}>Delete</button>}
-                                    </div>
+                                    </div>}
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                                     <div style={{ display: 'flex', flexDirection: 'row', width: '100%', height: 'auto' }}>
@@ -126,7 +131,7 @@ const PostDetail = () => {
                                         </div>
                                     </div>
                                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto' }}>
-                                        {caw.image && <img style={{ height: 'auto', width: 'auto' }} className='cawImage' src={caw.image} alt='image' />}
+                                        {caw.image && <img style={{ height: 'auto', width: '90%' }} className='cawImage' src={caw.image} alt='image' />}
                                     </div>
                                 </div>
                                 <span style={{ marginLeft: '20px', color: 'gray', marginTop: '10px' }}>{timeAfterCreated(caw)}</span>
@@ -168,29 +173,36 @@ const PostDetail = () => {
                         <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
                             {comments && isLoaded &&
                                 comments.map(comment => {
-                                    return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
+                                    return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '97%' }}>
                                         <div>
                                             <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={comment.user.profileImage} alt='profilePic' />
                                         </div>
                                         <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
-                                            <div style={{ display: 'flex' }}>
-                                                <NavLink style={{ textDecoration: 'none' }} to={`/users/${comment.user.id}`}>
-                                                    <p style={{ color: 'white' }} className='pTag'>{comment.user.username}</p>
-                                                </NavLink>
-                                                <NavLink style={{ textDecoration: 'none', marginLeft: '6px' }} to={`/users/${caw.user.id}`}>
-                                                    <span style={{ color: 'gray' }}>Replying to @{caw.user.username}</span>
-                                                </NavLink>
-                                                <span style={{ color: 'gray', marginLeft: '6px' }}>
-                                                    {timeAfterCreated(comment)}
-                                                </span>
+                                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                                                <div>
+                                                    <NavLink style={{ textDecoration: 'none' }} to={`/users/${comment.user.id}`}>
+                                                        <p style={{ color: 'white' }} className='pTag'>{comment.user.firstName} <span style={{ color: 'gray', marginLeft: '8px' }}>@{comment.user.username}</span><span style={{ color: 'gray', marginLeft: '8px' }}>
+                                                            {timeAfterCreated(comment)}
+                                                        </span></p>
+                                                    </NavLink>
+                                                    <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
+                                                        <span style={{ color: 'gray', fontSize: '15px' }}>Replying to @{caw.user.username}</span>
+                                                    </NavLink>
+
+                                                </div>
+                                                {!showCommentButtons && comment.userid === user.id && <div onClick={() => setShowCommentButtons(true)} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                                                    <svg fill='white' height='20px' viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
+                                                </div>}
+                                                {showCommentButtons && <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                    <div style={{ display: 'flex', flexDirection: 'row', width: '100%', padding: '0', justifyContent: 'center', height: '20%' }}>
+                                                        {comment.user.id === user.id && <EditCommentModal setIsLoaded={setIsLoaded} setShowModal={setEditModal} id={comment.id} />}
+                                                        {comment.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '20px', width: '60px', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_comment(comment.id)}>Delete</button>}
+                                                    </div>
+                                                </div>}
                                             </div>
                                             <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
                                                 <div style={{ width: '100%' }}>
                                                     <p style={{ wordBreak: 'break-word', color: 'white' }} className='pTag' >{comment.data}</p>
-                                                </div>
-                                                <div style={{ display: 'flex', flexDirection: 'row', width: '100%', padding: '0', justifyContent: 'center', height: '20%' }}>
-                                                    {comment.user.id === user.id && <EditCommentModal setIsLoaded={setIsLoaded} setShowModal={setEditModal} id={comment.id} />}
-                                                    {comment.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '20px', width: '60px', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_comment(comment.id)}>Delete</button>}
                                                 </div>
                                             </div>
                                             <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: '.3rem' }} onClick={() => handleCommentLikes(comment.id)}>
