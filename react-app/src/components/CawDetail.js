@@ -19,6 +19,7 @@ const PostDetail = () => {
     const { id } = useParams()
     const [loaded, setLoaded] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false);
+    const [refreshComment, setRefreshComment] = useState(true);
     const [refresh, setRefresh] = useState(true);
     const [like, setLike] = useState(true);
     const [showButtons, setShowButtons] = useState(false);
@@ -171,7 +172,7 @@ const PostDetail = () => {
 
                     <div>
                         <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
-                            {comments && isLoaded &&
+                            {comments && refreshComment &&
                                 comments.map(comment => {
                                     return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '97%' }}>
                                         <div>
@@ -195,7 +196,7 @@ const PostDetail = () => {
                                                 </div>}
                                                 {showCommentButtons && <div style={{ display: 'flex', alignItems: 'center' }}>
                                                     <div style={{ display: 'flex', flexDirection: 'row', width: '100%', padding: '0', justifyContent: 'center', height: '20%' }}>
-                                                        {comment.user.id === user.id && <EditCommentModal setIsLoaded={setIsLoaded} setShowModal={setEditModal} id={comment.id} />}
+                                                        {comment.user.id === user.id && <EditCommentModal setRefreshComment={setRefreshComment} setShowModal={setEditModal} id={comment.id} />}
                                                         {comment.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '20px', width: '60px', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_comment(comment.id)}>Delete</button>}
                                                     </div>
                                                 </div>}
