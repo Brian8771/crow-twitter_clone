@@ -33,6 +33,7 @@
 .userPTag {
     margin: .2em 0;
     color: white;
+    font-size: 15px;
 }
 
 .userListDiv {
@@ -194,7 +195,35 @@
     background-color: rgb(38, 38, 38);
 }
 
+.followButton {
+    color: black;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    height: 50%;
+    width: 90%;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 15px;
+    border: none;
+}
 
+.unfollowButton {
+    color: white;
+    background-color: black;
+    padding: 0;
+    margin: 0;
+    height: 50%;
+    width: 90%;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 15px;
+    border: .5px solid white;
+}
+
+.unfollowButton:hover {
+    background-color: rgb(38, 38, 38);
+}
 
 .editProfileButton {
     color: black;
@@ -208,7 +237,8 @@
     border: none;
 }
 
-.editProfileButton:hover {
+.editProfileButton:hover,
+.followButton:hover {
     background-color: rgb(207, 207, 207);
 }
 
