@@ -82,6 +82,11 @@
     cursor: pointer;
 }
 
+.submitButtonForCaw:hover,
+.submitButtonForComment:hover {
+    background-color: rgb(207, 207, 207);
+}
+
 .submitButtonForComment {
     height: 30px;
     width: 20%;
@@ -92,6 +97,7 @@
     border: none;
     cursor: pointer;
 }
+
 
 .submitButtonForComment:disabled {
     height: 30px;
@@ -123,9 +129,22 @@
     width: 30px;
     border-radius: 50%;
     border: 4px solid black;
-
     /* background-color: black; */
     /* fill: white; */
+}
+
+
+.logoImg {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 4px solid black;
+    padding: .75px;
+}
+
+.logoImg:hover {
+    padding: .75px;
+    background-color: white;
 }
 
 .profileDiv {
@@ -226,6 +245,7 @@
     text-align: center;
     text-decoration: underline;
     padding: 1em 0;
+    cursor: pointer;
 }
 
 .activated:hover,
@@ -256,6 +276,45 @@
     align-items: center;
     margin-right: 8em;
 }
+
+.numberOfLikes {
+    margin-left: 12px;
+    cursor: pointer;
+    color: #464a4c;
+}
+
+.likeButton:hover>.numberOfLikes,
+.likeButton:hover>.svgHeart {
+    color: #f9197f;
+    fill: #f9197f;
+}
+
+.likeButton:hover>.svgContainer>.svgHeart,
+.likeButton:hover>.svgContainerDetails>.svgHeart {
+
+    fill: #f9197f;
+}
+
+.likeButton:hover>.svgContainer,
+.likeButton:hover>.svgContainerDetails {
+    background-color: rgba(249, 25, 127, .2);
+    border-radius: 50%;
+    padding: .5em;
+}
+
+
+.svgHeart {
+    fill: #71767A;
+}
+
+.svgContainer,
+.svgContainerDetails {
+    display: flex;
+    padding: .5em;
+    border-radius: 50%;
+}
+
+
 
 .profileButton {
     display: flex;
