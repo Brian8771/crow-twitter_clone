@@ -141,7 +141,7 @@ const PostDetail = () => {
                                         <LikeUser totalLikes={totalLikes} loaded={loaded} id={id} />
                                     </p>
                                 </div>
-                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                                     {caw && loaded && <div className='likeButton' onClick={() => handleLikes(caw.id)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                         {like && likeStatus === 1 ?
                                             <div className='svgContainerDetails'>
