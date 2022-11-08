@@ -125,7 +125,7 @@ function User() {
 
   return (
     <div className='homePageContainer'>
-      <div>
+      <div style={{ marginBottom: '1em' }}>
         {isLoaded &&
           <div>
             <div style={{ display: 'flex', flexDirection: 'row', backgroundColor: 'black' }}>
@@ -152,7 +152,7 @@ function User() {
                 <EditUserModal setLoaded={setLoaded} />
               </div> :
                 <div style={{ display: 'flex', width: '20%', marginRight: '8px', flexDirection: 'row' }}>
-                  {!ifFollows() && refresh ? <button onClick={() => followingUser(user.username)} style={{ color: 'black', backgroundColor: 'white', padding: '0', margin: '0', height: '50%', width: '90%', borderRadius: '40px', cursor: 'pointer', fontSize: '15px', border: 'none' }}>Follow</button> : <button onClick={() => unfollowingUser(user.username)} style={{ color: 'white', backgroundColor: 'black', padding: '0', margin: '0', height: '50%', width: '90%', borderRadius: '40px', cursor: 'pointer', fontSize: '15px', border: '.5px solid white' }}>Unfollow</button>}
+                  {!ifFollows() && refresh ? <button className='followButton' onClick={() => followingUser(user.username)}>Follow</button> : <button className='unfollowButton' onClick={() => unfollowingUser(user.username)} >Unfollow</button>}
                 </div>}
             </div>
             <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
