@@ -275,6 +275,7 @@
     flex-direction: row;
     align-items: center;
     margin-right: 8em;
+    cursor: pointer;
 }
 
 .numberOfLikes {
@@ -295,6 +296,7 @@
     fill: #f9197f;
 }
 
+
 .likeButton:hover>.svgContainer,
 .likeButton:hover>.svgContainerDetails {
     background-color: rgba(249, 25, 127, .2);
@@ -302,9 +304,34 @@
     padding: .5em;
 }
 
+.commentButton:hover>.svgContainer {
+    background-color: rgba(25, 125, 255, .2);
+}
 
-.svgHeart {
+
+.svgHeart,
+.svgComment {
     fill: #71767A;
+
+}
+
+.commentButton:hover>.svgContainer>.svgComment,
+.commentButton:hover>.totalComments {
+    fill: rgb(25, 125, 255);
+    color: rgb(25, 125, 255);
+}
+
+.totalComments {
+    margin-left: 8px;
+    color: #464a4c;
+}
+
+.commentButton {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0px;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .svgContainer,
