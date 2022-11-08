@@ -164,7 +164,7 @@ function User() {
             </div>}
           </div>}
       </div>
-      <div className='font' style={{ display: 'flex', justifyContent: 'space-around', borderBottom: '#2f3336 1px solid', fontSize: '15px', color: 'black' }}>
+      <div className='font' style={{ display: 'flex', borderBottom: '#2f3336 1px solid', fontSize: '15px', color: 'black' }}>
         <p className={option === 'Caws' ? 'activated' : 'notActivated'} onClick={() => setOption('Caws')}>Caws</p>
         <p className={option === 'Comments' ? 'activated' : 'notActivated'} onClick={() => setOption('Comments')}>Replies</p>
         <p className={option === 'Likes' ? 'activated' : 'notActivated'} onClick={() => setOption('Likes')}>Likes</p>
