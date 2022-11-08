@@ -19,7 +19,7 @@ const NavBar = () => {
 
         <div style={{ width: '40%', height: '30%', marginTop: '1em' }}>
           <NavLink to='/'>
-            <img className='imgNav' style={{ height: '40px', width: '40px' }} src={crow} alt='crow-icon' />
+            <img className='logoImg' style={{ height: '40px', width: '40px' }} src={crow} alt='crow-icon' />
           </NavLink>
         </div>
 

@@ -54,9 +54,9 @@ const LoginForm = () => {
           </div>
         </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-around', width: '50vw', position: 'fixed', bottom: '0',right: '0', backgroundColor: 'transparent' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-around', width: '50vw', position: 'fixed', bottom: '0', right: '0', backgroundColor: 'transparent' }}>
         <a href='https://github.com/Brian8771'><img style={{ height: '60px', width: '60px' }} src={github} /></a>
-        <a href='https://www.linkedin.com/in/brian-aguilar-088438247/'><img style={{ height: '60px', width: '60px', backgroundColor: 'white', borderRadius:'50%' }} src={linkedIn} /></a>
+        <a href='https://www.linkedin.com/in/brian-aguilar-088438247/'><img style={{ height: '60px', width: '60px', filter: 'invert(1)', borderRadius: '50%' }} src={linkedIn} /></a>
       </div>
     </div>
   );
