@@ -223,7 +223,7 @@ const PostDetail = () => {
                                                         </svg>
                                                     </div>
                                                 }
-                                                {caw.likeStatus === 1 ?
+                                                {comment.likeStatus === 1 ?
                                                     <p style={{ marginLeft: '12px', cursor: 'pointer', color: '#f9197f' }}>{comment.totalLikes}</p> :
                                                     <p className='numberOfLikes'>{comment.totalLikes}</p>
                                                 }
