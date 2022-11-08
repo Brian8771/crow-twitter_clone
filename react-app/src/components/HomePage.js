@@ -100,8 +100,8 @@ const HomePage = () => {
                                         <p className='pTag' style={{ paddingTop: '10px', color: 'white' }} >{caw.caw}</p>
                                         {caw.image && <img className='cawImage' src={caw.image} alt='image' />}
                                     </NavLink>
-                                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
-                                        <div onClick={() => handleLikes(caw.id)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+                                        <div className='likeButton' onClick={() => handleLikes(caw.id)} >
                                             {caw.likeStatus === 1 ?
                                                 <img src={likedIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
                                                 :

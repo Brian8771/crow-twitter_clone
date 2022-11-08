@@ -25,7 +25,7 @@ function UsersList() {
   const userComponents = allUsers.map((user) => {
     // if (user.id !== sessionUser.id) {
     return (
-      <div style={{width: '100%'}} key={user.id}>
+      <div style={{ width: '100%' }} key={user.id}>
         <NavLink style={{ textDecoration: 'none' }} to={`/users/${user.id}`}>
           <div className='profileDiv'>
             <div>
@@ -47,12 +47,12 @@ function UsersList() {
     <div className='userList' >
       <div className='userListDiv'>
         <div>
-        <h1>Other users on Crow </h1>
-        <div>{userComponents}</div>
+          <h1 style={{ fontSize: '20px' }}>Other users on Crow </h1>
+          <div>{userComponents}</div>
         </div>
-        <div style={{ display: 'flex', justifyContent: 'space-around', width: '30vw', position: 'fixed', bottom: '0',right: '0', backgroundColor: 'transparent' }}>
-        <a href='https://github.com/Brian8771'><img style={{ height: '60px', width: '60px' }} src={github} /></a>
-        <a href='https://www.linkedin.com/in/brian-aguilar-088438247/'><img style={{ height: '60px', width: '60px', backgroundColor: 'white', borderRadius:'50%' }} src={linkedIn} /></a>
+        <div style={{ display: 'flex', justifyContent: 'space-around', width: '30vw', position: 'fixed', bottom: '0', right: '0', backgroundColor: 'transparent' }}>
+          <a href='https://github.com/Brian8771'><img style={{ height: '60px', width: '60px' }} src={github} /></a>
+          <a href='https://www.linkedin.com/in/brian-aguilar-088438247/'><img style={{ height: '60px', width: '60px', backgroundColor: 'white', borderRadius: '50%' }} src={linkedIn} /></a>
         </div>
       </div>
     </div>
