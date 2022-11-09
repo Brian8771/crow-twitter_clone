@@ -32,8 +32,8 @@ function UsersList() {
               <img className='imgNav' src={user.profileImage} />
             </div>
             <div style={{ marginLeft: '.5em' }}>
-              <p className='userPTag'>{user.firstName}</p>
-              <p className='userPTag'>@{user.username}</p>
+              <p className='userPTag firstNameP'>{user.firstName}</p>
+              <p style={{ color: '#808080' }} className='userPTag'>@{user.username}</p>
             </div>
           </div>
         </NavLink>
