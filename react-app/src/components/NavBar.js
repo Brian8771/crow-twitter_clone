@@ -5,7 +5,6 @@ import LogoutButton from './auth/LogoutButton';
 import '../styles/Homepage.css'
 import crow from '../images/logo.png'
 import { useSelector } from 'react-redux';
-import dots from '../images/3dots.svg';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)

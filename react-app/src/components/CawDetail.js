@@ -111,7 +111,7 @@ const PostDetail = () => {
                                     <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
                                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
                                         <NavLink style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} to={`/users/${caw.user.id}`}>
-                                            <p style={{ color: 'white' }} className='pTag'>{caw.user.firstName}</p>
+                                            <p style={{ color: 'white' }} className='pTag firstNameP'>{caw.user.firstName}</p>
                                             <p style={{ color: 'gray', margin: '0', fontSize: '15px' }}>@{caw.user.username}</p>
                                         </NavLink>
                                     </div>
@@ -191,7 +191,7 @@ const PostDetail = () => {
                                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
                                                 <div>
                                                     <NavLink style={{ textDecoration: 'none' }} to={`/users/${comment.user.id}`}>
-                                                        <p style={{ color: 'white' }} className='pTag'>{comment.user.firstName} <span style={{ color: 'gray', marginLeft: '8px' }}>@{comment.user.username}</span><span style={{ color: 'gray', marginLeft: '8px' }}>
+                                                        <p style={{ color: 'white' }} className='pTag'><span className='firstNameP'>{comment.user.firstName}</span> <span style={{ color: 'gray', marginLeft: '8px' }}>@{comment.user.username}</span><span style={{ color: 'gray', marginLeft: '8px' }}>
                                                             {timeAfterCreated(comment)}
                                                         </span></p>
                                                     </NavLink>

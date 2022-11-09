@@ -180,7 +180,7 @@ function User() {
               <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
                 <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
 
-                  <p style={{ color: 'white' }} className='pTag'>{caw.user.firstName} <span style={{ color: 'gray' }}>@{caw.user.username}</span><span style={{ marginLeft: '6px', color: 'gray' }}>{timeAfterCreated(caw)}</span></p>
+                  <p style={{ color: 'white' }} className='pTag'><span className='firstNameP'>{caw.user.firstName}</span> <span style={{ color: 'gray' }}>@{caw.user.username}</span><span style={{ marginLeft: '6px', color: 'gray' }}>{timeAfterCreated(caw)}</span></p>
                 </NavLink>
                 <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
                   <p className='pTag' style={{ paddingTop: '10px', width: '100%', marginRight: '0', color: 'white' }} >{caw.caw}</p>
@@ -231,7 +231,7 @@ function User() {
               <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
                 <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
 
-                  <p style={{ color: 'white' }} className='pTag'>{caw.user.firstName} <span style={{ color: 'gray' }}>@{caw.user.username}</span><span style={{ marginLeft: '6px', color: 'gray' }}>{timeAfterCreated(caw)}</span></p>
+                  <p style={{ color: 'white' }} className='pTag'><span className='firstNameP'>{caw.user.firstName}</span> <span style={{ color: 'gray' }}>@{caw.user.username}</span><span style={{ marginLeft: '6px', color: 'gray' }}>{timeAfterCreated(caw)}</span></p>
                 </NavLink>
                 <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
                   <p className='pTag' style={{ paddingTop: '10px', width: '100%', marginRight: '0', color: 'white' }} >{caw.caw}</p>
@@ -283,7 +283,7 @@ function User() {
               <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
                 <NavLink style={{ textDecoration: 'none' }} to={`/users/${comment.userId}`}>
 
-                  <p style={{ color: 'white' }} className='pTag'>{comment.user.firstName} <span style={{ color: 'gray' }}>@{comment.caw.username}</span><span style={{ marginLeft: '6px', color: 'gray' }}>{timeAfterCreated(comment)}</span></p>
+                  <p style={{ color: 'white' }} className='pTag'><span className='firstNameP'>{comment.user.firstName}</span> <span style={{ color: 'gray' }}>@{comment.caw.username}</span><span style={{ marginLeft: '6px', color: 'gray' }}>{timeAfterCreated(comment)}</span></p>
                 </NavLink>
                 <NavLink style={{ textDecoration: 'none' }} to={`/caw/${comment.caw.id}`}>
                   <p className='pTag' style={{ paddingTop: '10px', width: '100%', marginRight: '0', color: 'white' }} >{comment.data}</p>
