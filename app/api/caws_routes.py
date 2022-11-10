@@ -23,6 +23,7 @@ def validation_errors_to_error_messages(validation_errors):
 def all_caws():
     caws = Caw.query.all()
     cawArr = []
+    print(caws)
 
     for caw in caws:
         like_status=list(filter(lambda user: user.id==current_user.id, caw.caw_like_users))

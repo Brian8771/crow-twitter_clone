@@ -431,3 +431,11 @@
 .firstNameP:hover {
     text-decoration: underline;
 }
+
+.findMe {
+    transition: all .5s;
+}
+
+.findMe:hover {
+    transform: scale(1.2);
+}

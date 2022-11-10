@@ -25,7 +25,7 @@ const HomePage = () => {
         setLoaded(true)
 
     }
-
+    console.log(caws)
     const followerCaws = () => {
         let arr = []
         arr.push(session.id)
@@ -41,6 +41,7 @@ const HomePage = () => {
     }
 
     const timeAfterCreated = (caw) => {
+
         const age = Date.now() - Date.parse(caw.createdAt);
         let res;
         const second = Math.floor(age / 1000)
