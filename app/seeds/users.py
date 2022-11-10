@@ -31,8 +31,8 @@ def seed_users():
     db.session.add(crowPuns)
     db.session.add(crow)
     db.session.add(maddie)
-    demo.followed = [marnie, bobbie, brian,
-                     robert, eric, crowPuns, maddie, crow]
+    # demo.followed = [marnie, bobbie, brian,
+    #                  robert, eric, crowPuns, maddie, crow]
     # brian.followed = [maddie, rebecca, eric, crow];
     # maddie.followed = [brian, eric, demo];
     # bobbie.followed = [crow, rebecca];
