@@ -1,64 +1,182 @@
 from app.models import db, Comment
+from datetime import datetime
 
 
 def seed_comments():
-    comment1 = Comment(userId=2, cawId=1, data='Hello!!!')
-    comment2 = Comment(userId=3, cawId=1, data='It sure is')
-    comment3 = Comment(userId=1, cawId=2, data='What are you testing???')
-    comment4 = Comment(userId=6, cawId=2, data="It's working")
-    comment5 = Comment(userId=4, cawId=3, data='SAME!!!')
-    comment6 = Comment(userId=8, cawId=3, data="It's the best!!!")
-    comment7 = Comment(userId=5, cawId=4, data='I would have to agree')
-    comment8 = Comment(userId=2, cawId=4, data="It's been so fun!!!")
-    comment9 = Comment(userId=2, cawId=5, data='Im testing that right now')
-    comment10 = Comment(userId=7, cawId=5, data='So I can add a comment???')
-    comment11 = Comment(userId=3, cawId=6, data='Why?!?!')
-    comment12 = Comment(userId=7, cawId=6, data='Its ok')
-    comment13 = Comment(userId=1, cawId=7, data='Yo')
-    comment14 = Comment(userId=5, cawId=7, data="What's up?")
-    comment15 = Comment(userId=3, cawId=7, data='hi?')
-    comment16 = Comment(userId=3, cawId=8, data='SAME!')
-    comment17 = Comment(userId=5, cawId=8, data='What does that mean?')
-    comment18 = Comment(userId=3, cawId=9, data='Ya I bet it was')
-    comment19 = Comment(userId=1, cawId=9, data='It is pretty cool')
-    comment20 = Comment(userId=2, cawId=10, data='Thats interesting')
-    comment21 = Comment(userId=5, cawId=10, data='Very cool!!!')
-    comment22 = Comment(userId=6, cawId=10, data='NICE!!!')
-    comment23 = Comment(userId=2, cawId=11, data='Me neither')
-    comment24 = Comment(userId=6, cawId=11, data='What sport you watch?')
-    comment25 = Comment(userId=8, cawId=11, data='I can 0.0')
-    comment26 = Comment(userId=2, cawId=12, data='Ya its great!!!')
-    comment27 = Comment(userId=5, cawId=12, data='I saw you yesterday?')
-    comment28 = Comment(userId=7, cawId=12, data='I told you to get on')
-    comment29 = Comment(userId=1, cawId=13, data="Happens to me all the time")
-    comment30 = Comment(userId=5, cawId=13, data='I feel that')
-    comment31 = Comment(userId=7, cawId=13, data='My friends forget im a crow')
-    comment32= Comment(userId=3, cawId=14, data='I do too :)')
-    comment33 = Comment(userId=5, cawId=14, data='I think hes almost done')
-    comment34 = Comment(userId=4, cawId=14, data='Almost there!!!')
-    comment35 = Comment(userId=3, cawId=15, data='Thats cool')
-    comment36 = Comment(userId=6, cawId=15, data='nice')
-    comment37 = Comment(userId=2, cawId=15, data='ok???')
-    comment38 = Comment(userId=3, cawId=16, data='You made this?')
-    comment39 = Comment(userId=7, cawId=16, data='Hi Brian')
-    comment40 = Comment(userId=8, cawId=16, data='sup')
-    comment41 = Comment(userId=3, cawId=18, data='I am')
-    comment42 = Comment(userId=8, cawId=18, data='Me?')
-    comment43 = Comment(userId=1, cawId=18, data='What?')
-    comment44 = Comment(userId=3, cawId=19, data='I cant say')
-    comment45 = Comment(userId=1, cawId=19, data='seems fine')
-    comment46 = Comment(userId=2, cawId=19, data='So far So good!!!')
-    comment47 = Comment(userId=6, cawId=19, data='Si')
-    comment48 = Comment(userId=7, cawId=19, data='Great job')
-    comment49 = Comment(userId=8, cawId=19, data='its ok')
-    comment50 = Comment(userId=6, cawId=17, data='Heyyy')
-    comment51 = Comment(userId=4, cawId=17, data='hiii')
-    comment52 = Comment(userId=2, cawId=17, data='???')
-    comment53 = Comment(userId=2, cawId=21, data='Had one the other day')
-    comment54 = Comment(userId=9, cawId=21, data='🙏🙏🙏')
-    comment55 = Comment(userId=7, cawId=20, data='Bring back MJ')
-    comment56 = Comment(userId=3, cawId=20, data='Facts')
-    comment57 = Comment(userId=5, cawId=21, data='....')
+    comment1 = Comment(userId=2, cawId=1, data='I LOVE IT!!!',
+                       created_at=datetime(2022, 9, 9))
+    comment2 = Comment(userId=3, cawId=1, data='Great work on it',
+                       created_at=datetime(2022, 9, 9))
+
+    comment3 = Comment(
+        userId=5, cawId=2, data='Like the look of it', created_at=datetime(2022, 9, 11))
+    comment4 = Comment(
+        userId=6, cawId=2, data="I would have to agree", created_at=datetime(2022, 9, 11))
+    comment5 = Comment(userId=4, cawId=2, data='SAME!!!',
+                       created_at=datetime(2022, 9, 12))
+
+    comment6 = Comment(userId=9, cawId=3, data="agreed",
+                       created_at=datetime(2022, 9, 10))
+
+    comment7 = Comment(userId=5, cawId=4, data='Congrats!!',
+                       created_at=datetime(2022, 9, 23))
+    comment8 = Comment(userId=6, cawId=4, data='Congrats!!',
+                       created_at=datetime(2022, 9, 23))
+    comment9 = Comment(userId=2, cawId=4, data='Congrats!!',
+                       created_at=datetime(2022, 9, 23))
+
+    comment10 = Comment(userId=4, cawId=6, data='Had fun add that in :)',
+                        created_at=datetime(2022, 9, 23))
+    comment11 = Comment(
+        userId=3, cawId=6, data='Ya its pretty cool', created_at=datetime(2022, 9, 24))
+    comment12 = Comment(userId=7, cawId=6, data='Its ok',
+                        created_at=datetime(2022, 9, 23))
+
+    comment13 = Comment(userId=4, cawId=7, data='what movie?',
+                        created_at=datetime(2022, 9, 24))
+    comment14 = Comment(userId=5, cawId=7, data="im jealous",
+                        created_at=datetime(2022, 9, 24))
+    comment15 = Comment(userId=2, cawId=7,
+                        data='no invite :(', created_at=datetime(2022, 9, 25))
+
+    comment16 = Comment(userId=2, cawId=8, data='RIGHT!!!',
+                        created_at=datetime(2022, 9, 23))
+    comment17 = Comment(
+        userId=5, cawId=8, data='I got rained on :(', created_at=datetime(2022, 9, 23))
+
+    comment18 = Comment(userId=3, cawId=9, data='what do u mean?',
+                        created_at=datetime(2022, 10, 20))
+    comment19 = Comment(
+        userId=5, cawId=9, data='not too sure what u mean', created_at=datetime(2022, 10, 20))
+
+    comment20 = Comment(userId=1, cawId=10, data='Ya its great',
+                        created_at=datetime(2022, 10, 20))
+    comment21 = Comment(userId=5, cawId=10, data='Very cool!!!',
+                        created_at=datetime(2022, 10, 20))
+    comment22 = Comment(userId=6, cawId=10, data='NICE!!!',
+                        created_at=datetime(2022, 10, 20))
+
+    comment23 = Comment(userId=4, cawId=11, data='Lets hope',
+                        created_at=datetime(2022, 10, 20))
+    comment24 = Comment(userId=9, cawId=11, data='bulls???',
+                        created_at=datetime(2022, 10, 20))
+
+    comment25 = Comment(
+        userId=1, cawId=12, data='thats part of my job', created_at=datetime(2022, 10, 20))
+    comment26 = Comment(
+        userId=6, cawId=12, data='sometimes it could get tedious', created_at=datetime(2022, 10, 20))
+
+    comment27 = Comment(userId=5, cawId=13, data='...',
+                        created_at=datetime(2022, 10, 20))
+    comment28 = Comment(
+        userId=9, cawId=13, data='U have to be invited to mine sorry', created_at=datetime(2022, 10, 20))
+
+    comment29 = Comment(userId=3, cawId=14, data="same",
+                        created_at=datetime(2022, 10, 28))
+    comment30 = Comment(
+        userId=2, cawId=14, data='I have to set a restriction on it lol', created_at=datetime(2022, 10, 28))
+    comment31 = Comment(
+        userId=6, cawId=14, data='I cant get my homework done smh', created_at=datetime(2022, 10, 29))
+
+    comment32 = Comment(userId=2, cawId=15, data='me neither',
+                        created_at=datetime(2022, 10, 31))
+    comment33 = Comment(userId=9, cawId=15, data='whats that?',
+                        created_at=datetime(2022, 10, 31))
+
+    comment34 = Comment(userId=3, cawId=16,
+                        data='im sorry:(', created_at=datetime(2022, 10, 31))
+
+    comment35 = Comment(
+        userId=9, cawId=17, data='u ask at the wrong times...', created_at=datetime(2022, 10, 31))
+
+    comment36 = Comment(userId=6, cawId=18, data='nice',
+                        created_at=datetime(2022, 11, 1))
+    comment37 = Comment(
+        userId=5, cawId=18, data='nice ego boost for the day', created_at=datetime(2022, 11, 3))
+
+    comment38 = Comment(userId=3, cawId=19, data='WELCOME',
+                        created_at=datetime(2022, 11, 2))
+    comment39 = Comment(userId=8, cawId=19, data='Hiiiii',
+                        created_at=datetime(2022, 11, 2))
+    comment40 = Comment(userId=3, cawId=19, data='sup',
+                        created_at=datetime(2022, 11, 2))
+
+    comment41 = Comment(userId=2, cawId=20, data='same ._.',
+                        created_at=datetime(2022, 11, 2))
+    comment42 = Comment(userId=6, cawId=20, data='Me?',
+                        created_at=datetime(2022, 11, 2))
+
+    comment43 = Comment(userId=1, cawId=21, data='sup',
+                        created_at=datetime(2022, 11, 2))
+    comment44 = Comment(userId=3, cawId=21, data='hiiii',
+                        created_at=datetime(2022, 11, 2))
+
+    comment45 = Comment(userId=5, cawId=22, data='same LOL!!!',
+                        created_at=datetime(2022, 11, 3))
+    comment46 = Comment(
+        userId=3, cawId=22, data='they look nothing like me', created_at=datetime(2022, 11, 2))
+
+    comment47 = Comment(userId=8, cawId=23, data='Here to help:)',
+                        created_at=datetime(2022, 11, 3))
+    comment48 = Comment(
+        userId=7, cawId=23, data='What about us???', created_at=datetime(2022, 11, 3))
+
+    comment49 = Comment(userId=6, cawId=24, data='thanks for making it :)',
+                        created_at=datetime(2022, 11, 3))
+    comment50 = Comment(
+        userId=3, cawId=24, data='my favorite website', created_at=datetime(2022, 11, 3))
+
+    comment51 = Comment(userId=4, cawId=26, data='LOL',
+                        created_at=datetime(2022, 11, 3))
+    comment52 = Comment(userId=2, cawId=26, data='HAHAH',
+                        created_at=datetime(2022, 11, 3))
+
+    comment53 = Comment(userId=3, cawId=27, data='smh',
+                        created_at=datetime(2022, 11, 4))
+    comment54 = Comment(
+        userId=2, cawId=27, data='cant believe i actually laughed', created_at=datetime(2022, 11, 4))
+
+    comment55 = Comment(userId=7, cawId=28, data='Thank you :)',
+                        created_at=datetime(2022, 11, 4))
+    comment56 = Comment(
+        userId=8, cawId=28, data='what about us :(', created_at=datetime(2022, 11, 4))
+
+    comment57 = Comment(userId=5, cawId=29, data='....',
+                        created_at=datetime(2022, 11, 4))
+    comment58 = Comment(userId=2, cawId=29, data='ME PLEASE',
+                        created_at=datetime(2022, 11, 4))
+
+    comment59 = Comment(userId=5, cawId=30, data='....',
+                        created_at=datetime(2022, 11, 7))
+    comment60 = Comment(userId=1, cawId=30, data='🙏🙏🙏',
+                        created_at=datetime(2022, 11, 7))
+
+    comment61 = Comment(userId=8, cawId=31, data='always here to help :)',
+                        created_at=datetime(2022, 11, 7))
+    comment62 = Comment(
+        userId=6, cawId=31, data='ya im surprised i didnt know some of these', created_at=datetime(2022, 11, 7))
+
+    comment63 = Comment(userId=3, cawId=32, data='LOL',
+                        created_at=datetime(2022, 11, 7))
+    comment64 = Comment(userId=5, cawId=32, data='HAHA',
+                        created_at=datetime(2022, 11, 7))
+    comment65 = Comment(userId=2, cawId=32, data='wow... 😂',
+                        created_at=datetime(2022, 11, 7))
+
+    comment66 = Comment(
+        userId=2, cawId=33, data='I never went :(', created_at=datetime(2022, 11, 9))
+    comment67 = Comment(userId=4, cawId=33, data='this hit home',
+                        created_at=datetime(2022, 11, 9))
+    comment68 = Comment(userId=6, cawId=33, data='😂😂😂',
+                        created_at=datetime(2022, 11, 9))
+
+    comment69 = Comment(userId=1, cawId=34, data='interesting',
+                        created_at=datetime(2022, 11, 9))
+    comment70 = Comment(
+        userId=4, cawId=34, data='ive only been in the midwest so i wouldnt know :(', created_at=datetime(2022, 11, 9))
+    comment71 = Comment(userId=6, cawId=34, data='woah',
+                        created_at=datetime(2022, 11, 9))
+
     db.session.add(comment1)
     db.session.add(comment2)
     db.session.add(comment3)
@@ -116,6 +234,20 @@ def seed_comments():
     db.session.add(comment55)
     db.session.add(comment56)
     db.session.add(comment57)
+    db.session.add(comment58)
+    db.session.add(comment59)
+    db.session.add(comment60)
+    db.session.add(comment61)
+    db.session.add(comment62)
+    db.session.add(comment63)
+    db.session.add(comment64)
+    db.session.add(comment65)
+    db.session.add(comment66)
+    db.session.add(comment67)
+    db.session.add(comment68)
+    db.session.add(comment69)
+    db.session.add(comment70)
+    db.session.add(comment71)
     db.session.commit()
 
 

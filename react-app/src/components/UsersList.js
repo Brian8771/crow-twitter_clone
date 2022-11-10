@@ -51,8 +51,8 @@ function UsersList() {
           <div>{userComponents}</div>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-around', width: '30vw', position: 'fixed', bottom: '0', right: '0', backgroundColor: 'transparent' }}>
-          <a href='https://github.com/Brian8771'><img style={{ height: '60px', width: '60px' }} src={github} /></a>
-          <a href='https://www.linkedin.com/in/brian-aguilar-088438247/'><img style={{ height: '60px', width: '60px', borderRadius: '50%', filter: 'invert(1)' }} src={linkedIn} /></a>
+          <a className='findMe' href='https://github.com/Brian8771'><img style={{ height: '60px', width: '60px' }} src={github} /></a>
+          <a className='findMe' href='https://www.linkedin.com/in/brian-aguilar-088438247/'><img style={{ height: '60px', width: '60px', borderRadius: '50%', filter: 'invert(1)' }} src={linkedIn} /></a>
         </div>
       </div>
     </div>
