@@ -12,6 +12,20 @@ const NavBar = () => {
 
 
 
+  document.addEventListener('click', function handleClickOutsideBox(event) {
+    const box = document.getElementsByClassName('profileButton');
+    const show = document.getElementsByClassName('show');
+
+    if (box[0].contains(event.target)) {
+      show[0].style.visibility = 'visible'
+    }
+    if (!box[0].contains(event.target)) {
+      show[0].style.visibility = 'hidden';
+    }
+  });
+
+
+
   return (
     <nav className='navBar'>
       <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '52%' }}>
@@ -65,7 +79,7 @@ const NavBar = () => {
         <div style={{ display: 'flex', justifyContent: 'center', height: '30%', alignItems: 'flex-end', marginBottom: '1.5em' }} >
           <div style={{ width: '100%', display: 'flex', flexDirection: 'column' }}>
 
-            {<div style={{ marginBottom: '.5rem' }} className={showDiv ? 'show' : 'dont'} >
+            {<div style={{ marginBottom: '.5rem' }} className='show' >
               {/* <div >
               <img className='imgNav' src={user.profileImage} alt='profile pic' />
               </div>
