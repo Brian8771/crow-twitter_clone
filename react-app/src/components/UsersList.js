@@ -29,7 +29,7 @@ function UsersList() {
         <NavLink style={{ textDecoration: 'none' }} to={`/users/${user.id}`}>
           <div className='profileDiv'>
             <div>
-              <img className='imgNav' src={user.profileImage} />
+              <img style={{ border: 'none', height: '48px', width: '48px' }} className='imgNav' src={user.profileImage} />
             </div>
             <div style={{ marginLeft: '.5em' }}>
               <p className='userPTag firstNameP'>{user.firstName}</p>

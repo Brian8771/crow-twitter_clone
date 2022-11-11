@@ -128,7 +128,7 @@ function User() {
       <div style={{ marginBottom: '1em' }}>
         {isLoaded &&
           <div>
-            <div style={{ display: 'flex', flexDirection: 'row', backgroundColor: 'black' }}>
+            <div style={{ display: 'flex', flexDirection: 'row', backgroundColor: 'black', marginTop: '1rem' }}>
               <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <NavLink style={{ textDecoration: 'none' }} to='/'>
                   <img style={{ height: '20px', width: '20px', margin: '0 10px' }} src={backArrow} alt='backarrow' />
@@ -139,7 +139,7 @@ function User() {
                 <p style={{ margin: '0', fontSize: '13px', color: 'white' }}>{caws.length} Caws</p>
               </div>
             </div>
-            <div style={{ display: 'flex', backgroundImage: `url(${user.headerImage})`, height: '8rem', width: '100%', alignItems: 'flex-end', marginBottom: '70px', objectFit: 'contain' }}>
+            <div style={{ display: 'flex', backgroundImage: `url(${user.headerImage})`, height: '10rem', width: '100%', alignItems: 'flex-end', marginBottom: '70px', objectFit: 'contain', backgroundSize: 'cover' }}>
               <img style={{ marginLeft: '20px', position: 'relative', top: '68px', height: '133.5px', width: '133.5px', objectFit: 'fill' }} className='imgNav' src={user.profileImage} />
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
@@ -222,7 +222,7 @@ function User() {
             </div>
           })
         }
-        {option === 'Likes' && user.like_caws && isLoaded &&
+        {option === 'Likes' && user.like_caws.length > 0 && isLoaded &&
           getLikedCaws().map(caw => {
             return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '96.8%' }}>
               <div>
@@ -272,6 +272,12 @@ function User() {
 
             </div>
           })
+        }
+
+        {option === 'Likes' && user.like_caws.length === 0 && isLoaded &&
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+            <h1>No Likes Here</h1>
+          </div>
         }
 
         {option === 'Comments' && comments && isLoaded &&
