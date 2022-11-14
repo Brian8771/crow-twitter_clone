@@ -139,7 +139,7 @@ function User() {
                 <p style={{ margin: '0', fontSize: '13px', color: 'white' }}>{caws.length} Caws</p>
               </div>
             </div>
-            <div style={{ display: 'flex', backgroundImage: `url(${user.headerImage})`, height: '10rem', width: '100%', alignItems: 'flex-end', marginBottom: '70px', objectFit: 'contain', backgroundSize: 'cover' }}>
+            <div style={{ display: 'flex', backgroundImage: `url(${user.headerImage})`, height: '10rem', backgroundSize: '36rem 10rem', width: '100%', alignItems: 'flex-end', marginBottom: '70px', objectFit: 'contain' }}>
               <img style={{ marginLeft: '20px', position: 'relative', top: '68px', height: '133.5px', width: '133.5px', objectFit: 'fill' }} className='imgNav' src={user.profileImage} />
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
