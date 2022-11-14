@@ -57,7 +57,7 @@ def seed_caws():
     They were caws for concern.''', created_at=datetime(2022, 11, 3))
     crowPuns3 = Caw(userId=7, caw='''What kind of crows always stick together...
     Vel-crow!''', created_at=datetime(2022, 11, 4))
-    demo6 = Caw(userId=1, caw='My favorite account had to be crowPuns LOL',
+    demo6 = Caw(userId=1, caw='My favorite account has to be crowPuns LOL',
                 created_at=datetime(2022, 11, 4))
     brian3 = Caw(userId=4, caw='Does anyone want to be friends?',
                  created_at=datetime(2022, 11, 4))
