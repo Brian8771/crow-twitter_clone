@@ -271,7 +271,7 @@
 
 
 .show {
-    visibility: visible;
+    visibility: hidden;
     height: 60%;
     margin-left: 1em;
 }
