@@ -25,7 +25,6 @@ const HomePage = () => {
         setLoaded(true)
 
     }
-    console.log(caws)
     const followerCaws = () => {
         let arr = []
         arr.push(session.id)
@@ -41,7 +40,7 @@ const HomePage = () => {
     }
 
     const timeAfterCreated = (caw) => {
-
+        console.log(caw.createdAt.split(', '[1])[2] + ' ' + caw.createdAt.split(', '[1])[1])
         const age = Date.now() - Date.parse(caw.createdAt);
         let res;
         const second = Math.floor(age / 1000)
@@ -50,10 +49,10 @@ const HomePage = () => {
         const day = Math.floor(hour / 24);
         const week = Math.floor(day / 7)
         if (week > 0) {
-            res = `${week}w`
+            res = caw.createdAt.split(', '[1])[2] + ' ' + caw.createdAt.split(', '[1])[1]
         }
         else if (day > 0) {
-            res = `${day}d`
+            res = caw.createdAt.split(', '[1])[2] + ' ' + caw.createdAt.split(', '[1])[1]
         }
         else if (hour > 0) {
             res = `${hour}h`
