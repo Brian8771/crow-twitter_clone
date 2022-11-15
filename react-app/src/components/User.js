@@ -79,10 +79,10 @@ function User() {
     const day = Math.floor(hour / 24);
     const week = Math.floor(day / 7)
     if (week > 0) {
-      res = `${week}w`
+      res = caw.createdAt.split(', '[1])[2] + ' ' + caw.createdAt.split(', '[1])[1]
     }
     else if (day > 0) {
-      res = `${day}d`
+      res = caw.createdAt.split(', '[1])[2] + ' ' + caw.createdAt.split(', '[1])[1]
     }
     else if (hour > 0) {
       res = `${hour}h`

@@ -441,3 +441,22 @@
 .findMe:hover {
     transform: scale(1.2);
 }
+
+.inputSearch {
+    width: 60%;
+    height: 2rem;
+    text-indent: 26px;
+    border-radius: 100px;
+    margin-top: 6px;
+    border: none;
+}
+
+.inputSearch:focus {
+    background-color: rgb(207, 207, 207);
+}
+
+.inputSvg {
+    position: absolute;
+    top: 60px;
+
+}
