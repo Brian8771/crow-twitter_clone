@@ -40,7 +40,7 @@ const HomePage = () => {
     }
 
     const timeAfterCreated = (caw) => {
-        console.log(caw.createdAt.split(', '[1])[2] + ' ' + caw.createdAt.split(', '[1])[1])
+
         const age = Date.now() - Date.parse(caw.createdAt);
         let res;
         const second = Math.floor(age / 1000)
