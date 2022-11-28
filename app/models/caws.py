@@ -3,9 +3,9 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 caw_likes = db.Table(
     "caw_likes",
     db.Column("cawId", db.Integer, db.ForeignKey(add_prefix_for_prod(
-        "caws.id", ondelete="CASCADE")), primary_key=True),
+        "caws.id"), ondelete="CASCADE"), primary_key=True),
     db.Column("userId", db.Integer, db.ForeignKey(add_prefix_for_prod(
-        "users.id", ondelete="CASCADE")), primary_key=True)
+        "users.id"), ondelete="CASCADE"), primary_key=True)
 )
 
 if environment == "production":
@@ -19,7 +19,7 @@ class Caw(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
-        'users.id', ondelete='CASCADE')), nullable=False)
+        'users.id'), ondelete='CASCADE'), nullable=False)
     caw = db.Column(db.String(180), nullable=False)
     image = db.Column(db.String(180))
     created_at = db.Column(db.DateTime(timezone=True),

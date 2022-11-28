@@ -3,9 +3,9 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 comment_likes = db.Table(
     "comment_likes",
     db.Column("commentId", db.Integer, db.ForeignKey(add_prefix_for_prod(
-        "comments.id", ondelete="CASCADE")), primary_key=True),
+        "comments.id"), ondelete="CASCADE"), primary_key=True),
     db.Column("userId", db.Integer, db.ForeignKey(add_prefix_for_prod(
-        "users.id", ondelete="CASCADE")), primary_key=True)
+        "users.id"), ondelete="CASCADE"), primary_key=True)
 )
 if environment == "production":
     comment_likes.schema = SCHEMA
@@ -18,9 +18,9 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
-        "users.id", ondelete="CASCADE")), nullable=False)
+        "users.id"), ondelete="CASCADE"), nullable=False)
     cawId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
-        "caws.id", ondelete="CASCADE")), nullable=False)
+        "caws.id"), ondelete="CASCADE"), nullable=False)
     data = db.Column(db.String(500))
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=db.func.now())
