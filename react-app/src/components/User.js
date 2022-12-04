@@ -29,7 +29,6 @@ function User() {
   const comments = Object.values(useSelector(state => state.comments.comments)).filter(x => x.userid === user.id);
   const allCaws = Object.values(useSelector(state => state.caws.caws))
   const session = useSelector(state => state.session.user);
-  console.log(comments);
   const getLikedCaws = () => {
     let arr = []
     for (let caw of user.like_caws) {
@@ -178,7 +177,7 @@ function User() {
                 </div>}
               </div>}
           </div>
-          {!loader && <div className='font' style={{ display: 'flex', borderBottom: '#2f3336 1px solid', fontSize: '15px', color: 'black' }}>
+          {user && <div className='font' style={{ display: 'flex', borderBottom: '#2f3336 1px solid', fontSize: '15px', color: 'black' }}>
             <p className={option === 'Caws' ? 'activated' : 'notActivated'} onClick={() => setOption('Caws')}>Caws</p>
             <p className={option === 'Comments' ? 'activated' : 'notActivated'} onClick={() => setOption('Comments')}>Replies</p>
             <p className={option === 'Likes' ? 'activated' : 'notActivated'} onClick={() => setOption('Likes')}>Likes</p>
