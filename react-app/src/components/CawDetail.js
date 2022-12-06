@@ -99,16 +99,16 @@ const PostDetail = () => {
                 <div>
 
                     <div>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', backgroundColor: 'black' }}>
+                        <div className='my-3' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', backgroundColor: 'black' }}>
                             <NavLink style={{ textDecoration: 'none' }} to='/'>
                                 <img style={{ height: '20px', width: '20px', margin: '0 10px' }} src={backArrow} alt='backarrow' />
                             </NavLink>
-                            <h2 style={{ marginLeft: '20px', color: 'white', fontSize: '20px' }}>Caw</h2>
+                            <h2 className='font-bold' style={{ marginLeft: '20px', color: 'white', fontSize: '20px' }}>Caw</h2>
                         </div>
                         {caw &&
                             <div style={{ display: 'flex', flexDirection: 'column', height: 'auto', borderBottom: '#2f3336 1px solid', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', padding: '10px 0' }}>
                                 <div style={{ display: 'flex', flexDirection: 'row', padding: '10px', alignItems: 'center' }}>
-                                    <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
+                                    <img className='h-12 w-12 rounded-full mx-3.5' src={caw.user.profileImage} alt='profilePic' />
                                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
                                         <NavLink style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} to={`/users/${caw.user.id}`}>
                                             <p style={{ color: 'white' }} className='pTag firstNameP'>{caw.user.firstName}</p>
@@ -137,11 +137,11 @@ const PostDetail = () => {
                                 </div>
                                 <span style={{ marginLeft: '20px', color: 'gray', marginTop: '10px' }}>{timeAfterCreated(caw)}</span>
                                 <div style={{ marginLeft: '8px', margin: '0 1rem', borderTop: '#2f3336 1px solid', borderBottom: '#2f3336 1px solid', marginTop: '10px' }}>
-                                    <p style={{ marginLeft: '8px', color: '#464a4c', cursor: 'pointer' }}>
+                                    <p className='my-3' style={{ marginLeft: '8px', color: '#464a4c', cursor: 'pointer' }}>
                                         <LikeUser totalLikes={totalLikes} loaded={loaded} id={id} />
                                     </p>
                                 </div>
-                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+                                <div className='my-3' style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                                     {caw && loaded && <div className='likeButton' onClick={() => handleLikes(caw.id)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                         {like && likeStatus === 1 ?
                                             <div className='svgContainerDetails'>
@@ -183,9 +183,9 @@ const PostDetail = () => {
                         <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
                             {comments && refreshComment &&
                                 comments.map(comment => {
-                                    return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '97%' }}>
-                                        <div>
-                                            <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={comment.user.profileImage} alt='profilePic' />
+                                    return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
+                                        <div className='px-2.5 py-1.5 mr-3.5'>
+                                            <img className='h-12 w-12 max-w-none rounded-full' src={comment.user.profileImage} alt='profilePic' />
                                         </div>
                                         <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
                                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>

@@ -141,7 +141,7 @@ function User() {
           <div style={{ marginBottom: '1em' }}>
             {isLoaded &&
               <div>
-                <div style={{ display: 'flex', flexDirection: 'row', backgroundColor: 'black', marginTop: '1rem' }}>
+                <div className='mb-1.5' style={{ display: 'flex', flexDirection: 'row', backgroundColor: 'black', marginTop: '1rem' }}>
                   <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                     <NavLink style={{ textDecoration: 'none' }} to='/'>
                       <img style={{ height: '20px', width: '20px', margin: '0 10px' }} src={backArrow} alt='backarrow' />
@@ -171,7 +171,7 @@ function User() {
                 <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
                   <p style={{ marginLeft: '16px', color: 'white', fontSize: '15px', width: '100%', wordBreak: 'break-word', paddingRight: '6px' }}>{user.bio}</p>
                 </div>
-                {<div style={{ display: 'flex', flexDirection: 'row', width: '100%', }}>
+                {<div className='mt-3' style={{ display: 'flex', flexDirection: 'row', width: '100%', }}>
                   <UserFollowingsModal id={user.id} totalFollowings={user.followingCount} />
                   <UserFollowersModal id={user.id} totalFollowers={user.followerCount} />
                 </div>}
@@ -187,8 +187,8 @@ function User() {
             {option === 'Caws' && caws.length > 0 && isLoaded &&
               caws.map(caw => {
                 return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '96.8%' }}>
-                  <div>
-                    <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
+                  <div className='px-2.5 py-1.5 mr-3.5'>
+                    <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
                   </div>
                   <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
                     <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
@@ -238,8 +238,8 @@ function User() {
             {option === 'Likes' && user.like_caws.length > 0 && isLoaded &&
               getLikedCaws().map(caw => {
                 return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '96.8%' }}>
-                  <div>
-                    <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
+                  <div className='px-2.5 py-1.5 mr-3.5'>
+                    <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
                   </div>
                   <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
                     <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
@@ -296,8 +296,8 @@ function User() {
             {option === 'Comments' && comments && isLoaded &&
               comments.map(comment => {
                 return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '96.8%' }}>
-                  <div>
-                    <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={comment.user.profileImage} alt='profilePic' />
+                  <div className='px-2.5 py-1.5 mr-3.5'>
+                    <img className='h-12 w-12 rounded-full' src={comment.user.profileImage} alt='profilePic' />
                   </div>
                   <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
                     <NavLink style={{ textDecoration: 'none' }} to={`/users/${comment.userId}`}>

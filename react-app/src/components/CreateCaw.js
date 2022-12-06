@@ -44,8 +44,8 @@ const CreateCaw = ({ setLoaded }) => {
 
     return (
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', margin: '0', backgroundColor: 'black' }}>
-            <div>
-                <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={user.profileImage} alt='profilePic' />
+            <div className='px-2.5 py-1.5 mr-3.5'>
+                <img className='h-12 w-14 rounded-full' src={user.profileImage} alt='profilePic' />
             </div>
             <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
                 <form onSubmit={handleSubmit} className='pTag' >
@@ -58,7 +58,7 @@ const CreateCaw = ({ setLoaded }) => {
                     </div>
                     <div>
                         <textarea
-                            style={{ width: '90%', height: '6rem', border: 'none', resize: 'none', backgroundColor: 'black', color:'white' }}
+                            style={{ width: '90%', height: '6rem', border: 'none', resize: 'none', backgroundColor: 'black', color: 'white' }}
                             type='text'
                             value={caw}
                             placeholder="What's on your mind?"
