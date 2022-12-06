@@ -66,7 +66,7 @@ const CreateCaw = ({ setLoaded }) => {
                         />
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <button disabled={errors ? true : false} className='submitButtonForCaw' type='submit'>Caw</button>
+                        <button disabled={errors ? true : false} className='h-7 w-20 rounded-full m-0 bg-white text-black transition-all duration-500 hover:bg-grayish text-sm disabled:bg-black' type='submit'>Caw</button>
                     </div>
                 </form>
             </div>

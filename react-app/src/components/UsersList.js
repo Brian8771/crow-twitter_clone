@@ -46,7 +46,7 @@ function UsersList() {
           onChange={(e) => setInputValue(e.target.value)}
         />
       </div> */}
-      <div className='userListDiv mt-2'>
+      <div className='userListDiv mt-4'>
         <div>
           <h1 className='font-bold' style={{ fontSize: '20px' }}>Other users on Crow </h1>
           {loader ?

@@ -30,9 +30,9 @@ const NavBar = () => {
     <nav className='navBar'>
       <div style={{ display: 'flex', flexDirection: 'column', height: '100%', width: '52%' }}>
 
-        <div className='p-3 logo-img hover:animate-pulse' style={{ width: '40%', height: '30%', marginTop: '1em' }}>
+        <div className='p-3 logo-img ' style={{ width: '40%', height: '30%', marginTop: '1em' }}>
           <NavLink to='/'>
-            <img className='h-12 w-12' style={{ height: '40px', width: '40px' }} src={crow} alt='crow-icon' />
+            <img className='h-12 w-12 hover:animate-pulse' style={{ height: '40px', width: '40px' }} src={crow} alt='crow-icon' />
           </NavLink>
         </div>
 

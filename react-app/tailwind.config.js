@@ -7,7 +7,11 @@ module.exports = {
     fontFamily: {
       'body': ['TwitterChirpExtendedHeavy', 'Verdana', 'BlinkMacSystemFont', "Segoe UI", 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      colors: {
+        grayish: 'rgb(207, 207, 207)'
+      }
+    },
   },
   plugins: [],
 }

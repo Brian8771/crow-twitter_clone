@@ -43,13 +43,13 @@ const LoginForm = () => {
       </div>
       <div style={{ backgroundColor: 'black', height: '100%', width: '50%' }}>
         <div style={{ marginLeft: '25px' }}>
-          <h1 style={{ fontFamily: 'TwitterChirpExtendedHeavy, Verdana, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif', display: 'flex', paddingTop: '25%', width: '100%', margin: '0', fontSize: '64px' }}>Happening now</h1>
-          <h2 style={{ marginTop: '40px', fontSize: '32px' }}>Join Crow today.</h2>
+          <h1 className='font-black' style={{ fontFamily: 'TwitterChirpExtendedHeavy, Verdana, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif', display: 'flex', paddingTop: '25%', width: '100%', margin: '0', fontSize: '64px' }}>Happening now</h1>
+          <h2 className='font-black' style={{ marginTop: '40px', fontSize: '32px' }}>Join Crow today.</h2>
           <div>
             <SignUpFormModal />
           </div>
           <div style={{ marginTop: '30px' }}>
-            <h2 style={{ fontSize: '17px' }}>Already have an account?</h2>
+            <h2 className='font-black' style={{ fontSize: '17px' }}>Already have an account?</h2>
             <LoginFormModal />
           </div>
         </div>

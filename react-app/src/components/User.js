@@ -148,8 +148,8 @@ function User() {
                     </NavLink>
                   </div>
                   <div style={{ height: '3rem' }}>
-                    <p style={{ margin: '0', fontSize: '20px', color: 'white' }}>{user.firstName}</p>
-                    <p style={{ margin: '0', fontSize: '13px', color: 'white' }}>{caws.length} Caws</p>
+                    <p className='m-0 text-white text-xl '>{user.firstName}</p>
+                    <p className='m-0 text-sm text-white'>{caws.length} Caws</p>
                   </div>
                 </div>
                 <div style={{ display: 'flex', backgroundImage: `url(${user.headerImage})`, height: '10rem', backgroundSize: '36rem 10rem', width: '100%', alignItems: 'flex-end', marginBottom: '70px', objectFit: 'contain' }}>

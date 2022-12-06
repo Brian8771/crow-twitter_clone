@@ -203,10 +203,11 @@ const PostDetail = () => {
                                                 {!showCommentButtons && comment.userid === user.id && <div onClick={() => setShowCommentButtons(true)} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
                                                     <svg fill='white' height='20px' viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
                                                 </div>}
-                                                {showCommentButtons && <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                    <div style={{ display: 'flex', flexDirection: 'row', width: '100%', padding: '0', justifyContent: 'center', height: '20%' }}>
+                                                {showCommentButtons && <div className='flex items-center'>
+                                                    <div className='flex p-0 justify-center'>
                                                         {comment.user.id === user.id && <EditCommentModal setRefreshComment={setRefreshComment} setShowModal={setEditModal} id={comment.id} />}
-                                                        {comment.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '20px', width: '60px', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_comment(comment.id)}>Delete</button>}
+                                                        {comment.user.id === user.id &&
+                                                            <button className='bg-black h-5 w-16 text-center items-center  border rounded-full text-sm' onClick={() => delete_comment(comment.id)}>Delete</button>}
                                                     </div>
                                                 </div>}
                                             </div>

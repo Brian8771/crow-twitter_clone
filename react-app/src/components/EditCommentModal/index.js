@@ -7,7 +7,7 @@ function EditCommentModal({ id, setRefreshComment }) {
     const [showModal, setShowModal] = useState(false);
     return (
         <>
-            <button style={{ color: 'black', padding: '0', margin: '0', height: '20px', width: '60px', borderRadius: '40px', cursor: 'pointer' }} onClick={() => setShowModal(true)}>Edit</button>
+            <button className='bg-white text-center items-center rounded-full h-5 w-16 text-black mr-1 text-sm' onClick={() => setShowModal(true)}>Edit</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <EditComment setRefreshComment={setRefreshComment} id={id} hideModal={() => setShowModal(false)} />

@@ -41,7 +41,7 @@ const CreateComment = ({ setIsLoaded }) => {
 
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', margin: '0', height: '7.2rem' }}>
+        <div className='flex items-start p-2.5 h-29' style={{ borderBottom: '#2f3336 1px solid', borderLeft: 'black .5px solid', borderRight: 'black .5px solid' }}>
             <div className='px-2.5 py-1.5 mr-3.5'>
                 <img className='h-12 w-12 rounded-full max-w-none' src={user.profileImage} alt='profilePic' />
             </div>
@@ -64,7 +64,7 @@ const CreateComment = ({ setIsLoaded }) => {
                         />
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <button disabled={errors ? true : false} className='submitButtonForComment' type='submit'>Reply</button>
+                        <button disabled={errors ? true : false} className='h-7 w-20 rounded-full m-0 bg-white text-black transition-all duration-500 hover:bg-grayish text-sm disabled:bg-black' type='submit'>Reply</button>
                     </div>
                 </form>
             </div>

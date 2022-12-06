@@ -9,7 +9,7 @@ const LogoutButton = () => {
     await dispatch(logout());
   };
 
-  return <button className='logoutButton' onClick={onLogout}>Logout @{user.username}</button>;
+  return <button className='text-black bg-white h-12 text-sm rounded-full w-fit px-2 hover:bg-grayish transition-all duration-500' onClick={onLogout}>Logout @{user.username}</button>;
 };
 
 
