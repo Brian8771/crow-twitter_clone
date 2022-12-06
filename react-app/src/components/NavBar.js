@@ -38,7 +38,7 @@ const NavBar = () => {
 
         <div style={{ width: '40%', display: 'flex', alignItems: 'flex-start', height: '60%' }}>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div className='py-3 px-2 navDiv'>
+            <div className='py-2 px-2 navDiv'>
               <NavLink className='navLinks flex align-baseline' to='/' exact={true} activeClassName='active'>
                 <div className='flex justify-center'>
                   <div className='flex justify-center items-center'>
@@ -52,7 +52,7 @@ const NavBar = () => {
                 </div>
               </NavLink>
             </div>
-            <div className='py-3 px-2 navDiv' >
+            <div className='mt-2 py-2 px-2 navDiv' >
               <NavLink className='navLinks flex align-baseline' to={`/users/${user.id}`}>
                 <div className='flex justify-center'>
                   <div className='flex justify-center items-center'>
