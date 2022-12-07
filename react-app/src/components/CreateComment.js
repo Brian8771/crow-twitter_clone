@@ -24,12 +24,12 @@ const CreateComment = ({ setIsLoaded, setLoader }) => {
             comment
         }
         let commentCreated = await dispatch(addComment(id, commentInfo));
-        if (commentCreated) setIsLoaded(false);
+        // if (commentCreated) setIsLoaded(false);
         setLoader(true)
         await dispatch(getComments(id));
-        setIsLoaded(true)
+        await setLoader(false)
+        // setIsLoaded(true)
         setComment('');
-        // setLoader(false)
         // history.push('/1')
         // history.push('/')
     }
