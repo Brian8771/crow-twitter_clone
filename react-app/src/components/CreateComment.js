@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import '../styles/Homepage.css'
 import { addComment, getComments } from '../store/comments';
 
-const CreateComment = ({ setIsLoaded }) => {
+const CreateComment = ({ setIsLoaded, setLoader }) => {
     const [comment, setComment] = useState('');
     const [errors, setErrors] = useState([]);
     const dispatch = useDispatch()
@@ -25,9 +25,11 @@ const CreateComment = ({ setIsLoaded }) => {
         }
         let commentCreated = await dispatch(addComment(id, commentInfo));
         if (commentCreated) setIsLoaded(false);
+        setLoader(true)
         await dispatch(getComments(id));
         setIsLoaded(true)
         setComment('');
+        // setLoader(false)
         // history.push('/1')
         // history.push('/')
     }
@@ -56,8 +58,8 @@ const CreateComment = ({ setIsLoaded }) => {
                     </div>
                     <div>
                         <textarea
-                            className='text-sm text-gray-900 '
-                            style={{ width: '90%', height: '4.2rem', border: 'none', resize: 'none', backgroundColor: 'black' }}
+                            className='text-sm '
+                            style={{ width: '90%', height: '4.2rem', border: 'none', resize: 'none', backgroundColor: 'black', color: 'white' }}
                             type='text'
                             value={comment}
                             placeholder='Post a comment?'
