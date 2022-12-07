@@ -27,9 +27,9 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
         }
         let cawCreated = await dispatch(createCaw(cawInfo));
         // await setLoaded(false);
-        await setLoader(true)
+        // await setLoader(true)
         await dispatch(getAllCaws());
-        await setLoader(false)
+        // await setLoader(false)
         // await setLoaded(true)
         // await setErrors(cawCreated)
         setCaw('');
