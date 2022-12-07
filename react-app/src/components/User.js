@@ -2,11 +2,9 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { getAllCaws, likeCawThunk } from '../store/caws';
-import { followUser, getCurretProfile, getFollowers, getFollowings, unfollowUser } from '../store/session';
+import { followUser, getCurretProfile, unfollowUser } from '../store/session';
 import '../styles/Homepage.css'
 import backArrow from '../images/arrow-back.svg'
-import comment from '../images/comment.png';
-import likeIcon from '../images/like.png';
 import likedIcon from '../images/liked.png'
 import { likeCommentThunk } from '../store/comments';
 import EditUserModal from './EditUserModal';
@@ -187,7 +185,7 @@ function User() {
             {option === 'Caws' && caws.length > 0 && isLoaded &&
               caws.map(caw => {
                 return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '96.8%' }}>
-                  <div className='px-2.5 py-1.5 mr-3.5'>
+                  <div className='px-2.5 py-1.5 mr-3'>
                     <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
                   </div>
                   <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
@@ -238,7 +236,7 @@ function User() {
             {option === 'Likes' && user.like_caws.length > 0 && isLoaded &&
               getLikedCaws().map(caw => {
                 return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '96.8%' }}>
-                  <div className='px-2.5 py-1.5 mr-3.5'>
+                  <div className='px-2.5 py-1.5 mr-3'>
                     <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
                   </div>
                   <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
@@ -296,7 +294,7 @@ function User() {
             {option === 'Comments' && comments && isLoaded &&
               comments.map(comment => {
                 return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '96.8%' }}>
-                  <div className='px-2.5 py-1.5 mr-3.5'>
+                  <div className='px-2.5 py-1.5 mr-3'>
                     <img className='h-12 w-12 rounded-full' src={comment.user.profileImage} alt='profilePic' />
                   </div>
                   <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>

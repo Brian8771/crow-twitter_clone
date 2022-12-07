@@ -88,10 +88,11 @@ const HomePage = () => {
                 </div>
 
 
+
                 {loader ?
                     <>
                         <div className="bg-black">
-                            <div className="border-b-[1px] bg-black border-gray-600 shadow  p-3 py-4 max-w-lrg w-full mx-auto">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-4 max-w-lrg w-full mx-auto">
                                 <div className="animate-pulse flex space-x-3">
                                     <div className='px-2 py-1.5'>
                                         <div className="rounded-full bg-gray-600 h-12 w-12"></div>
@@ -107,7 +108,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className="bg-black">
-                            <div className="border-b-[1px] bg-black border-gray-600 shadow  p-3 py-4 max-w-lrg w-full mx-auto">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-4 max-w-lrg w-full mx-auto">
                                 <div className="animate-pulse flex space-x-3">
                                     <div className='px-2 py-1.5'>
                                         <div className="rounded-full bg-gray-600 h-12 w-12"></div>
@@ -123,7 +124,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className="bg-black">
-                            <div className="border-b-[1px] bg-black border-gray-600 shadow  p-3 py-4 max-w-lrg w-full mx-auto">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-4 max-w-lrg w-full mx-auto">
                                 <div className="animate-pulse flex space-x-3">
                                     <div className='px-2 py-1.5'>
                                         <div className="rounded-full bg-gray-600 h-12 w-12"></div>
@@ -139,7 +140,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className="bg-black">
-                            <div className="border-b-[1px] bg-black border-gray-600 shadow  p-3 py-4 max-w-lrg w-full mx-auto">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-4 max-w-lrg w-full mx-auto">
                                 <div className="animate-pulse flex space-x-3">
                                     <div className='px-2 py-1.5'>
                                         <div className="rounded-full bg-gray-600 h-12 w-12"></div>
@@ -155,7 +156,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className="bg-black">
-                            <div className="border-b-[1px] bg-black border-gray-600 shadow  p-3 py-4 max-w-lrg w-full mx-auto">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-4 max-w-lrg w-full mx-auto">
                                 <div className="animate-pulse flex space-x-3">
                                     <div className='px-2 py-1.5'>
                                         <div className="rounded-full bg-gray-600 h-12 w-12"></div>
@@ -171,7 +172,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className="bg-black">
-                            <div className="border-b-[1px] bg-black border-gray-600 shadow  p-3 py-4 max-w-lrg w-full mx-auto">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-4 max-w-lrg w-full mx-auto">
                                 <div className="animate-pulse flex space-x-3">
                                     <div className='px-2 py-1.5'>
                                         <div className="rounded-full bg-gray-600 h-12 w-12"></div>
@@ -187,7 +188,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className="bg-black">
-                            <div className="border-b-[1px] bg-black border-gray-600 shadow  p-3 py-4 max-w-lrg w-full mx-auto">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-4 max-w-lrg w-full mx-auto">
                                 <div className="animate-pulse flex space-x-3">
                                     <div className='px-2 py-1.5'>
                                         <div className="rounded-full bg-gray-600 h-12 w-12"></div>
@@ -203,7 +204,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className="bg-black">
-                            <div className="border-b-[1px] bg-black border-gray-600 shadow  p-3 py-4 max-w-lrg w-full mx-auto">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-4 max-w-lrg w-full mx-auto">
                                 <div className="animate-pulse flex space-x-3">
                                     <div className='px-2 py-1.5'>
                                         <div className="rounded-full bg-gray-600 h-12 w-12"></div>
@@ -219,7 +220,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className="bg-black">
-                            <div className="border-b-[1px] bg-black border-gray-600 shadow  p-3 py-4 max-w-lrg w-full mx-auto">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-4 max-w-lrg w-full mx-auto">
                                 <div className="animate-pulse flex space-x-3">
                                     <div className='px-2 py-1.5'>
                                         <div className="rounded-full bg-gray-600 h-12 w-12"></div>
@@ -235,7 +236,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className="bg-black">
-                            <div className="border-b-[1px] bg-black border-gray-600 shadow  p-3 py-4 max-w-lrg w-full mx-auto">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-4 max-w-lrg w-full mx-auto">
                                 <div className="animate-pulse flex space-x-3">
                                     <div className='px-2 py-1.5'>
                                         <div className="rounded-full bg-gray-600 h-12 w-12"></div>
@@ -250,12 +251,14 @@ const HomePage = () => {
                                 </div>
                             </div>
                         </div>
+
                     </>
-                    : <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+                    :
+                    <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
                         {followerCaws().length > 0 && caws && users && loaded ?
                             followerCaws().map(caw => {
                                 return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', backgroundColor: 'black' }}>
-                                    <div className='px-2.5 py-1.5 mr-3.5'>
+                                    <div className='px-2.5 py-1.5 mr-3'>
                                         <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
                                     </div>
                                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '85%' }}>
@@ -308,6 +311,7 @@ const HomePage = () => {
                                 </div>
                             </div>
                         }
+
                     </div>}
             </div>
         </div >

@@ -8,8 +8,6 @@ import '../styles/Homepage.css'
 import backArrow from '../images/arrow-back.svg'
 import { getComments, deleteComment, likeCommentThunk } from '../store/comments';
 import CreateComment from './CreateComment';
-import comment from '../images/comment.png';
-import likeIcon from '../images/like.png';
 import likedIcon from '../images/liked.png'
 import LikeUser from './LikeUserModal';
 
@@ -184,7 +182,7 @@ const PostDetail = () => {
                             {comments && refreshComment &&
                                 comments.map(comment => {
                                     return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
-                                        <div className='px-2.5 py-1.5 mr-3.5'>
+                                        <div className='px-2.5 py-1.5 mr-3'>
                                             <img className='h-12 w-12 max-w-none rounded-full' src={comment.user.profileImage} alt='profilePic' />
                                         </div>
                                         <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
