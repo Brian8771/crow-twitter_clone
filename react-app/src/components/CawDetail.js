@@ -118,7 +118,7 @@ const PostDetail = () => {
                                     </div>}
                                     {showButtons && <div style={{ display: 'flex', flexDirection: 'row', width: '25%', padding: '6px', height: 'fit-content' }}>
                                         {caw.user.id === user.id && <EditFormModal setShowModal={setEditModal} caw={caw.id} />}
-                                        {caw.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '24px', width: '100%', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_caw(caw.id)}>Delete</button>}
+                                        {caw.user.id === user.id && <button className='bg-black h-5 w-16 text-center items-center  border rounded-full text-sm' onClick={() => delete_caw(caw.id)}>Delete</button>}
                                     </div>}
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'column' }}>

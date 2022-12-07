@@ -184,7 +184,7 @@ function User() {
 
             {option === 'Caws' && caws.length > 0 && isLoaded &&
               caws.map(caw => {
-                return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '96.8%' }}>
+                return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
                   <div className='px-2.5 py-1.5 mr-3'>
                     <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
                   </div>
@@ -235,7 +235,7 @@ function User() {
             }
             {option === 'Likes' && user.like_caws.length > 0 && isLoaded &&
               getLikedCaws().map(caw => {
-                return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '96.8%' }}>
+                return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
                   <div className='px-2.5 py-1.5 mr-3'>
                     <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
                   </div>
@@ -293,7 +293,7 @@ function User() {
 
             {option === 'Comments' && comments && isLoaded &&
               comments.map(comment => {
-                return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '96.8%' }}>
+                return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
                   <div className='px-2.5 py-1.5 mr-3'>
                     <img className='h-12 w-12 rounded-full' src={comment.user.profileImage} alt='profilePic' />
                   </div>

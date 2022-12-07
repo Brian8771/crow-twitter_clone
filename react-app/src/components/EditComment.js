@@ -52,7 +52,7 @@ const EditComment = ({ setRefreshComment, hideModal, id }) => {
         <form className='editFormModal' onSubmit={handleSubmit}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', width: '100%' }}>
                 <div>
-                    <h2>Edit comment</h2>
+                    <h2 className='text-2xl mb-4 font-black'>Edit Comment</h2>
                 </div>
                 <div>
                     {errors &&
@@ -63,6 +63,7 @@ const EditComment = ({ setRefreshComment, hideModal, id }) => {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', width: '70%', alignItems: 'center' }}>
                     <textarea
+                        className='text-black text-sm'
                         style={{ width: '90%', height: '5rem', border: 'none', resize: 'none', marginBottom: '10px' }}
                         type='text'
                         name='firstName'

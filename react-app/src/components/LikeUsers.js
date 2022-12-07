@@ -47,7 +47,7 @@ const LikeUsers = ({ id }) => {
         <div className="editFormModal" style={{ flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', overflowY: 'scroll' }}>
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', marginLeft: '1rem', width: '100%' }}>
                 <div style={{ position: 'sticky', top: '0', backgroundColor: 'black', width: '100%' }}>
-                    <h2>Liked by</h2>
+                    <h2 className='text-2xl font-black pt-5 pb-2'>Liked by</h2>
                 </div>
                 <div style={{ width: '90%' }} >
                     {users && isLoaded && users.map(user => {
@@ -56,7 +56,7 @@ const LikeUsers = ({ id }) => {
                                 <div className='profileDiv' style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
                                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                            <img className='imgNav' src={user.profileImage} />
+                                            <img className='border-black border-2 rounded-full h-9 w-9' src={user.profileImage} />
                                         </div>
                                         <div style={{ marginLeft: '.5em' }}>
                                             <p className='userPTag'>{user.firstName}</p>
