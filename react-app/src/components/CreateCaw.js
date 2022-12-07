@@ -5,7 +5,7 @@ import { createCaw, getAllCaws } from '../store/caws';
 import '../styles/Homepage.css'
 
 
-const CreateCaw = ({ setLoaded }) => {
+const CreateCaw = ({ setLoaded, setLoader }) => {
     const [errors, setErrors] = useState([]);
     const [caw, setCaw] = useState('');
     const dispatch = useDispatch()
@@ -27,7 +27,9 @@ const CreateCaw = ({ setLoaded }) => {
         }
         let cawCreated = await dispatch(createCaw(cawInfo));
         await setLoaded(false);
+        await setLoader(true)
         await dispatch(getAllCaws());
+        await setLoader(false)
         await setLoaded(true)
         // await setErrors(cawCreated)
         setCaw('');

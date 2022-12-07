@@ -28,6 +28,8 @@ const PostDetail = () => {
     const user = useSelector(state => state.session.user);
     const comments = Object.values(useSelector(state => state.comments.comments)).filter(x => x.caw.id === caw.id)
     const [editModal, setEditModal] = useState(false);
+    const [loader, setLoader] = useState(false);
+    const [loaders, setLoaders] = useState(false);
 
 
     const handleLikes = async (id) => {
@@ -174,70 +176,187 @@ const PostDetail = () => {
 
 
                     <div>
-                        <CreateComment setIsLoaded={setIsLoaded} />
+                        <CreateComment setLoader={setLoaders} setIsLoaded={setIsLoaded} />
                     </div>
 
                     <div>
-                        <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
-                            {comments && refreshComment &&
-                                comments.map(comment => {
-                                    return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
-                                        <div className='px-2.5 py-1.5 mr-3'>
-                                            <img className='h-12 w-12 max-w-none rounded-full' src={comment.user.profileImage} alt='profilePic' />
-                                        </div>
-                                        <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
-                                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-                                                <div>
-                                                    <NavLink style={{ textDecoration: 'none' }} to={`/users/${comment.user.id}`}>
-                                                        <p style={{ color: 'white' }} className='pTag'><span className='firstNameP'>{comment.user.firstName}</span> <span style={{ color: 'gray', marginLeft: '8px' }}>@{comment.user.username}</span><span style={{ color: 'gray', marginLeft: '8px' }}>
-                                                            {timeAfterCreated(comment)}
-                                                        </span></p>
-                                                    </NavLink>
-                                                    <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
-                                                        <span style={{ color: 'gray', fontSize: '15px' }}>Replying to @{caw.user.username}</span>
-                                                    </NavLink>
-
-                                                </div>
-                                                {!showCommentButtons && comment.userid === user.id && <div onClick={() => setShowCommentButtons(true)} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-                                                    <svg fill='white' height='20px' viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
-                                                </div>}
-                                                {showCommentButtons && <div className='flex items-center'>
-                                                    <div className='flex p-0 justify-center'>
-                                                        {comment.user.id === user.id && <EditCommentModal setRefreshComment={setRefreshComment} setShowModal={setEditModal} id={comment.id} />}
-                                                        {comment.user.id === user.id &&
-                                                            <button className='bg-black h-5 w-16 text-center items-center  border rounded-full text-sm' onClick={() => delete_comment(comment.id)}>Delete</button>}
-                                                    </div>
-                                                </div>}
-                                            </div>
-                                            <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
-                                                <div style={{ width: '100%' }}>
-                                                    <p style={{ wordBreak: 'break-word', color: 'white' }} className='pTag' >{comment.data}</p>
-                                                </div>
-                                            </div>
-                                            <div className='likeButton' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: '.3rem' }} onClick={() => handleCommentLikes(comment.id)}>
-                                                {refresh && comment.likeStatus === 1 ?
-                                                    <div className='svgContainer'>
-                                                        <img src={likedIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
-                                                    </div>
-                                                    :
-                                                    // <img src={likeIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
-                                                    <div className='svgContainer'>
-                                                        <svg className='svgHeart' height="16px" viewBox="0 0 93 87" >
-                                                            <path d="M46.0625 86.6892H45.9983C34.1596 86.4692 0 55.605 0 26.3725C0 12.3292 11.5729 0 24.7637 0C35.2596 0 42.3179 7.24167 46.0579 12.5125C49.7887 7.25083 56.8471 0 67.3475 0C80.5475 0 92.1158 12.3292 92.1158 26.3771C92.1158 55.6004 57.9517 86.4646 46.1129 86.68H46.0625V86.6892ZM24.7683 6.87958C15.235 6.87958 6.87958 15.9912 6.87958 26.3817C6.87958 52.69 39.1187 79.53 46.0671 79.8142C53.0246 79.53 85.2546 52.6946 85.2546 26.3817C85.2546 15.9912 76.8992 6.87958 67.3658 6.87958C55.7792 6.87958 49.3075 20.3362 49.2525 20.4692C48.1983 23.045 43.9542 23.045 42.8954 20.4692C42.8312 20.3317 36.3642 6.87958 24.7729 6.87958H24.7683Z" />
-                                                        </svg>
-                                                    </div>
-                                                }
-                                                {comment.likeStatus === 1 ?
-                                                    <p style={{ marginLeft: '12px', cursor: 'pointer', color: '#f9197f' }}>{comment.totalLikes}</p> :
-                                                    <p className='numberOfLikes'>{comment.totalLikes}</p>
-                                                }
-                                            </div>
-                                        </div>
-
+                        {loaders && <div className="bg-black">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                <div className="animate-pulse flex space-x-3">
+                                    <div className='px-2 py-1.5'>
+                                        <div className="rounded-full bg-gray-600 h-12 w-12"></div>
                                     </div>
-                                })
-                            }
-                        </div>
+                                    <div className="flex-1 space-y-4 py-1 m-0">
+                                        <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                        <div className="space-y-2">
+                                            <div className="h-4 bg-gray-600 rounded"></div>
+                                            <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>}
+                        {loader ?
+                            <>
+                                <div className="bg-black">
+                                    <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                        <div className="animate-pulse flex space-x-3">
+                                            <div className='px-2 py-1.5'>
+                                                <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                            </div>
+                                            <div className="flex-1 space-y-4 py-1 m-0">
+                                                <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                                <div className="space-y-2">
+                                                    <div className="h-4 bg-gray-600 rounded"></div>
+                                                    <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="bg-black">
+                                    <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                        <div className="animate-pulse flex space-x-3">
+                                            <div className='px-2 py-1.5'>
+                                                <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                            </div>
+                                            <div className="flex-1 space-y-4 py-1 m-0">
+                                                <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                                <div className="space-y-2">
+                                                    <div className="h-4 bg-gray-600 rounded"></div>
+                                                    <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="bg-black">
+                                    <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                        <div className="animate-pulse flex space-x-3">
+                                            <div className='px-2 py-1.5'>
+                                                <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                            </div>
+                                            <div className="flex-1 space-y-4 py-1 m-0">
+                                                <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                                <div className="space-y-2">
+                                                    <div className="h-4 bg-gray-600 rounded"></div>
+                                                    <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="bg-black">
+                                    <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                        <div className="animate-pulse flex space-x-3">
+                                            <div className='px-2 py-1.5'>
+                                                <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                            </div>
+                                            <div className="flex-1 space-y-4 py-1 m-0">
+                                                <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                                <div className="space-y-2">
+                                                    <div className="h-4 bg-gray-600 rounded"></div>
+                                                    <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="bg-black">
+                                    <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                        <div className="animate-pulse flex space-x-3">
+                                            <div className='px-2 py-1.5'>
+                                                <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                            </div>
+                                            <div className="flex-1 space-y-4 py-1 m-0">
+                                                <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                                <div className="space-y-2">
+                                                    <div className="h-4 bg-gray-600 rounded"></div>
+                                                    <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="bg-black">
+                                    <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                        <div className="animate-pulse flex space-x-3">
+                                            <div className='px-2 py-1.5'>
+                                                <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                            </div>
+                                            <div className="flex-1 space-y-4 py-1 m-0">
+                                                <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                                <div className="space-y-2">
+                                                    <div className="h-4 bg-gray-600 rounded"></div>
+                                                    <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+
+                            :
+                            <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+                                {comments && refreshComment &&
+                                    comments.map(comment => {
+                                        return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
+                                            <div className='px-2.5 py-1.5 mr-3'>
+                                                <img className='h-12 w-12 max-w-none rounded-full' src={comment.user.profileImage} alt='profilePic' />
+                                            </div>
+                                            <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
+                                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
+                                                    <div>
+                                                        <NavLink style={{ textDecoration: 'none' }} to={`/users/${comment.user.id}`}>
+                                                            <p style={{ color: 'white' }} className='pTag'><span className='firstNameP'>{comment.user.firstName}</span> <span style={{ color: 'gray', marginLeft: '8px' }}>@{comment.user.username}</span><span style={{ color: 'gray', marginLeft: '8px' }}>
+                                                                {timeAfterCreated(comment)}
+                                                            </span></p>
+                                                        </NavLink>
+                                                        <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
+                                                            <span style={{ color: 'gray', fontSize: '15px' }}>Replying to @{caw.user.username}</span>
+                                                        </NavLink>
+
+                                                    </div>
+                                                    {!showCommentButtons && comment.userid === user.id && <div onClick={() => setShowCommentButtons(true)} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
+                                                        <svg fill='white' height='20px' viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
+                                                    </div>}
+                                                    {showCommentButtons && <div className='flex items-center'>
+                                                        <div className='flex p-0 justify-center'>
+                                                            {comment.user.id === user.id && <EditCommentModal setRefreshComment={setRefreshComment} setShowModal={setEditModal} id={comment.id} />}
+                                                            {comment.user.id === user.id &&
+                                                                <button className='bg-black h-5 w-16 text-center items-center  border rounded-full text-sm' onClick={() => delete_comment(comment.id)}>Delete</button>}
+                                                        </div>
+                                                    </div>}
+                                                </div>
+                                                <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
+                                                    <div style={{ width: '100%' }}>
+                                                        <p style={{ wordBreak: 'break-word', color: 'white' }} className='pTag' >{comment.data}</p>
+                                                    </div>
+                                                </div>
+                                                <div className='likeButton' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', paddingLeft: '.3rem' }} onClick={() => handleCommentLikes(comment.id)}>
+                                                    {refresh && comment.likeStatus === 1 ?
+                                                        <div className='svgContainer'>
+                                                            <img src={likedIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
+                                                        </div>
+                                                        :
+                                                        // <img src={likeIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
+                                                        <div className='svgContainer'>
+                                                            <svg className='svgHeart' height="16px" viewBox="0 0 93 87" >
+                                                                <path d="M46.0625 86.6892H45.9983C34.1596 86.4692 0 55.605 0 26.3725C0 12.3292 11.5729 0 24.7637 0C35.2596 0 42.3179 7.24167 46.0579 12.5125C49.7887 7.25083 56.8471 0 67.3475 0C80.5475 0 92.1158 12.3292 92.1158 26.3771C92.1158 55.6004 57.9517 86.4646 46.1129 86.68H46.0625V86.6892ZM24.7683 6.87958C15.235 6.87958 6.87958 15.9912 6.87958 26.3817C6.87958 52.69 39.1187 79.53 46.0671 79.8142C53.0246 79.53 85.2546 52.6946 85.2546 26.3817C85.2546 15.9912 76.8992 6.87958 67.3658 6.87958C55.7792 6.87958 49.3075 20.3362 49.2525 20.4692C48.1983 23.045 43.9542 23.045 42.8954 20.4692C42.8312 20.3317 36.3642 6.87958 24.7729 6.87958H24.7683Z" />
+                                                            </svg>
+                                                        </div>
+                                                    }
+                                                    {comment.likeStatus === 1 ?
+                                                        <p style={{ marginLeft: '12px', cursor: 'pointer', color: '#f9197f' }}>{comment.totalLikes}</p> :
+                                                        <p className='numberOfLikes'>{comment.totalLikes}</p>
+                                                    }
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    })
+                                }
+                            </div>}
                     </div>
                 </div>
             }
