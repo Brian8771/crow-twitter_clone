@@ -133,7 +133,7 @@ const SignUpForm = () => {
             ></input>
           </div>
         </div>
-        <button className='submitButton' type='submit'>Sign Up</button>
+        <button className='h-9 text-black w-56 rounded-full text-sm bg-white hover:bg-grayish transition-all duration-500' type='submit'>Sign Up</button>
       </div>
     </form >
   );

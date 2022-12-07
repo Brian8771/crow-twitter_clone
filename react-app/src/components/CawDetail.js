@@ -8,8 +8,6 @@ import '../styles/Homepage.css'
 import backArrow from '../images/arrow-back.svg'
 import { getComments, deleteComment, likeCommentThunk } from '../store/comments';
 import CreateComment from './CreateComment';
-import comment from '../images/comment.png';
-import likeIcon from '../images/like.png';
 import likedIcon from '../images/liked.png'
 import LikeUser from './LikeUserModal';
 
@@ -99,16 +97,16 @@ const PostDetail = () => {
                 <div>
 
                     <div>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', backgroundColor: 'black' }}>
+                        <div className='my-3' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', backgroundColor: 'black' }}>
                             <NavLink style={{ textDecoration: 'none' }} to='/'>
                                 <img style={{ height: '20px', width: '20px', margin: '0 10px' }} src={backArrow} alt='backarrow' />
                             </NavLink>
-                            <h2 style={{ marginLeft: '20px', color: 'white', fontSize: '20px' }}>Caw</h2>
+                            <h2 className='font-bold' style={{ marginLeft: '20px', color: 'white', fontSize: '20px' }}>Caw</h2>
                         </div>
                         {caw &&
                             <div style={{ display: 'flex', flexDirection: 'column', height: 'auto', borderBottom: '#2f3336 1px solid', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', padding: '10px 0' }}>
                                 <div style={{ display: 'flex', flexDirection: 'row', padding: '10px', alignItems: 'center' }}>
-                                    <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
+                                    <img className='h-12 w-12 rounded-full mx-3.5' src={caw.user.profileImage} alt='profilePic' />
                                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
                                         <NavLink style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', justifyContent: 'center' }} to={`/users/${caw.user.id}`}>
                                             <p style={{ color: 'white' }} className='pTag firstNameP'>{caw.user.firstName}</p>
@@ -120,7 +118,7 @@ const PostDetail = () => {
                                     </div>}
                                     {showButtons && <div style={{ display: 'flex', flexDirection: 'row', width: '25%', padding: '6px', height: 'fit-content' }}>
                                         {caw.user.id === user.id && <EditFormModal setShowModal={setEditModal} caw={caw.id} />}
-                                        {caw.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '24px', width: '100%', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_caw(caw.id)}>Delete</button>}
+                                        {caw.user.id === user.id && <button className='bg-black h-5 w-16 text-center items-center  border rounded-full text-sm' onClick={() => delete_caw(caw.id)}>Delete</button>}
                                     </div>}
                                 </div>
                                 <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -137,11 +135,11 @@ const PostDetail = () => {
                                 </div>
                                 <span style={{ marginLeft: '20px', color: 'gray', marginTop: '10px' }}>{timeAfterCreated(caw)}</span>
                                 <div style={{ marginLeft: '8px', margin: '0 1rem', borderTop: '#2f3336 1px solid', borderBottom: '#2f3336 1px solid', marginTop: '10px' }}>
-                                    <p style={{ marginLeft: '8px', color: '#464a4c', cursor: 'pointer' }}>
+                                    <p className='my-3' style={{ marginLeft: '8px', color: '#464a4c', cursor: 'pointer' }}>
                                         <LikeUser totalLikes={totalLikes} loaded={loaded} id={id} />
                                     </p>
                                 </div>
-                                <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+                                <div className='my-3' style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                                     {caw && loaded && <div className='likeButton' onClick={() => handleLikes(caw.id)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                                         {like && likeStatus === 1 ?
                                             <div className='svgContainerDetails'>
@@ -183,9 +181,9 @@ const PostDetail = () => {
                         <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
                             {comments && refreshComment &&
                                 comments.map(comment => {
-                                    return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '97%' }}>
-                                        <div>
-                                            <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={comment.user.profileImage} alt='profilePic' />
+                                    return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
+                                        <div className='px-2.5 py-1.5 mr-3'>
+                                            <img className='h-12 w-12 max-w-none rounded-full' src={comment.user.profileImage} alt='profilePic' />
                                         </div>
                                         <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
                                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
@@ -203,10 +201,11 @@ const PostDetail = () => {
                                                 {!showCommentButtons && comment.userid === user.id && <div onClick={() => setShowCommentButtons(true)} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
                                                     <svg fill='white' height='20px' viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
                                                 </div>}
-                                                {showCommentButtons && <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                    <div style={{ display: 'flex', flexDirection: 'row', width: '100%', padding: '0', justifyContent: 'center', height: '20%' }}>
+                                                {showCommentButtons && <div className='flex items-center'>
+                                                    <div className='flex p-0 justify-center'>
                                                         {comment.user.id === user.id && <EditCommentModal setRefreshComment={setRefreshComment} setShowModal={setEditModal} id={comment.id} />}
-                                                        {comment.user.id === user.id && <button style={{ backgroundColor: 'black', padding: '0', margin: '0', height: '20px', width: '60px', borderRadius: '40px', cursor: 'pointer' }} onClick={() => delete_comment(comment.id)}>Delete</button>}
+                                                        {comment.user.id === user.id &&
+                                                            <button className='bg-black h-5 w-16 text-center items-center  border rounded-full text-sm' onClick={() => delete_comment(comment.id)}>Delete</button>}
                                                     </div>
                                                 </div>}
                                             </div>

@@ -46,9 +46,9 @@ function UsersList() {
           onChange={(e) => setInputValue(e.target.value)}
         />
       </div> */}
-      <div className='userListDiv'>
+      <div className='userListDiv mt-4'>
         <div>
-          <h1 style={{ fontSize: '20px' }}>Other users on Crow </h1>
+          <h1 className='font-bold' style={{ fontSize: '20px' }}>Other users on Crow </h1>
           {loader ?
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
               <ClipLoader

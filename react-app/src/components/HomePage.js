@@ -7,6 +7,7 @@ import '../styles/Homepage.css'
 import likedIcon from '../images/liked.png'
 import { getAllUsers, getFollowings } from '../store/session';
 import ClipLoader from "react-spinners/ClipLoader";
+import '../../src/index.css'
 
 const HomePage = () => {
     const dispatch = useDispatch()
@@ -80,27 +81,185 @@ const HomePage = () => {
         <div className='homePageContainer' >
             <div >
                 <div style={{ position: 'sticky', top: '0' }}>
-                    <h1 className='header' style={{ fontSize: '20px', color: 'white', backgroundColor: 'black' }}>Home</h1>
+                    <h1 className='header font-bold' style={{ fontSize: '20px', color: 'white', backgroundColor: 'black' }}>Home</h1>
                 </div>
                 <div >
                     <CreateCaw setLoaded={setLoaded} />
                 </div>
+
+
+
                 {loader ?
-                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
-                        <ClipLoader
-                            color='white'
-                            loading={loader}
-                            size={50}
-                            aria-label="Loading Spinner"
-                            data-testid="loader"
-                        />
-                    </div>
-                    : <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
+                    <>
+                        <div className="bg-black">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                <div className="animate-pulse flex space-x-3">
+                                    <div className='px-2 py-1.5'>
+                                        <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                    </div>
+                                    <div className="flex-1 space-y-4 py-1 m-0">
+                                        <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                        <div className="space-y-2">
+                                            <div className="h-4 bg-gray-600 rounded"></div>
+                                            <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-black">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                <div className="animate-pulse flex space-x-3">
+                                    <div className='px-2 py-1.5'>
+                                        <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                    </div>
+                                    <div className="flex-1 space-y-4 py-1 m-0">
+                                        <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                        <div className="space-y-2">
+                                            <div className="h-4 bg-gray-600 rounded"></div>
+                                            <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-black">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                <div className="animate-pulse flex space-x-3">
+                                    <div className='px-2 py-1.5'>
+                                        <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                    </div>
+                                    <div className="flex-1 space-y-4 py-1 m-0">
+                                        <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                        <div className="space-y-2">
+                                            <div className="h-4 bg-gray-600 rounded"></div>
+                                            <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-black">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                <div className="animate-pulse flex space-x-3">
+                                    <div className='px-2 py-1.5'>
+                                        <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                    </div>
+                                    <div className="flex-1 space-y-4 py-1 m-0">
+                                        <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                        <div className="space-y-2">
+                                            <div className="h-4 bg-gray-600 rounded"></div>
+                                            <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-black">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                <div className="animate-pulse flex space-x-3">
+                                    <div className='px-2 py-1.5'>
+                                        <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                    </div>
+                                    <div className="flex-1 space-y-4 py-1 m-0">
+                                        <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                        <div className="space-y-2">
+                                            <div className="h-4 bg-gray-600 rounded"></div>
+                                            <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-black">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                <div className="animate-pulse flex space-x-3">
+                                    <div className='px-2 py-1.5'>
+                                        <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                    </div>
+                                    <div className="flex-1 space-y-4 py-1 m-0">
+                                        <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                        <div className="space-y-2">
+                                            <div className="h-4 bg-gray-600 rounded"></div>
+                                            <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-black">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                <div className="animate-pulse flex space-x-3">
+                                    <div className='px-2 py-1.5'>
+                                        <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                    </div>
+                                    <div className="flex-1 space-y-4 py-1 m-0">
+                                        <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                        <div className="space-y-2">
+                                            <div className="h-4 bg-gray-600 rounded"></div>
+                                            <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-black">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                <div className="animate-pulse flex space-x-3">
+                                    <div className='px-2 py-1.5'>
+                                        <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                    </div>
+                                    <div className="flex-1 space-y-4 py-1 m-0">
+                                        <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                        <div className="space-y-2">
+                                            <div className="h-4 bg-gray-600 rounded"></div>
+                                            <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-black">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                <div className="animate-pulse flex space-x-3">
+                                    <div className='px-2 py-1.5'>
+                                        <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                    </div>
+                                    <div className="flex-1 space-y-4 py-1 m-0">
+                                        <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                        <div className="space-y-2">
+                                            <div className="h-4 bg-gray-600 rounded"></div>
+                                            <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="bg-black">
+                            <div className="border-b-[1px] bg-black border-gray-600 shadow pt-2 p-3 pb-5 max-w-lrg w-full mx-auto">
+                                <div className="animate-pulse flex space-x-3">
+                                    <div className='px-2 py-1.5'>
+                                        <div className="rounded-full bg-gray-600 h-12 w-12"></div>
+                                    </div>
+                                    <div className="flex-1 space-y-4 py-1 m-0">
+                                        <div className="h-4 bg-gray-600 rounded w-3/4"></div>
+                                        <div className="space-y-2">
+                                            <div className="h-4 bg-gray-600 rounded"></div>
+                                            <div className="h-4 bg-gray-600 rounded w-5/6"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </>
+                    :
+                    <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
                         {followerCaws().length > 0 && caws && users && loaded ?
                             followerCaws().map(caw => {
                                 return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', backgroundColor: 'black' }}>
-                                    <div>
-                                        <img style={{ height: '48px', width: '48px', borderRadius: '50%', padding: '5px 10px' }} src={caw.user.profileImage} alt='profilePic' />
+                                    <div className='px-2.5 py-1.5 mr-3'>
+                                        <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
                                     </div>
                                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '85%' }}>
                                         <NavLink style={{ textDecoration: 'transparent' }} to={`/users/${caw.user.id}`}>
@@ -152,6 +311,7 @@ const HomePage = () => {
                                 </div>
                             </div>
                         }
+
                     </div>}
             </div>
         </div >

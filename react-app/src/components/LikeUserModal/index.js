@@ -19,7 +19,7 @@ function LikeUser({ id, totalLikes }) {
 
     return (
         <div>
-            {isLoaded && <button style={{ border: 'none', color: 'grey', backgroundColor: 'transparent', cursor: 'pointer' }} onClick={() => setShowModal(true)}><span style={{color: 'white', marginRight: '8px'}}>{totalLikes}</span>Likes </button>}
+            {isLoaded && <button className='font-light text-s' style={{ border: 'none', color: 'grey', backgroundColor: 'transparent', cursor: 'pointer' }} onClick={() => setShowModal(true)}><span style={{ color: 'white', marginRight: '8px' }}>{totalLikes}</span>Likes </button>}
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <LikeUsers id={id} hideModal={() => setShowModal(false)} />

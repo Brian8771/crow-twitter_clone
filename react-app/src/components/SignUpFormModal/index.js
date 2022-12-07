@@ -8,7 +8,7 @@ function SignUpFormModal() {
 
     return (
         <>
-            <button className="loginButton" onClick={() => setShowModal(true)}>Sign up with Email</button>
+            <button className="font-medium h-12 w-72 rounded-full text-sm mt-3 bg-white text-black text-center items-center justify-center hover:bg-grayish transition-all duration-500" onClick={() => setShowModal(true)}>Sign up with Email</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <SignUpForm setShowModal={setShowModal} />

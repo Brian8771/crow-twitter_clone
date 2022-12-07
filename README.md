@@ -85,7 +85,7 @@ each of the following variables:
 | `heroku run -a <app name>` | Run a command from within the deployed container on Heroku | -->
 <!-- Incase I need this -->
 # Crow Twitter Clone
-Crow is a twitter clone designed by Brian Aguilar that is at this moment able to post caws(tweets) and comment under a specified caw.
+Crow is a twitter clone designed by Brian Aguilar that is at this moment able to post caws(tweets), comment under a specified caw, follow users, and like caws and comments.
 
 
 
@@ -144,12 +144,14 @@ Website link is https://crow-app-clone.herokuapp.com/
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
 # Hosted on
+![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 
 # Frameworks used
 ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 # Databases Used
 

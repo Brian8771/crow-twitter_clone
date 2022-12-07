@@ -71,7 +71,7 @@ const EditUser = ({ hideModal, setLoaded }) => {
         <form className='editUserModal' onSubmit={handleSubmit}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', width: '100%' }}>
                 <div>
-                    <h2>Edit User</h2>
+                    <h2 className='text-2xl font-black mb-4'>Edit User</h2>
                 </div>
                 <div>
                     {errors &&
@@ -86,6 +86,7 @@ const EditUser = ({ hideModal, setLoaded }) => {
                             Username
                         </label>
                         <input
+                            className='text-black text-sm'
                             style={{ width: '60%', height: '2rem', border: 'none', resize: 'none', marginBottom: '10px' }}
                             type='text'
                             value={username}
@@ -97,6 +98,7 @@ const EditUser = ({ hideModal, setLoaded }) => {
                             Bio
                         </label>
                         <textarea
+                            className='text-black text-sm'
                             style={{ width: '60%', height: '6rem', border: 'none', resize: 'none', marginBottom: '10px' }}
                             type='text'
                             value={bio}
@@ -108,6 +110,7 @@ const EditUser = ({ hideModal, setLoaded }) => {
                             Profile Image
                         </label>
                         <input
+                            className='text-black text-sm'
                             style={{ width: '60%', height: '2rem', border: 'none', resize: 'none', marginBottom: '10px' }}
                             type='text'
                             value={profile_image}
@@ -119,6 +122,7 @@ const EditUser = ({ hideModal, setLoaded }) => {
                             Header Image
                         </label>
                         <input
+                            className='text-black text-sm'
                             style={{ width: '60%', height: '2rem', border: 'none', resize: 'none', marginBottom: '10px' }}
                             type='text'
                             value={header_image}

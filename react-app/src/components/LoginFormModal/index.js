@@ -8,10 +8,10 @@ function LoginFormModal() {
 
     return (
         <>
-            <button className="loginButton" onClick={() => setShowModal(true)}>Sign In</button>
+            <button className="font-medium h-12 w-72 rounded-full text-sm mt-3 bg-white text-black text-center items-center justify-center hover:bg-grayish transition-all duration-500" onClick={() => setShowModal(true)}>Log In</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <LoginFormForModal className='LoginFormModal' setShowModal={setShowModal} />
+                    <LoginFormForModal className='LoginFormModal border-white' setShowModal={setShowModal} />
                 </Modal>
             )}
         </>

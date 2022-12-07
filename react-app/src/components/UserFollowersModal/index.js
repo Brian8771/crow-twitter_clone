@@ -9,8 +9,8 @@ function UserFollowersModal({ id, totalFollowers }) {
     const [showModal, setShowModal] = useState(false);
 
     return (
-        <div>
-            {<button style={{ border: 'none', color: 'white', backgroundColor: 'transparent', cursor: 'pointer' }} onClick={() => setShowModal(true)}>{totalFollowers} <span style={{color: 'gray', marginLeft: '3px'}}>Followers</span></button>}
+        <div className='ml-3'>
+            {<button className='text-sm' style={{ border: 'none', color: 'white', backgroundColor: 'transparent', cursor: 'pointer' }} onClick={() => setShowModal(true)}>{totalFollowers} <span style={{ color: 'gray', marginLeft: '3px' }}>Followers</span></button>}
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <UserFollowers id={id} hideModal={() => setShowModal(false)} />
