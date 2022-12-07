@@ -26,11 +26,11 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
             caw
         }
         let cawCreated = await dispatch(createCaw(cawInfo));
-        await setLoaded(false);
+        // await setLoaded(false);
         await setLoader(true)
         await dispatch(getAllCaws());
         await setLoader(false)
-        await setLoaded(true)
+        // await setLoaded(true)
         // await setErrors(cawCreated)
         setCaw('');
         // history.push('/1')
