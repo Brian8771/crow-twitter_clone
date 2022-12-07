@@ -25,7 +25,7 @@ const CreateComment = ({ setIsLoaded, setLoader }) => {
         }
         let commentCreated = await dispatch(addComment(id, commentInfo));
         // if (commentCreated) setIsLoaded(false);
-        setLoader(true)
+        await setLoader(true)
         await dispatch(getComments(id));
         await setLoader(false)
         // setIsLoaded(true)
