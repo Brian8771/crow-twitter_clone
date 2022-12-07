@@ -156,7 +156,7 @@ function User() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                   <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <p style={{ marginTop: '8px', marginBottom: '8px', marginLeft: '16px', color: 'white', fontSize: '20px' }}>{user.firstName}</p>
-                    <p style={{ marginTop: '8px', marginBottom: '8px', marginLeft: '16px', color: 'grey', fontSize: '15px' }}>@{user.username}</p>
+                    <p style={{ marginBottom: '8px', marginLeft: '15px', color: 'grey', fontSize: '15px' }}>@{user.username}</p>
                   </div>
 
                   {session.id == user.id ? <div style={{ display: 'flex', width: '20%', marginRight: '8px', flexDirection: 'row' }}>
@@ -287,7 +287,7 @@ function User() {
 
             {option === 'Likes' && user.like_caws.length === 0 && isLoaded &&
               <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
-                <h1>No Likes Here</h1>
+                <h1 className='mt-3 text-3xl font-black'>No Likes Here</h1>
               </div>
             }
 
