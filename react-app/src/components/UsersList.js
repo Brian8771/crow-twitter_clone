@@ -50,36 +50,138 @@ function UsersList() {
         <div>
           <h1 className='font-bold' style={{ fontSize: '20px' }}>Other users on Crow </h1>
           {loader ?
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
-              <ClipLoader
-                color='white'
-                loading={loader}
-                size={50}
-                aria-label="Loading Spinner"
-                data-testid="loader"
-              />
-            </div>
-            :
-            <div>{allUsers && isLoaded && allUsers.map((user) => {
-              if (user.id !== sessionUser.id) {
-                return (
-                  <div style={{ width: '100%' }} key={user.id}>
-                    <NavLink style={{ textDecoration: 'none' }} to={`/users/${user.id}`}>
-                      <div className='profileDiv'>
-                        <div>
-                          <img style={{ border: 'none', height: '48px', width: '48px' }} className='imgNav' src={user.profileImage} />
-                        </div>
-                        <div style={{ marginLeft: '.5em' }}>
-                          <p className='userPTag firstNameP'>{user.firstName}</p>
-                          <p style={{ color: '#808080' }} className='userPTag'>@{user.username}</p>
-                        </div>
+            <>
+              <div class="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div class="flex animate-pulse space-x-4">
+                    <div class="h-12 w-12 rounded-full bg-white"></div>
+                    <div class="flex-1 space-y-4 py-1">
+                      <div class="space-y-2">
+                        <div class="h-4 w-2/6 rounded bg-white"></div>
+                        <div class="h-4 w-2/5 rounded bg-white"></div>
                       </div>
-                    </NavLink>
+                    </div>
                   </div>
-                );
+                </div>
+              </div>
+              <div class="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div class="flex animate-pulse space-x-4">
+                    <div class="h-12 w-12 rounded-full bg-white"></div>
+                    <div class="flex-1 space-y-4 py-1">
+                      <div class="space-y-2">
+                        <div class="h-4 w-2/6 rounded bg-white"></div>
+                        <div class="h-4 w-2/5 rounded bg-white"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div class="flex animate-pulse space-x-4">
+                    <div class="h-12 w-12 rounded-full bg-white"></div>
+                    <div class="flex-1 space-y-4 py-1">
+                      <div class="space-y-2">
+                        <div class="h-4 w-2/6 rounded bg-white"></div>
+                        <div class="h-4 w-2/5 rounded bg-white"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div class="flex animate-pulse space-x-4">
+                    <div class="h-12 w-12 rounded-full bg-white"></div>
+                    <div class="flex-1 space-y-4 py-1">
+                      <div class="space-y-2">
+                        <div class="h-4 w-2/6 rounded bg-white"></div>
+                        <div class="h-4 w-2/5 rounded bg-white"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div class="flex animate-pulse space-x-4">
+                    <div class="h-12 w-12 rounded-full bg-white"></div>
+                    <div class="flex-1 space-y-4 py-1">
+                      <div class="space-y-2">
+                        <div class="h-4 w-2/6 rounded bg-white"></div>
+                        <div class="h-4 w-2/5 rounded bg-white"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div class="flex animate-pulse space-x-4">
+                    <div class="h-12 w-12 rounded-full bg-white"></div>
+                    <div class="flex-1 space-y-4 py-1">
+                      <div class="space-y-2">
+                        <div class="h-4 w-2/6 rounded bg-white"></div>
+                        <div class="h-4 w-2/5 rounded bg-white"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div class="flex animate-pulse space-x-4">
+                    <div class="h-12 w-12 rounded-full bg-white"></div>
+                    <div class="flex-1 space-y-4 py-1">
+                      <div class="space-y-2">
+                        <div class="h-4 w-2/6 rounded bg-white"></div>
+                        <div class="h-4 w-2/5 rounded bg-white"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div class="flex animate-pulse space-x-4">
+                    <div class="h-12 w-12 rounded-full bg-white"></div>
+                    <div class="flex-1 space-y-4 py-1">
+                      <div class="space-y-2">
+                        <div class="h-4 w-2/6 rounded bg-white"></div>
+                        <div class="h-4 w-2/5 rounded bg-white"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+            :
+            <>
+              <div>{allUsers && isLoaded && allUsers.map((user) => {
+                if (user.id !== sessionUser.id) {
+                  return (
+                    <div style={{ width: '100%' }} key={user.id}>
+                      <NavLink style={{ textDecoration: 'none' }} to={`/users/${user.id}`}>
+                        <div className='profileDiv'>
+                          <div>
+                            <img style={{ border: 'none', height: '48px', width: '48px' }} className='imgNav' src={user.profileImage} />
+                          </div>
+                          <div className='ml-4' >
+                            <p className='userPTag firstNameP'>{user.firstName}</p>
+                            <p style={{ color: '#808080' }} className='userPTag'>@{user.username}</p>
+                          </div>
+                        </div>
+                      </NavLink>
+                    </div>
+                  );
 
-              }
-            })}</div>}
+                }
+              })}
+
+              </div>
+            </>
+          }
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-around', width: '30vw', position: 'fixed', bottom: '0', right: '0', backgroundColor: 'transparent' }}>
           <a className='findMe' href='https://github.com/Brian8771'><img style={{ height: '60px', width: '60px' }} src={github} /></a>
