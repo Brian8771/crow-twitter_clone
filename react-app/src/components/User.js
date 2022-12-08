@@ -124,7 +124,7 @@ function User() {
 
   return (
     <>
-      {!loader ?
+      {loader ?
         <div className='homePageContainer' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
           <ClipLoader
             color='white'
