@@ -44,14 +44,14 @@ const LikeUsers = ({ id }) => {
         dispatch(likeUsersThunk(id)).then(setIsLoaded(true))
     }, [id])
     return (
-        <div className="editFormModal" style={{ flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', overflowY: 'scroll' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', marginLeft: '1rem', width: '100%' }}>
-                <div style={{ position: 'sticky', top: '0', backgroundColor: 'black', width: '100%' }}>
-                    <h2 className='text-2xl font-black pt-5 pb-2'>Liked by</h2>
+        <div className="editFormModal" style={{ flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', overflowY: 'auto' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start', paddingLeft: '1rem', width: '100%' }}>
+                <div style={{ position: 'sticky', top: '0', backgroundColor: 'black' }}>
+                    <h2 className='text-2xl font-black pt-5 pb-2 '>Liked by</h2>
                 </div>
                 <div style={{ width: '90%' }} >
                     {users && isLoaded && users.map(user => {
-                        return <div style={{ display: 'flex', flexDirection: 'row' }}>
+                        return <div key={user.id} style={{ display: 'flex', flexDirection: 'row' }}>
                             <NavLink style={{ textDecoration: 'none', width: '100%' }} to={`/users/${user.id}`}>
                                 <div className='profileDiv' style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
                                     <div style={{ display: 'flex', flexDirection: 'row' }}>

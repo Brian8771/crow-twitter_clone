@@ -35,7 +35,7 @@ const LoginFormForModal = () => {
     return (
         <form className='LoginFormModal' onSubmit={onLogin}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100%', width: '50%' }} >
-                <img className='imgInForm' src={crow}></img>
+                <img className='imgInForm mt-3' src={crow}></img>
                 <h2 className='headerForLogin'>Log in to Crow</h2>
                 <div className='divAroundInputs'>
                     {errors.map((error, ind) => (

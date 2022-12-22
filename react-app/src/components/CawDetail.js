@@ -11,6 +11,7 @@ import CreateComment from './CreateComment';
 import likedIcon from '../images/liked.png'
 import LikeUser from './LikeUserModal';
 import ClipLoader from "react-spinners/ClipLoader";
+import SmallNavbar from './smallNav';
 
 const PostDetail = () => {
     const history = useHistory();
@@ -130,7 +131,7 @@ const PostDetail = () => {
                                                 </NavLink>
                                             </div>
                                             {!showButtons && caw.userId === user.id && <div onClick={() => setShowButtons(true)} style={{ display: 'flex', cursor: 'pointer', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', padding: '6px', height: 'fit-content' }}>
-                                                <svg fill='white' height='20px' viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
+                                                <svg fill='white' height='20px' viewBox="0 0 24 24" aria-hidden="true" className="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
                                             </div>}
                                             {showButtons && <div style={{ display: 'flex', flexDirection: 'row', width: '25%', padding: '6px', height: 'fit-content' }}>
                                                 {caw.user.id === user.id && <EditFormModal setShowModal={setEditModal} caw={caw.id} />}
@@ -151,9 +152,9 @@ const PostDetail = () => {
                                         </div>
                                         <span style={{ marginLeft: '20px', color: 'gray', marginTop: '10px' }}>{timeAfterCreated(caw)}</span>
                                         <div style={{ marginLeft: '8px', margin: '0 1rem', borderTop: '#2f3336 1px solid', borderBottom: '#2f3336 1px solid', marginTop: '10px' }}>
-                                            <p className='my-3' style={{ marginLeft: '8px', color: '#464a4c', cursor: 'pointer' }}>
+                                            <div className='my-3' style={{ marginLeft: '8px', color: '#464a4c', cursor: 'pointer' }}>
                                                 <LikeUser totalLikes={totalLikes} loaded={loaded} id={id} />
-                                            </p>
+                                            </div>
                                         </div>
                                         <div className='my-3' style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                                             {caw && loaded && <div className='likeButton' onClick={() => handleLikes(caw.id)} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
@@ -199,7 +200,7 @@ const PostDetail = () => {
                                 <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
                                     {comments && refreshComment &&
                                         comments.map(comment => {
-                                            return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
+                                            return <div key={comment.id} style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
                                                 <div className='px-2.5 py-1.5 mr-3'>
                                                     <img className='h-12 w-12 max-w-none rounded-full' src={comment.user.profileImage} alt='profilePic' />
                                                 </div>
@@ -217,7 +218,7 @@ const PostDetail = () => {
 
                                                         </div>
                                                         {!showCommentButtons && comment.userid === user.id && <div onClick={() => setShowCommentButtons(true)} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
-                                                            <svg fill='white' height='20px' viewBox="0 0 24 24" aria-hidden="true" class="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
+                                                            <svg fill='white' height='20px' viewBox="0 0 24 24" aria-hidden="true" className="r-4qtqp9 r-yyyyoo r-1xvli5t r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-1hdv0qi"><g><path d="M3 12c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9 2c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm7 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g></svg>
                                                         </div>}
                                                         {showCommentButtons && <div className='flex items-center'>
                                                             <div className='flex p-0 justify-center'>
@@ -259,6 +260,7 @@ const PostDetail = () => {
                             </div>
                         </div>
                     }
+                    <SmallNavbar />
                 </div >
             }
 

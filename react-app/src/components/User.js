@@ -12,6 +12,7 @@ import UserFollowersModal from './UserFollowersModal';
 import UserFollowingsModal from './UserFollowingsModal';
 import { getAllCommentsByUserId } from '../store/comments';
 import ClipLoader from "react-spinners/ClipLoader";
+import SmallNavbar from './smallNav';
 
 
 function User() {
@@ -115,7 +116,8 @@ function User() {
 
   useEffect(() => {
     setLoader(true)
-    dispatch(getCurretProfile(userId)).then(dispatch(getAllCaws())).then(dispatch(getAllCommentsByUserId(userId))).then(() => setIsLoaded(true)).then(() => setLoaded(true)).then(setLoader(false))
+    setTimeout(() =>
+      dispatch(getCurretProfile(userId)).then(dispatch(getAllCaws())).then(dispatch(getAllCommentsByUserId(userId))).then(() => setIsLoaded(true)).then(() => setLoaded(true)).then(setLoader(false)), 1000)
   }, [dispatch, isLoaded, userId, loaded, EditUserModal]);
 
   // if (!user) {
@@ -176,7 +178,7 @@ function User() {
                   </div>}
                 </div>}
             </div>
-            {!loader && user && <div className='font' style={{ display: 'flex', borderBottom: '#2f3336 1px solid', fontSize: '15px', color: 'black' }}>
+            {!loader && isLoaded && user && <div className='font' style={{ display: 'flex', borderBottom: '#2f3336 1px solid', fontSize: '15px', color: 'black' }}>
               <p className={option === 'Caws' ? 'activated' : 'notActivated'} onClick={() => setOption('Caws')}>Caws</p>
               <p className={option === 'Comments' ? 'activated' : 'notActivated'} onClick={() => setOption('Comments')}>Replies</p>
               <p className={option === 'Likes' ? 'activated' : 'notActivated'} onClick={() => setOption('Likes')}>Likes</p>
@@ -185,7 +187,7 @@ function User() {
 
               {option === 'Caws' && caws.length > 0 && isLoaded &&
                 caws.map(caw => {
-                  return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
+                  return <div key={caw.id} style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
                     <div className='px-2.5 py-1.5 mr-3'>
                       <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
                     </div>
@@ -333,6 +335,9 @@ function User() {
               }
 
             </div>
+            {isLoaded &&
+              <SmallNavbar />
+            }
           </div >
         </>
       }

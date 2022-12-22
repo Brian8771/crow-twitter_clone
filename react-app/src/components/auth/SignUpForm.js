@@ -61,7 +61,7 @@ const SignUpForm = () => {
   return (
     <form style={{ height: '45rem' }} className='LoginFormModal' onSubmit={onSignUp}>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100%', width: '50%' }}>
-        <img className='imgInForm' src={crow}></img>
+        <img className='mt-3 imgInForm' src={crow}></img>
         <h2 style={{ fontSize: '20px' }} className='headerForLogin'>Create your account</h2>
         <div>
           {

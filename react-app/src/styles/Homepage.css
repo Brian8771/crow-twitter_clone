@@ -6,6 +6,10 @@
     overflow-x: hidden;
 }
 
+.smallNav {
+    width: 39%;
+}
+
 .homePageContainer::-webkit-scrollbar {
     display: none;
 }
@@ -20,6 +24,39 @@
     position: fixed;
     left: 0px;
     background-color: black;
+}
+
+@media screen and (min-width:768px) and (max-width: 1300px) {
+    .userList {
+        display: none;
+    }
+    .homePageContainer {
+        width: 66%;
+        position: absolute;
+        right: 0;
+    }
+
+    .smallNav {
+        width: 66%;
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    .navBar {
+        display: none;
+    }
+    .userList {
+        display: none;
+    }
+    .homePageContainer {
+        width: 100%;
+    }
+    .smallNav {
+        width: 100%;
+    }
 }
 
 .userList {

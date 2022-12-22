@@ -51,105 +51,105 @@ function UsersList() {
           <h1 className='font-bold' style={{ fontSize: '20px' }}>Other users on Crow </h1>
           {loader ?
             <>
-              <div class="bg-black">
-                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
-                  <div class="flex animate-pulse space-x-4">
-                    <div class="h-12 w-12 rounded-full bg-gray-600 "></div>
-                    <div class="flex-1 space-y-4 py-1">
-                      <div class="space-y-2">
-                        <div class="h-4 w-2/6 rounded bg-gray-600 "></div>
-                        <div class="h-4 w-2/5 rounded bg-gray-600 "></div>
+              <div className="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} className="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div className="flex animate-pulse space-x-4">
+                    <div className="h-12 w-12 rounded-full bg-gray-600 "></div>
+                    <div className="flex-1 space-y-4 py-1">
+                      <div className="space-y-2">
+                        <div className="h-4 w-2/6 rounded bg-gray-600 "></div>
+                        <div className="h-4 w-2/5 rounded bg-gray-600 "></div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="bg-black">
-                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
-                  <div class="flex animate-pulse space-x-4">
-                    <div class="h-12 w-12 rounded-full bg-gray-600 "></div>
-                    <div class="flex-1 space-y-4 py-1">
-                      <div class="space-y-2">
-                        <div class="h-4 w-2/6 rounded bg-gray-600 "></div>
-                        <div class="h-4 w-2/5 rounded bg-gray-600 "></div>
+              <div className="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} className="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div className="flex animate-pulse space-x-4">
+                    <div className="h-12 w-12 rounded-full bg-gray-600 "></div>
+                    <div className="flex-1 space-y-4 py-1">
+                      <div className="space-y-2">
+                        <div className="h-4 w-2/6 rounded bg-gray-600 "></div>
+                        <div className="h-4 w-2/5 rounded bg-gray-600 "></div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="bg-black">
-                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
-                  <div class="flex animate-pulse space-x-4">
-                    <div class="h-12 w-12 rounded-full bg-gray-600 "></div>
-                    <div class="flex-1 space-y-4 py-1">
-                      <div class="space-y-2">
-                        <div class="h-4 w-2/6 rounded bg-gray-600 "></div>
-                        <div class="h-4 w-2/5 rounded bg-gray-600 "></div>
+              <div className="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} className="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div className="flex animate-pulse space-x-4">
+                    <div className="h-12 w-12 rounded-full bg-gray-600 "></div>
+                    <div className="flex-1 space-y-4 py-1">
+                      <div className="space-y-2">
+                        <div className="h-4 w-2/6 rounded bg-gray-600 "></div>
+                        <div className="h-4 w-2/5 rounded bg-gray-600 "></div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="bg-black">
-                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
-                  <div class="flex animate-pulse space-x-4">
-                    <div class="h-12 w-12 rounded-full bg-gray-600 "></div>
-                    <div class="flex-1 space-y-4 py-1">
-                      <div class="space-y-2">
-                        <div class="h-4 w-2/6 rounded bg-gray-600 "></div>
-                        <div class="h-4 w-2/5 rounded bg-gray-600 "></div>
+              <div className="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} className="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div className="flex animate-pulse space-x-4">
+                    <div className="h-12 w-12 rounded-full bg-gray-600 "></div>
+                    <div className="flex-1 space-y-4 py-1">
+                      <div className="space-y-2">
+                        <div className="h-4 w-2/6 rounded bg-gray-600 "></div>
+                        <div className="h-4 w-2/5 rounded bg-gray-600 "></div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="bg-black">
-                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
-                  <div class="flex animate-pulse space-x-4">
-                    <div class="h-12 w-12 rounded-full bg-gray-600 "></div>
-                    <div class="flex-1 space-y-4 py-1">
-                      <div class="space-y-2">
-                        <div class="h-4 w-2/6 rounded bg-gray-600 "></div>
-                        <div class="h-4 w-2/5 rounded bg-gray-600 "></div>
+              <div className="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} className="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div className="flex animate-pulse space-x-4">
+                    <div className="h-12 w-12 rounded-full bg-gray-600 "></div>
+                    <div className="flex-1 space-y-4 py-1">
+                      <div className="space-y-2">
+                        <div className="h-4 w-2/6 rounded bg-gray-600 "></div>
+                        <div className="h-4 w-2/5 rounded bg-gray-600 "></div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="bg-black">
-                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
-                  <div class="flex animate-pulse space-x-4">
-                    <div class="h-12 w-12 rounded-full bg-gray-600 "></div>
-                    <div class="flex-1 space-y-4 py-1">
-                      <div class="space-y-2">
-                        <div class="h-4 w-2/6 rounded bg-gray-600 "></div>
-                        <div class="h-4 w-2/5 rounded bg-gray-600 "></div>
+              <div className="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} className="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div className="flex animate-pulse space-x-4">
+                    <div className="h-12 w-12 rounded-full bg-gray-600 "></div>
+                    <div className="flex-1 space-y-4 py-1">
+                      <div className="space-y-2">
+                        <div className="h-4 w-2/6 rounded bg-gray-600 "></div>
+                        <div className="h-4 w-2/5 rounded bg-gray-600 "></div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="bg-black">
-                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
-                  <div class="flex animate-pulse space-x-4">
-                    <div class="h-12 w-12 rounded-full bg-gray-600 "></div>
-                    <div class="flex-1 space-y-4 py-1">
-                      <div class="space-y-2">
-                        <div class="h-4 w-2/6 rounded bg-gray-600 "></div>
-                        <div class="h-4 w-2/5 rounded bg-gray-600 "></div>
+              <div className="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} className="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div className="flex animate-pulse space-x-4">
+                    <div className="h-12 w-12 rounded-full bg-gray-600 "></div>
+                    <div className="flex-1 space-y-4 py-1">
+                      <div className="space-y-2">
+                        <div className="h-4 w-2/6 rounded bg-gray-600 "></div>
+                        <div className="h-4 w-2/5 rounded bg-gray-600 "></div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="bg-black">
-                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} class="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
-                  <div class="flex animate-pulse space-x-4">
-                    <div class="h-12 w-12 rounded-full bg-gray-600 "></div>
-                    <div class="flex-1 space-y-4 py-1">
-                      <div class="space-y-2">
-                        <div class="h-4 w-2/6 rounded bg-gray-600 "></div>
-                        <div class="h-4 w-2/5 rounded bg-gray-600 "></div>
+              <div className="bg-black">
+                <div style={{ paddingTop: '8px', paddingBottom: '8px' }} className="mx-0 pl-2.5 w-full max-w-sm border-gray-400 bg-black p-0 my-2 shadow">
+                  <div className="flex animate-pulse space-x-4">
+                    <div className="h-12 w-12 rounded-full bg-gray-600 "></div>
+                    <div className="flex-1 space-y-4 py-1">
+                      <div className="space-y-2">
+                        <div className="h-4 w-2/6 rounded bg-gray-600 "></div>
+                        <div className="h-4 w-2/5 rounded bg-gray-600 "></div>
                       </div>
                     </div>
                   </div>
@@ -159,10 +159,10 @@ function UsersList() {
             :
             <>
 
-              <div>{allUsers && isLoaded && allUsers.map((user) => {
+              <div>{allUsers && isLoaded && allUsers.map((user, i) => {
                 if (user.id !== sessionUser.id) {
                   return (
-                    <div style={{ width: '100%' }} key={user.id}>
+                    <div style={{ width: '100%' }} key={i}>
                       <NavLink style={{ textDecoration: 'none' }} to={`/users/${user.id}`}>
                         <div className='profileDiv'>
                           <div>

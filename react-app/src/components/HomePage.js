@@ -8,6 +8,7 @@ import likedIcon from '../images/liked.png'
 import { getAllUsers, getFollowings } from '../store/session';
 import ClipLoader from "react-spinners/ClipLoader";
 import '../../src/index.css'
+import SmallNavbar from './smallNav';
 
 const HomePage = () => {
     const dispatch = useDispatch()
@@ -259,7 +260,7 @@ const HomePage = () => {
                     <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
                         {followerCaws().length > 0 && caws && users && loaded ?
                             followerCaws().map(caw => {
-                                return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', backgroundColor: 'black' }}>
+                                return <div key={caw.id} style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', backgroundColor: 'black' }}>
                                     <div className='px-2.5 py-1.5 mr-3'>
                                         <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
                                     </div>
@@ -315,6 +316,8 @@ const HomePage = () => {
                         }
 
                     </div>}
+                <SmallNavbar />
+
             </div>
         </div >
 
