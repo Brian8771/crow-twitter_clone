@@ -47,7 +47,7 @@ const LoginFormForModal = () => {
                     <div >
                         {/* <label className='label' htmlFor='email'>Email</label> */}
                         <input
-                            className='inputsLogin'
+                            className='inputsLogin text-black indent-1'
                             name='email'
                             type='text'
                             placeholder='Email'
@@ -58,7 +58,7 @@ const LoginFormForModal = () => {
                     <div className='divAroundInputs'>
                         {/* <label htmlFor='password'>Password</label> */}
                         <input
-                            className='inputsLogin'
+                            className='inputsLogin text-black indent-1'
                             name='password'
                             type='password'
                             placeholder='Password'

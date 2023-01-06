@@ -74,7 +74,7 @@ const SignUpForm = () => {
 
           <div className='divAroundInputs'>
             <input
-              className='inputsLogin'
+              className='inputsLogin text-black indent-1'
               placeholder='First Name'
               type='text'
               name='firstName'
@@ -84,7 +84,7 @@ const SignUpForm = () => {
           </div>
           <div className='divAroundInputs'>
             <input
-              className='inputsLogin'
+              className='inputsLogin text-black indent-1'
               placeholder='Last Name'
               type='text'
               name='lastName'
@@ -94,7 +94,7 @@ const SignUpForm = () => {
           </div>
           <div className='divAroundInputs'>
             <input
-              className='inputsLogin'
+              className='inputsLogin  text-black indent-1'
               placeholder='User Name'
               type='text'
               name='username'
@@ -104,7 +104,7 @@ const SignUpForm = () => {
           </div>
           <div className='divAroundInputs'>
             <input
-              className='inputsLogin'
+              className='inputsLogin  text-black indent-1'
               placeholder='Email'
               type='text'
               name='email'
@@ -114,7 +114,7 @@ const SignUpForm = () => {
           </div>
           <div className='divAroundInputs'>
             <input
-              className='inputsLogin'
+              className='inputsLogin  text-black indent-1'
               placeholder='Password'
               type='password'
               name='password'
@@ -124,7 +124,7 @@ const SignUpForm = () => {
           </div>
           <div className='divAroundInputs'>
             <input
-              className='inputsLogin'
+              className='inputsLogin  text-black indent-1'
               placeholder='Repeat Password'
               type='password'
               name='repeat_password'
