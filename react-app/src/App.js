@@ -11,6 +11,7 @@ import User from './components/User';
 import PostDetail from './components/CawDetail';
 import { authenticate } from './store/session';
 import NotFound from './components/404site';
+import Chat from './components/Chat';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,6 +51,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/caw/:id'>
           <PostDetail />
+        </ProtectedRoute>
+        <ProtectedRoute path='/chat' >
+          <Chat />
         </ProtectedRoute>
         <ProtectedRoute path='*'>
           <NotFound />
