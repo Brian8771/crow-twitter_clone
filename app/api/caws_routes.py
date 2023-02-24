@@ -5,8 +5,11 @@ from flask_login import login_required, current_user
 from app.models import User, Caw, db, Comment
 from app.forms.create_caw import CreateCawForm
 from app.forms.create_comment import CreateComment
+from app.awsUpload.aws import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 caw_routes = Blueprint('caws', __name__)
+
 
 def validation_errors_to_error_messages(validation_errors):
     """
@@ -19,6 +22,8 @@ def validation_errors_to_error_messages(validation_errors):
     return errorMessages
 
 # get all Caws
+
+
 @caw_routes.route('/')
 def all_caws():
     caws = Caw.query.all()
@@ -26,25 +31,29 @@ def all_caws():
     print(caws)
 
     for caw in caws:
-        like_status=list(filter(lambda user: user.id==current_user.id, caw.caw_like_users))
+        like_status = list(filter(lambda user: user.id ==
+                           current_user.id, caw.caw_like_users))
         newCaw = caw.to_dict()
         newCaw['likeStatus'] = 1 if len(like_status) > 0 else 0
         cawArr.append(newCaw)
     return {'Caws': cawArr}
 
 # Get caw by session user
+
+
 @caw_routes.route('/session')
 @login_required
 def get_caws_by_current_user():
     caws = Caw.query.filter(current_user.id == Caw.userId).all()
 
     if not caws:
-        return {'errors': ['caws can not be found']},404
+        return {'errors': ['caws can not be found']}, 404
     else:
         cawArr = []
 
         for caw in caws:
-            like_status=list(filter(lambda user: user.id==current_user.id, caw.caw_like_users))
+            like_status = list(filter(lambda user: user.id ==
+                               current_user.id, caw.caw_like_users))
             newCaw = caw.to_dict()
             newCaw['likeStatus'] = 1 if len(like_status) > 0 else 0
             cawArr.append(newCaw)
@@ -52,18 +61,21 @@ def get_caws_by_current_user():
         return {'Caws': cawArr}
 
 # Get caws by user id
+
+
 @caw_routes.route('/user/caws/<int:id>')
 def get_caws_by_user_id(id):
     caws = Caw.query.filter(Caw.userId == id).all()
 
     if not caws:
-        return {'errors': ['caws can not be found']},404
+        return {'errors': ['caws can not be found']}, 404
 
     else:
         cawArr = []
 
         for caw in caws:
-            like_status=list(filter(lambda user: user.id==current_user.id, caw.caw_like_users))
+            like_status = list(filter(lambda user: user.id ==
+                               current_user.id, caw.caw_like_users))
             newCaw = caw.to_dict()
             newCaw['likeStatus'] = 1 if len(like_status) > 0 else 0
             cawArr.append(newCaw)
@@ -71,20 +83,25 @@ def get_caws_by_user_id(id):
         return {'Caws': cawArr}
 
 # Get caw by Id
+
+
 @caw_routes.route('/caw/<int:id>')
 def get_caw_by_id(id):
     caw = Caw.query.get(id)
     if not caw:
-        return {'errors': ['caw can not be found']},404
+        return {'errors': ['caw can not be found']}, 404
 
     else:
-        like_status=list(filter(lambda user: user.id==current_user.id, caw.caw_like_users))
+        like_status = list(filter(lambda user: user.id ==
+                           current_user.id, caw.caw_like_users))
         newCaw = caw.to_dict()
         newCaw['likeStatus'] = 1 if len(like_status) > 0 else 0
 
         return {'Caw': newCaw}
 
 # Create a Caw
+
+
 @caw_routes.route('/new', methods=['POST'])
 def create_new_caw():
     user = current_user.to_dict()
@@ -94,11 +111,11 @@ def create_new_caw():
     if form.validate_on_submit():
         caw = Caw(
             # userId = user['id'],
-            caw = form.data['caw']
+            caw=form.data['caw']
 
         )
         if form.data['image']:
-                caw.image = form.data['image']
+            caw.image = form.data['image']
         caw.userId = user['id']
         db.session.add(caw)
         db.session.commit()
@@ -110,6 +127,8 @@ def create_new_caw():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 # update caws
+
+
 @caw_routes.route('/<int:id>', methods=['PUT'])
 def update_caw(id):
     caw = Caw.query.get(id)
@@ -122,19 +141,22 @@ def update_caw(id):
 
     caw.caw = form.data['caw']
     db.session.commit()
-    like_status=list(filter(lambda user: user.id==current_user.id, caw.caw_like_users))
+    like_status = list(filter(lambda user: user.id ==
+                       current_user.id, caw.caw_like_users))
     newCaw = caw.to_dict()
     newCaw['likeStatus'] = 1 if len(like_status) > 0 else 0
 
     return newCaw
 
 # delete caws
+
+
 @caw_routes.route('/<int:id>', methods=['DELETE'])
 def delete_caw(id):
     caw = Caw.query.get(id)
 
     if not caw:
-        return {'errors': ['caw can not be found']},404
+        return {'errors': ['caw can not be found']}, 404
     newCaw = caw.to_dict()
     newCaw['likeStatus'] = 0
     newCaw['totalLikes'] = 0
@@ -144,6 +166,8 @@ def delete_caw(id):
     return {'message': f'Successfully deleted Caw {id}'}
 
 # get all comments by post id
+
+
 @caw_routes.route('/<int:id>/comments')
 def get_all_comments_by_caw_id(id):
     comments = Comment.query.filter(Comment.cawId == id).all()
@@ -152,28 +176,34 @@ def get_all_comments_by_caw_id(id):
         return {'comments': []}
     commentArr = []
     for comment in comments:
-        like_status=list(filter(lambda user: user.id==current_user.id, comment.comment_like_users))
+        like_status = list(filter(lambda user: user.id ==
+                           current_user.id, comment.comment_like_users))
         newComment = comment.to_dict()
         newComment['likeStatus'] = 1 if len(like_status) > 0 else 0
         commentArr.append(newComment)
     return {'comments': commentArr}
 
 # get all comment by user id
+
+
 @caw_routes.route('/user/<int:id>/comments')
 def get_all_comment_by_user_id(id):
     comments = Comment.query.filter(Comment.userId == id).all()
 
     if not comments:
-        return {'errors': ['comments can not be found']},404
+        return {'errors': ['comments can not be found']}, 404
     commentArr = []
     for comment in comments:
-        like_status=list(filter(lambda user: user.id==current_user.id, comment.comment_like_users))
+        like_status = list(filter(lambda user: user.id ==
+                           current_user.id, comment.comment_like_users))
         newComment = comment.to_dict()
         newComment['likeStatus'] = 1 if len(like_status) > 0 else 0
         commentArr.append(newComment)
     return {'comments': commentArr}
 
 # Create Comment
+
+
 @caw_routes.route('/<int:id>/comments', methods=['POST'])
 def create_comment(id):
     user = current_user.to_dict()
@@ -181,9 +211,9 @@ def create_comment(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         comment = Comment(
-            userId = user['id'],
-            cawId = id,
-            data = form.data['comment']
+            userId=user['id'],
+            cawId=id,
+            data=form.data['comment']
         )
         comment.userId = user['id']
         cawId = id
@@ -196,6 +226,8 @@ def create_comment(id):
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 # edit comment by comment id
+
+
 @caw_routes.route('/comment/<int:id>', methods=['PUT'])
 def edit_comment_by_id(id):
     comment = Comment.query.get(id)
@@ -208,12 +240,15 @@ def edit_comment_by_id(id):
 
     comment.data = form.data['comment']
     db.session.commit()
-    like_status=list(filter(lambda user: user.id==current_user.id, comment.comment_like_users))
+    like_status = list(filter(lambda user: user.id ==
+                       current_user.id, comment.comment_like_users))
     newComment = comment.to_dict()
     newComment['likeStatus'] = 1 if len(like_status) > 0 else 0
     return newComment
 
 # delete comment by comment id
+
+
 @caw_routes.route('/comment/<int:id>', methods=['DELETE'])
 def delete_comment_by_id(id):
     comment = Comment.query.get(id)
@@ -229,7 +264,7 @@ def delete_comment_by_id(id):
     return {'message': f'Successfully deleted Caw {id}'}
 
 
-#Get all likes for specified caw
+# Get all likes for specified caw
 
 @caw_routes.route('/<int:id>/likes')
 def get_caw_likes(id):
@@ -243,13 +278,16 @@ def get_caw_likes(id):
 
     return {'like_users': res}
 
-#Update the like status for a specified post
+# Update the like status for a specified post
+
+
 @caw_routes.route('/<int:id>/likes', methods=['PUT'])
 def update_caw_likes(id):
     caw = Caw.query.get(id)
 
     like_users = list(caw.caw_like_users)
-    current_user_like = list(filter(lambda user: user.id == current_user.id, like_users))
+    current_user_like = list(
+        filter(lambda user: user.id == current_user.id, like_users))
     if len(current_user_like) == 0:
         caw.caw_like_users.append(current_user)
         db.session.commit()
@@ -260,17 +298,21 @@ def update_caw_likes(id):
 
     updated_caw = Caw.query.get(id)
     updated_like_users = list(updated_caw.caw_like_users)
-    updated_current_user_like = list(filter(lambda user: user.id == current_user.id, updated_like_users))
+    updated_current_user_like = list(
+        filter(lambda user: user.id == current_user.id, updated_like_users))
     current_user_like_status = 1 if len(updated_current_user_like) else 0
     return {"cawId": id, "likeStatus": current_user_like_status, "totalLikes": len(updated_caw.caw_like_users)}
 
-#Update the like status for a specified comment
+# Update the like status for a specified comment
+
+
 @caw_routes.route('/comment/<int:id>/likes', methods=['PUT'])
 def update_comment_likes(id):
     comment = Comment.query.get(id)
 
     like_users = list(comment.comment_like_users)
-    current_user_like = list(filter(lambda user: user.id == current_user.id, like_users))
+    current_user_like = list(
+        filter(lambda user: user.id == current_user.id, like_users))
     if len(current_user_like) == 0:
         comment.comment_like_users.append(current_user)
         db.session.commit()
@@ -281,6 +323,36 @@ def update_comment_likes(id):
 
     updated_comment = Comment.query.get(id)
     updated_like_users = list(updated_comment.comment_like_users)
-    updated_current_user_like = list(filter(lambda user: user.id == current_user.id, updated_like_users))
+    updated_current_user_like = list(
+        filter(lambda user: user.id == current_user.id, updated_like_users))
     current_user_like_status = 1 if len(updated_current_user_like) else 0
     return {"commentId": id, "likeStatus": current_user_like_status, "totalLikes": len(updated_comment.comment_like_users)}
+
+
+@caw_routes.route("/awsUploader", methods=["POST"])
+@login_required
+def upload_image():
+    if "image" not in request.files:
+        return {"errors": "image required"}, 400
+
+    image = request.files["image"]
+
+    if not allowed_file(image.filename):
+        return {"errors": "file type not permitted"}, 400
+
+    image.filename = get_unique_filename(image.filename)
+
+    upload = upload_file_to_s3(image)
+
+    if "url" not in upload:
+        # if the dictionary doesn't have a url key
+        # it means that there was an error when we tried to upload
+        # so we send back that error message
+        return upload, 400
+
+    url = upload["url"]
+    # flask_login allows us to get the current user from the request
+    # new_image = Image(user=current_user, url=url)
+    # db.session.add(new_image)
+    # db.session.commit()
+    return {"url": url}

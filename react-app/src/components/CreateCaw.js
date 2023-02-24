@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createCaw, getAllCaws } from '../store/caws';
 import '../styles/Homepage.css'
+import UploadPicture from './imageUploader';
 
 
 const CreateCaw = ({ setLoaded, setLoader }) => {
     const [errors, setErrors] = useState([]);
     const [caw, setCaw] = useState('');
+    const [image, setImg] = useState('');
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user);
@@ -15,6 +17,7 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (caw.length === 0) {
             return setErrors(["Can't post an empty caw"])
         }
@@ -23,7 +26,7 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
             return setErrors(["Can't post an empty caw"])
         }
         const cawInfo = {
-            caw
+            caw, image
         }
         let cawCreated = await dispatch(createCaw(cawInfo));
         // await setLoaded(false);
@@ -33,6 +36,7 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
         // await setLoaded(true)
         // await setErrors(cawCreated)
         setCaw('');
+        setImg('')
         // history.push('/1')
         // history.push('/')
     }
@@ -51,6 +55,7 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
                 <img className='h-12 w-14 rounded-full' src={user.profileImage} alt='profilePic' />
             </div>
             <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
+                <UploadPicture setImg={setImg} />
                 <form onSubmit={handleSubmit} className='pTag' >
                     <div>
                         {errors &&
