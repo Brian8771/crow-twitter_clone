@@ -25,9 +25,10 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
         if (caw.match(/^\s*$/)) {
             return setErrors(["Can't post an empty caw"])
         }
-        const cawInfo = {
-            caw, image
+        let cawInfo = {
+            caw
         }
+        if (image) cawInfo = { caw, image }
         let cawCreated = await dispatch(createCaw(cawInfo));
         // await setLoaded(false);
         await setLoader(true)
@@ -55,8 +56,7 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
                 <img className='h-12 w-14 rounded-full' src={user.profileImage} alt='profilePic' />
             </div>
             <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
-                <UploadPicture setImg={setImg} />
-                <form onSubmit={handleSubmit} className='pTag' >
+                <form id='submit-caw' onSubmit={handleSubmit} className='pTag' >
                     <div>
                         {errors &&
                             errors.map((error, ind) => (
@@ -73,10 +73,12 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
                             onChange={(e) => setCaw(e.target.value)}
                         />
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <button disabled={errors ? true : false} className='h-7 w-20 rounded-full m-0 bg-white text-black transition-all duration-500 hover:bg-grayish text-sm disabled:bg-black' type='submit'>Caw</button>
-                    </div>
+                    {image && <img className='cawImage pb-5' src={image} alt='image' />}
                 </form>
+                <div className='flex justify-between'>
+                    <UploadPicture setImg={setImg} />
+                    <button form='submit-caw' type='submit' className='h-10 w-20 font-bold rounded-full m-0  bg-white text-black transition-all duration-500 hover:bg-grayish text-base disabled:bg-black'>Caw</button>
+                </div>
             </div>
 
         </div>

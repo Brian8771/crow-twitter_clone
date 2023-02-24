@@ -265,9 +265,9 @@ const HomePage = () => {
                                         <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
                                     </div>
                                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '85%' }}>
-                                        <NavLink style={{ textDecoration: 'transparent' }} to={`/users/${caw.user.id}`}>
+                                        <NavLink style={{ textDecoration: 'transparent', width: 'fit-content', display: 'flex' }} to={`/users/${caw.user.id}`}>
 
-                                            <p style={{ color: 'white' }} className='pTag'><span className='firstNameP'>{caw.user.firstName}</span> <span style={{ color: 'gray' }}>@{caw.user.username} <span style={{ marginLeft: '6px' }}>{timeAfterCreated(caw)}</span></span></p>
+                                            <p style={{ color: 'white', width: 'fit-content' }} className='pTag'><span className='firstNameP'>{caw.user.firstName}</span> <span style={{ color: 'gray' }}>@{caw.user.username} <span style={{ marginLeft: '6px' }}>{timeAfterCreated(caw)}</span></span></p>
                                         </NavLink>
                                         <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
                                             <p className='pTag' style={{ paddingTop: '10px', color: 'white' }} >{caw.caw}</p>
