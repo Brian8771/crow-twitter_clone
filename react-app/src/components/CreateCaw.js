@@ -14,6 +14,10 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
     const history = useHistory()
     const user = useSelector(state => state.session.user);
 
+    const deleteImg = (e) => {
+        setImg('')
+    }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -73,7 +77,14 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
                             onChange={(e) => setCaw(e.target.value)}
                         />
                     </div>
-                    {image && <img className='cawImage mb-5 max-h-full object-cover aspect-square' src={image} alt='image' />}
+                    {image &&
+                        <div className=' relative'>
+                            <div onClick={deleteImg} style={{ padding: '6px 12px', backgroundColor: 'rgba(0 0 0 / .60)', borderRadius: '40px' }} className='absolute cursor-pointer text-white left-3 top-2'>
+                                X
+                            </div>
+                            <img className='cawImage mb-5 max-h-full object-cover aspect-square' src={image} alt='image' />
+                        </div>
+                    }
                 </form>
                 <div className='flex justify-between'>
                     <UploadPicture setImg={setImg} />
