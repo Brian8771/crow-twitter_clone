@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getAllCaws, getCawsFromUserId } from '../store/caws';
 import { editUser, getCurretProfile } from '../store/session';
-import UploadPicture from './imageUploader';
+import UploadProfilePicture from './ProfileUploader';
+import UploadHeaderPicture from './HeaderUploader';
 import '../styles/LoginForm.css';
 
 const EditUser = ({ hideModal, setLoaded }) => {
@@ -85,8 +86,18 @@ const EditUser = ({ hideModal, setLoaded }) => {
                     </div>
                     <button className='submitButton text-sm  ' disabled={errors.length > 0 ? true : false} type='submit'>Save</button>
                 </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', width: '100%' }}>
-                    <div>
+                <div className='h-full w-full flex justify-start flex-col'>
+                    <div className='relative flex justify-start w-full flex-col'>
+                        <div>
+                            <UploadHeaderPicture setImg={setHeader_image} />
+                            <img className=' h-32 w-full object-cover' src={header_image} alt='headerImage' />
+                        </div>
+                        <div className='w-5/6 m-auto relative bottom-12'>
+                            <UploadProfilePicture setImg={setProfile_image} />
+                            <img className='h-24 w-24 rounded-full' src={profile_image} alt='profileImage' />
+                        </div>
+                    </div>
+                    <div className='flex justify-center'>
                         {errors &&
                             errors.map((error, ind) => (
                                 <div style={{ color: 'red', marginBottom: '10px' }} key={ind}>{error}</div>
@@ -106,8 +117,11 @@ const EditUser = ({ hideModal, setLoaded }) => {
                             />
                         </div>
                         <div className='group flex w-5/6 flex-col border border-gray-500 px-3 py-1 mb-4 rounded focus-within:border-white'>
-                            <label className='text-gray-500 text-xs group-focus-within:text-white'>
-                                Bio
+                            <label className='text-gray-500 flex justify-between text-xs group-focus-within:text-white'>
+                                <p>
+                                    Bio
+                                </p>
+                                <p className=' text-transparent group-focus-within:text-white'>{bio.length} / 160 </p>
                             </label>
                             <textarea
                                 onChange={handleChange}
@@ -116,11 +130,10 @@ const EditUser = ({ hideModal, setLoaded }) => {
                                 value={bio}
                             />
                         </div>
-                        <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-around' }}>
+                        {/* <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-around' }}>
                             <label style={{ width: '2rem' }}>
                                 Profile Image
                             </label>
-                            <UploadPicture setImg={setProfile_image} />
                             {/* <input
                             className='text-black text-sm'
                             style={{ width: '60%', height: '2rem', border: 'none', resize: 'none', marginBottom: '10px' }}
@@ -128,19 +141,8 @@ const EditUser = ({ hideModal, setLoaded }) => {
                             value={profile_image}
                             onChange={(e) => setProfile_image(e.target.value)}
                         /> */}
-                        </div>
-                        <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-around' }}>
-                            <label style={{ width: '2rem' }}>
-                                Header Image
-                            </label>
-                            <input
-                                className='text-black text-sm'
-                                style={{ width: '60%', height: '2rem', border: 'none', resize: 'none', marginBottom: '10px' }}
-                                type='text'
-                                value={header_image}
-                                onChange={(e) => setHeader_image(e.target.value)}
-                            />
-                        </div>
+                        {/* </div> */}
+
                     </div>
                 </div>
             </form>
