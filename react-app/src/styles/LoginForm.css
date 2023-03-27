@@ -25,6 +25,7 @@
     width: 30rem;
     background-color: black;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
@@ -52,12 +53,14 @@ input:focus {
 }
 
 .submitButton {
-    width: 225px;
-    height: 35px;
+    width: 75px;
+    height: 30px;
     border-radius: 30px;
     background-color: #eff3f4;
     color: black;
     cursor: pointer;
+    margin: 0;
+    font-weight: 600;
 }
 
 .submitButton:hover,

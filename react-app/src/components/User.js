@@ -137,45 +137,47 @@ function User() {
         :
         <>
           <div className='homePageContainer'>
-            <div className='pb-1.5 pt-4 sticky top-0  z-10 flex' style={{ backgroundColor: 'rgba(0 0 0 / .85)' }}>
-              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <NavLink style={{ textDecoration: 'none' }} to='/'>
-                  <img style={{ height: '20px', width: '20px', margin: '0 10px' }} src={backArrow} alt='backarrow' />
-                </NavLink>
-              </div>
-              <div className=' h-12 ml-6'>
-                <p className='m-0 text-white text-xl '>{user.firstName}</p>
-                <p className='m-0 text-sm' style={{ color: 'gray' }}> {caws.length} Caws</p>
-              </div>
-            </div>
-            <div style={{ marginBottom: '1em' }}>
-              {isLoaded &&
-                <div>
-                  <div className=' aspect-video' style={{ display: 'flex', backgroundImage: `url(${user.headerImage})`, height: '10rem', backgroundSize: '36rem 10rem', width: '100%', alignItems: 'flex-end', marginBottom: '70px', objectFit: 'contain' }}>
-                    <img style={{ marginLeft: '20px', position: 'relative', top: '68px', height: '133.5px', width: '133.5px', objectFit: 'fill' }} className='imgNav' src={user.profileImage} />
+            {isLoaded &&
+              <>
+                <div className='pb-1.5 pt-4 sticky top-0  z-10 flex' style={{ backgroundColor: 'rgba(0 0 0 / .85)' }}>
+                  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <NavLink style={{ textDecoration: 'none' }} to='/'>
+                      <img style={{ height: '20px', width: '20px', margin: '0 10px' }} src={backArrow} alt='backarrow' />
+                    </NavLink>
                   </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column' }}>
-                      <p style={{ marginTop: '8px', marginBottom: '8px', marginLeft: '16px', color: 'white', fontSize: '20px' }}>{user.firstName}</p>
-                      <p style={{ marginBottom: '8px', marginLeft: '15px', color: 'grey', fontSize: '15px' }}>@{user.username}</p>
+                  <div className=' h-12 ml-6'>
+                    <p className='m-0 text-white text-xl '>{user.firstName}</p>
+                    <p className='m-0 text-sm' style={{ color: 'gray' }}> {caws.length} Caws</p>
+                  </div>
+                </div>
+                <div style={{ marginBottom: '1em' }}>
+                  <div>
+                    <div style={{ display: 'flex', backgroundImage: `url(${user.headerImage})`, height: '10rem', backgroundSize: '36rem 10rem', width: '100%', alignItems: 'flex-end', marginBottom: '70px', objectFit: 'contain' }}>
+                      <img style={{ marginLeft: '20px', position: 'relative', top: '68px', height: '133.5px', width: '133.5px', objectFit: 'fill' }} className='imgNav' src={user.profileImage} />
                     </div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column' }}>
+                        <p style={{ marginTop: '8px', marginBottom: '8px', marginLeft: '16px', color: 'white', fontSize: '20px' }}>{user.firstName}</p>
+                        <p style={{ marginBottom: '8px', marginLeft: '15px', color: 'grey', fontSize: '15px' }}>@{user.username}</p>
+                      </div>
 
-                    {session.id == user.id ? <div style={{ display: 'flex', width: '20%', marginRight: '8px', flexDirection: 'row' }}>
-                      <EditUserModal setLoaded={setLoaded} />
-                    </div> :
-                      <div style={{ display: 'flex', width: '20%', marginRight: '8px', flexDirection: 'row' }}>
-                        {!ifFollows() && refresh ? <button className='followButton' onClick={() => followingUser(user.username)}>Follow</button> : <button className='unfollowButton' onClick={() => unfollowingUser(user.username)} >Unfollow</button>}
-                      </div>}
+                      {session.id == user.id ? <div style={{ display: 'flex', width: '20%', marginRight: '8px', flexDirection: 'row' }}>
+                        <EditUserModal setLoaded={setLoaded} />
+                      </div> :
+                        <div style={{ display: 'flex', width: '20%', marginRight: '8px', flexDirection: 'row' }}>
+                          {!ifFollows() && refresh ? <button className='followButton' onClick={() => followingUser(user.username)}>Follow</button> : <button className='unfollowButton' onClick={() => unfollowingUser(user.username)} >Unfollow</button>}
+                        </div>}
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
+                      <p style={{ marginLeft: '16px', color: 'white', fontSize: '15px', width: '100%', wordBreak: 'break-word', paddingRight: '6px' }}>{user.bio}</p>
+                    </div>
+                    {<div className='mt-3' style={{ display: 'flex', flexDirection: 'row', width: '100%', }}>
+                      <UserFollowingsModal id={user.id} totalFollowings={user.followingCount} />
+                      <UserFollowersModal id={user.id} totalFollowers={user.followerCount} />
+                    </div>}
                   </div>
-                  <div style={{ display: 'flex', flexDirection: 'row', width: '100%' }}>
-                    <p style={{ marginLeft: '16px', color: 'white', fontSize: '15px', width: '100%', wordBreak: 'break-word', paddingRight: '6px' }}>{user.bio}</p>
-                  </div>
-                  {<div className='mt-3' style={{ display: 'flex', flexDirection: 'row', width: '100%', }}>
-                    <UserFollowingsModal id={user.id} totalFollowings={user.followingCount} />
-                    <UserFollowersModal id={user.id} totalFollowers={user.followerCount} />
-                  </div>}
-                </div>}
-            </div>
+                </div>
+              </>}
             {!loader && user && <div className='font' style={{ display: 'flex', borderBottom: '#2f3336 1px solid', fontSize: '15px', color: 'black' }}>
               <p className={option === 'Caws' ? 'activated' : 'notActivated'} onClick={() => setOption('Caws')}>Caws</p>
               <p className={option === 'Comments' ? 'activated' : 'notActivated'} onClick={() => setOption('Comments')}>Replies</p>

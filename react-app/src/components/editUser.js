@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getAllCaws, getCawsFromUserId } from '../store/caws';
 import { editUser, getCurretProfile } from '../store/session';
+import UploadPicture from './imageUploader';
 import '../styles/LoginForm.css';
 
 const EditUser = ({ hideModal, setLoaded }) => {
@@ -13,6 +14,7 @@ const EditUser = ({ hideModal, setLoaded }) => {
     const [username, setUsername] = useState(edit_user.username)
     const [profile_image, setProfile_image] = useState(edit_user.profileImage)
     const [header_image, setHeader_image] = useState(edit_user.headerImage);
+    const [value, setValue] = useState('');
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = async (e) => {
@@ -67,72 +69,82 @@ const EditUser = ({ hideModal, setLoaded }) => {
         setErrors(newErrors)
     }, [profile_image, username, header_image, bio])
 
+    function handleChange(event) {
+        setBio(event.target.value)
+        event.target.style.height = 'auto';
+        event.target.style.height = event.target.scrollHeight + 'px';
+    }
+
     return (
-        <form className='editUserModal' onSubmit={handleSubmit}>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', width: '100%' }}>
-                <div>
-                    <h2 className='text-2xl font-black mb-4'>Edit User</h2>
-                </div>
-                <div>
-                    {errors &&
-                        errors.map((error, ind) => (
-                            <div style={{ color: 'red', marginBottom: '10px' }} key={ind}>{error}</div>
-                        ))
-                    }
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', width: '100%', alignItems: 'flex-start' }}>
-                    <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-around' }}>
-                        <label style={{ width: '2rem' }}>
-                            Username
-                        </label>
-                        <input
-                            className='text-black text-sm'
-                            style={{ width: '60%', height: '2rem', border: 'none', resize: 'none', marginBottom: '10px' }}
-                            type='text'
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                        />
+        <>
+            <form className='editUserModal' onSubmit={handleSubmit}>
+                <div className='sticky top-0 flex justify-between w-full items-center px-4 py-2'>
+                    <div className='flex items-center'>
+                        <p className='cursor-pointer' onClick={() => hideModal()}>X</p>
+                        <h2 className='text-xl font-semibold ml-5'>Edit Profile</h2>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-around' }}>
-                        <label style={{ width: '2rem' }}>
-                            Bio
-                        </label>
-                        <textarea
-                            className='text-black text-sm'
-                            style={{ width: '60%', height: '6rem', border: 'none', resize: 'none', marginBottom: '10px' }}
-                            type='text'
-                            value={bio}
-                            onChange={(e) => setBio(e.target.value)}
-                        />
+                    <button className='submitButton text-sm  ' disabled={errors.length > 0 ? true : false} type='submit'>Save</button>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', width: '100%' }}>
+                    <div>
+                        {errors &&
+                            errors.map((error, ind) => (
+                                <div style={{ color: 'red', marginBottom: '10px' }} key={ind}>{error}</div>
+                            ))
+                        }
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-around' }}>
-                        <label style={{ width: '2rem' }}>
-                            Profile Image
-                        </label>
-                        <input
+                    <div className='flex justify-center flex-col w-full items-center'>
+                        <div className='group flex w-5/6 flex-col border border-gray-500 px-3 py-1 mb-4 rounded focus-within:border-white'>
+                            <label className='text-xs text-gray-500 group-focus-within:text-white'>
+                                Username
+                            </label>
+                            <input
+                                className='text-white bg-black'
+                                type='text'
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                        </div>
+                        <div className='group flex w-5/6 flex-col border border-gray-500 px-3 py-1 mb-4 rounded focus-within:border-white'>
+                            <label className='text-gray-500 text-xs group-focus-within:text-white'>
+                                Bio
+                            </label>
+                            <textarea
+                                onChange={handleChange}
+                                className='myTextarea bio text-white bg-black resize-none overflow-y-hidden duration-300'
+                                type='text'
+                                value={bio}
+                            />
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-around' }}>
+                            <label style={{ width: '2rem' }}>
+                                Profile Image
+                            </label>
+                            <UploadPicture setImg={setProfile_image} />
+                            {/* <input
                             className='text-black text-sm'
                             style={{ width: '60%', height: '2rem', border: 'none', resize: 'none', marginBottom: '10px' }}
                             type='text'
                             value={profile_image}
                             onChange={(e) => setProfile_image(e.target.value)}
-                        />
+                        /> */}
+                        </div>
+                        <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-around' }}>
+                            <label style={{ width: '2rem' }}>
+                                Header Image
+                            </label>
+                            <input
+                                className='text-black text-sm'
+                                style={{ width: '60%', height: '2rem', border: 'none', resize: 'none', marginBottom: '10px' }}
+                                type='text'
+                                value={header_image}
+                                onChange={(e) => setHeader_image(e.target.value)}
+                            />
+                        </div>
                     </div>
-                    <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-around' }}>
-                        <label style={{ width: '2rem' }}>
-                            Header Image
-                        </label>
-                        <input
-                            className='text-black text-sm'
-                            style={{ width: '60%', height: '2rem', border: 'none', resize: 'none', marginBottom: '10px' }}
-                            type='text'
-                            value={header_image}
-                            onChange={(e) => setHeader_image(e.target.value)}
-                        />
-                    </div>
-                    <button className='submitButton' disabled={errors.length > 0 ? true : false} type='submit'>Edit</button>
                 </div>
-            </div>
-        </form>
+            </form>
+        </>
     )
 }
 
