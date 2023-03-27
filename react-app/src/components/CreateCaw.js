@@ -73,7 +73,7 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
                             onChange={(e) => setCaw(e.target.value)}
                         />
                     </div>
-                    {image && <img className='cawImage pb-5' src={image} alt='image' />}
+                    {image && <img className='cawImage mb-5 max-h-full object-cover aspect-square' src={image} alt='image' />}
                 </form>
                 <div className='flex justify-between'>
                     <UploadPicture setImg={setImg} />

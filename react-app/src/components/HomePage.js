@@ -6,7 +6,6 @@ import CreateCaw from './CreateCaw';
 import '../styles/Homepage.css'
 import likedIcon from '../images/liked.png'
 import { getAllUsers, getFollowings } from '../store/session';
-import ClipLoader from "react-spinners/ClipLoader";
 import '../../src/index.css'
 
 const HomePage = () => {
@@ -82,7 +81,7 @@ const HomePage = () => {
         <div className='homePageContainer' >
             <div >
                 <div style={{ position: 'sticky', top: '0' }}>
-                    <h1 className='header font-bold' style={{ fontSize: '20px', color: 'white', backgroundColor: 'black' }}>Home</h1>
+                    <h1 className='header font-bold' style={{ fontSize: '20px', color: 'white', backgroundColor: 'rgba(0 0 0 / .85)' }}>Home</h1>
                 </div>
                 <div >
                     <CreateCaw setLoaded={setLoaded} setLoader={setLoaders} />
@@ -271,7 +270,7 @@ const HomePage = () => {
                                         </NavLink>
                                         <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
                                             <p className='pTag' style={{ paddingTop: '10px', color: 'white' }} >{caw.caw}</p>
-                                            {caw.image && <img className='cawImage' src={caw.image} alt='image' />}
+                                            {caw.image && <img className='cawImage b-5 max-h-full object-cover aspect-square' src={caw.image} alt='image' />}
                                         </NavLink>
                                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                                             <div className='likeButton' onClick={() => handleLikes(caw.id)} >

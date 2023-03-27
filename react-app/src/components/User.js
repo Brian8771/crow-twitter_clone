@@ -196,7 +196,7 @@ function User() {
                       </NavLink>
                       <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
                         <p className='pTag' style={{ paddingTop: '10px', width: '100%', marginRight: '0', color: 'white' }} >{caw.caw}</p>
-                        {caw.image && <img className='cawImage' src={caw.image} alt='image' />}
+                        {caw.image && <img className='cawImage aspect-square' src={caw.image} alt='image' />}
                       </NavLink>
                       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                         <div className='likeButton' onClick={() => handleLikes(caw.id)} >
@@ -247,7 +247,7 @@ function User() {
                       </NavLink>
                       <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
                         <p className='pTag' style={{ paddingTop: '10px', width: '100%', marginRight: '0', color: 'white' }} >{caw.caw}</p>
-                        {caw.image && <img className='cawImage' src={caw.image} alt='image' />}
+                        {caw.image && <img className='cawImage aspect-square' src={caw.image} alt='image' />}
                       </NavLink>
                       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                         <div className='likeButton' onClick={() => handleLikes(caw.id)}>

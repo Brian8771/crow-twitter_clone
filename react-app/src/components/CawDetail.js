@@ -146,7 +146,7 @@ const PostDetail = () => {
                                                 </div>
                                             </div>
                                             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: 'auto' }}>
-                                                {caw.image && <img style={{ height: 'auto', width: '90%' }} className='cawImage' src={caw.image} alt='image' />}
+                                                {caw.image && <img style={{ height: 'auto', width: '90%' }} className='cawImage aspect-square' src={caw.image} alt='image' />}
                                             </div>
                                         </div>
                                         <span style={{ marginLeft: '20px', color: 'gray', marginTop: '10px' }}>{timeAfterCreated(caw)}</span>
