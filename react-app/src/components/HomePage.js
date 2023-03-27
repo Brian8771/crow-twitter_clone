@@ -270,7 +270,7 @@ const HomePage = () => {
                                         </NavLink>
                                         <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
                                             <p className='pTag' style={{ paddingTop: '10px', color: 'white' }} >{caw.caw}</p>
-                                            {caw.image && <img className='cawImage b-5 max-h-full object-cover aspect-square' src={caw.image} alt='image' />}
+                                            {caw.image && <img className='cawImage mb-2 max-h-full object-cover aspect-square' src={caw.image} alt='image' />}
                                         </NavLink>
                                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                                             <div className='likeButton' onClick={() => handleLikes(caw.id)} >
