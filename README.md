@@ -110,6 +110,7 @@ Website link is https://crow-app.onrender.com/
    * Edit Caw by going into the caw details page
    * Delete Caw
    * And view all caws
+   * Added AWS S3 for image uploads
 
 * Comments
    * Able to post a comment underneath caws that are up to 180 characters

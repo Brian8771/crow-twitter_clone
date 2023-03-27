@@ -113,7 +113,7 @@ const PostDetail = () => {
                         <div>
 
                             <div>
-                                <div className='my-3' style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', backgroundColor: 'black' }}>
+                                <div className='sticky top-0 py-3 flex items-center' style={{ backgroundColor: 'rgba(0 0 0 / .85)' }}>
                                     <NavLink style={{ textDecoration: 'none' }} to='/'>
                                         <img style={{ height: '20px', width: '20px', margin: '0 10px' }} src={backArrow} alt='backarrow' />
                                     </NavLink>

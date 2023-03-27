@@ -137,21 +137,21 @@ function User() {
         :
         <>
           <div className='homePageContainer'>
+            <div className='pb-1.5 pt-4 sticky top-0  z-10 flex' style={{ backgroundColor: 'rgba(0 0 0 / .85)' }}>
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <NavLink style={{ textDecoration: 'none' }} to='/'>
+                  <img style={{ height: '20px', width: '20px', margin: '0 10px' }} src={backArrow} alt='backarrow' />
+                </NavLink>
+              </div>
+              <div className=' h-12 ml-6'>
+                <p className='m-0 text-white text-xl '>{user.firstName}</p>
+                <p className='m-0 text-sm' style={{ color: 'gray' }}> {caws.length} Caws</p>
+              </div>
+            </div>
             <div style={{ marginBottom: '1em' }}>
               {isLoaded &&
                 <div>
-                  <div className='mb-1.5' style={{ display: 'flex', flexDirection: 'row', backgroundColor: 'black', marginTop: '1rem' }}>
-                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                      <NavLink style={{ textDecoration: 'none' }} to='/'>
-                        <img style={{ height: '20px', width: '20px', margin: '0 10px' }} src={backArrow} alt='backarrow' />
-                      </NavLink>
-                    </div>
-                    <div style={{ height: '3rem' }}>
-                      <p className='m-0 text-white text-xl '>{user.firstName}</p>
-                      <p className='m-0 text-sm text-white'>{caws.length} Caws</p>
-                    </div>
-                  </div>
-                  <div style={{ display: 'flex', backgroundImage: `url(${user.headerImage})`, height: '10rem', backgroundSize: '36rem 10rem', width: '100%', alignItems: 'flex-end', marginBottom: '70px', objectFit: 'contain' }}>
+                  <div className=' aspect-video' style={{ display: 'flex', backgroundImage: `url(${user.headerImage})`, height: '10rem', backgroundSize: '36rem 10rem', width: '100%', alignItems: 'flex-end', marginBottom: '70px', objectFit: 'contain' }}>
                     <img style={{ marginLeft: '20px', position: 'relative', top: '68px', height: '133.5px', width: '133.5px', objectFit: 'fill' }} className='imgNav' src={user.profileImage} />
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
