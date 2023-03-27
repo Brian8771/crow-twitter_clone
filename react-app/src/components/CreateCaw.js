@@ -3,11 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createCaw, getAllCaws } from '../store/caws';
 import '../styles/Homepage.css'
+import UploadPicture from './imageUploader';
 
 
 const CreateCaw = ({ setLoaded, setLoader }) => {
     const [errors, setErrors] = useState([]);
     const [caw, setCaw] = useState('');
+    const [image, setImg] = useState('');
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user);
@@ -15,6 +17,7 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (caw.length === 0) {
             return setErrors(["Can't post an empty caw"])
         }
@@ -22,9 +25,10 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
         if (caw.match(/^\s*$/)) {
             return setErrors(["Can't post an empty caw"])
         }
-        const cawInfo = {
+        let cawInfo = {
             caw
         }
+        if (image) cawInfo = { caw, image }
         let cawCreated = await dispatch(createCaw(cawInfo));
         // await setLoaded(false);
         await setLoader(true)
@@ -33,6 +37,7 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
         // await setLoaded(true)
         // await setErrors(cawCreated)
         setCaw('');
+        setImg('')
         // history.push('/1')
         // history.push('/')
     }
@@ -51,7 +56,7 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
                 <img className='h-12 w-14 rounded-full' src={user.profileImage} alt='profilePic' />
             </div>
             <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
-                <form onSubmit={handleSubmit} className='pTag' >
+                <form id='submit-caw' onSubmit={handleSubmit} className='pTag' >
                     <div>
                         {errors &&
                             errors.map((error, ind) => (
@@ -68,10 +73,12 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
                             onChange={(e) => setCaw(e.target.value)}
                         />
                     </div>
-                    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                        <button disabled={errors ? true : false} className='h-7 w-20 rounded-full m-0 bg-white text-black transition-all duration-500 hover:bg-grayish text-sm disabled:bg-black' type='submit'>Caw</button>
-                    </div>
+                    {image && <img className='cawImage mb-5 max-h-full object-cover aspect-square' src={image} alt='image' />}
                 </form>
+                <div className='flex justify-between'>
+                    <UploadPicture setImg={setImg} />
+                    <button form='submit-caw' type='submit' className='h-10 w-20 font-bold rounded-full m-0  bg-white text-black transition-all duration-500 hover:bg-grayish text-base disabled:bg-black'>Caw</button>
+                </div>
             </div>
 
         </div>

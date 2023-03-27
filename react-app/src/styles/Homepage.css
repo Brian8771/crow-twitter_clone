@@ -460,3 +460,7 @@
     top: 60px;
 
 }
+
+.image-upload>input {
+    display: none;
+}

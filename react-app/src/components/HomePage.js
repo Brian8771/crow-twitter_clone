@@ -6,7 +6,6 @@ import CreateCaw from './CreateCaw';
 import '../styles/Homepage.css'
 import likedIcon from '../images/liked.png'
 import { getAllUsers, getFollowings } from '../store/session';
-import ClipLoader from "react-spinners/ClipLoader";
 import '../../src/index.css'
 
 const HomePage = () => {
@@ -82,7 +81,7 @@ const HomePage = () => {
         <div className='homePageContainer' >
             <div >
                 <div style={{ position: 'sticky', top: '0' }}>
-                    <h1 className='header font-bold' style={{ fontSize: '20px', color: 'white', backgroundColor: 'black' }}>Home</h1>
+                    <h1 className='header font-bold' style={{ fontSize: '20px', color: 'white', backgroundColor: 'rgba(0 0 0 / .85)' }}>Home</h1>
                 </div>
                 <div >
                     <CreateCaw setLoaded={setLoaded} setLoader={setLoaders} />
@@ -259,18 +258,19 @@ const HomePage = () => {
                     <div style={{ display: 'flex', flexDirection: 'column-reverse' }}>
                         {followerCaws().length > 0 && caws && users && loaded ?
                             followerCaws().map(caw => {
+
                                 return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', backgroundColor: 'black' }}>
                                     <div className='px-2.5 py-1.5 mr-3'>
                                         <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
                                     </div>
                                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '85%' }}>
-                                        <NavLink style={{ textDecoration: 'transparent' }} to={`/users/${caw.user.id}`}>
+                                        <NavLink style={{ textDecoration: 'transparent', width: 'fit-content', display: 'flex' }} to={`/users/${caw.user.id}`}>
 
-                                            <p style={{ color: 'white' }} className='pTag'><span className='firstNameP'>{caw.user.firstName}</span> <span style={{ color: 'gray' }}>@{caw.user.username} <span style={{ marginLeft: '6px' }}>{timeAfterCreated(caw)}</span></span></p>
+                                            <p style={{ color: 'white', width: 'fit-content' }} className='pTag'><span className='firstNameP'>{caw.user.firstName}</span> <span style={{ color: 'gray' }}>@{caw.user.username} <span style={{ marginLeft: '6px' }}>{timeAfterCreated(caw)}</span></span></p>
                                         </NavLink>
                                         <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
                                             <p className='pTag' style={{ paddingTop: '10px', color: 'white' }} >{caw.caw}</p>
-                                            {caw.image && <img className='cawImage' src={caw.image} alt='image' />}
+                                            {caw.image && <img className='cawImage b-5 max-h-full object-cover aspect-square' src={caw.image} alt='image' />}
                                         </NavLink>
                                         <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                                             <div className='likeButton' onClick={() => handleLikes(caw.id)} >
