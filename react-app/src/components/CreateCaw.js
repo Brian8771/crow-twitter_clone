@@ -31,13 +31,13 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
         if (image) cawInfo = { caw, image }
         let cawCreated = await dispatch(createCaw(cawInfo));
         // await setLoaded(false);
+        setCaw('');
+        setImg('')
         await setLoader(true)
         await dispatch(getAllCaws());
         await setLoader(false)
         // await setLoaded(true)
         // await setErrors(cawCreated)
-        setCaw('');
-        setImg('')
         // history.push('/1')
         // history.push('/')
     }
