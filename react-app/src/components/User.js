@@ -152,8 +152,9 @@ function User() {
                 </div>
                 <div style={{ marginBottom: '1em' }}>
                   <div>
-                    <div style={{ display: 'flex', backgroundImage: `url(${user.headerImage})`, height: '10rem', backgroundSize: '36rem 10rem', width: '100%', alignItems: 'flex-end', marginBottom: '70px', objectFit: 'contain' }}>
-                      <img style={{ marginLeft: '20px', position: 'relative', top: '68px', height: '133.5px', width: '133.5px', objectFit: 'fill' }} className='imgNav' src={user.profileImage} />
+                    <div className='relative mb-24'>
+                      <img className=' h-40 w-full object-cover' src={user.headerImage} alt='header image' />
+                      <img className='absolute h-36 w-36 object-cover rounded-full  top-[5.5rem] left-6' style={{ border: '4px solid black' }} src={user.profileImage} />
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                       <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -189,7 +190,7 @@ function User() {
                 caws.map(caw => {
                   return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
                     <div className='px-2.5 py-1.5 mr-3'>
-                      <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
+                      <img className='h-12 w-12 rounded-full object-cover' src={caw.user.profileImage} alt='profilePic' />
                     </div>
                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
                       <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
@@ -240,7 +241,7 @@ function User() {
                 getLikedCaws().map(caw => {
                   return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
                     <div className='px-2.5 py-1.5 mr-3'>
-                      <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
+                      <img className='h-12 w-12 rounded-full object-cover' src={caw.user.profileImage} alt='profilePic' />
                     </div>
                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
                       <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
@@ -298,7 +299,7 @@ function User() {
                 comments.map(comment => {
                   return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
                     <div className='px-2.5 py-1.5 mr-3'>
-                      <img className='h-12 w-12 rounded-full' src={comment.user.profileImage} alt='profilePic' />
+                      <img className='h-12 w-12 rounded-full object-cover' src={comment.user.profileImage} alt='profilePic' />
                     </div>
                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
                       <NavLink style={{ textDecoration: 'none' }} to={`/users/${comment.userId}`}>

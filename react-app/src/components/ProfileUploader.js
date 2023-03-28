@@ -3,37 +3,8 @@ import React, { useRef, useState } from "react";
 
 
 const UploadProfilePicture = ({ setImg }) => {
-    // const history = useHistory(); // so that we can redirect after the image upload is successful
-    // const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
     const formRef = useRef(null);
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     const formData = new FormData();
-    //     formData.append("image", image);
-
-    //     // aws uploads can be a bit slow—displaying
-    //     // some sort of loading message is a good idea
-    //     setImageLoading(true);
-
-    //     const res = await fetch('/api/caws/awsUploader', {
-    //         method: "POST",
-    //         body: formData,
-    //     });
-    //     if (res.ok) {
-    //         const data = await res.json();
-    //         setImageLoading(false);
-    //         setImg(data.url)
-    //     }
-    //     else {
-    //         setImageLoading(false);
-    //         // a real app would probably use more advanced
-    //         // error handling
-    //         console.log(res)
-    //         console.log("error");
-    //     }
-    // }
 
     const updateImage = async (e) => {
 
@@ -81,7 +52,7 @@ const UploadProfilePicture = ({ setImg }) => {
                     accept="image/*"
                     onChange={updateImage}
                 />
-                {/* <button id='submit' type="submit">Submit</button> */}
+
             </div>
         </form>
     )
