@@ -190,7 +190,7 @@ function User() {
                 caws.map(caw => {
                   return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
                     <div className='px-2.5 py-1.5 mr-3'>
-                      <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
+                      <img className='h-12 w-12 rounded-full object-cover' src={caw.user.profileImage} alt='profilePic' />
                     </div>
                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
                       <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
@@ -241,7 +241,7 @@ function User() {
                 getLikedCaws().map(caw => {
                   return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
                     <div className='px-2.5 py-1.5 mr-3'>
-                      <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
+                      <img className='h-12 w-12 rounded-full object-cover' src={caw.user.profileImage} alt='profilePic' />
                     </div>
                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
                       <NavLink style={{ textDecoration: 'none' }} to={`/users/${caw.user.id}`}>
@@ -299,7 +299,7 @@ function User() {
                 comments.map(comment => {
                   return <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', width: '100%' }}>
                     <div className='px-2.5 py-1.5 mr-3'>
-                      <img className='h-12 w-12 rounded-full' src={comment.user.profileImage} alt='profilePic' />
+                      <img className='h-12 w-12 rounded-full object-cover' src={comment.user.profileImage} alt='profilePic' />
                     </div>
                     <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '80%' }}>
                       <NavLink style={{ textDecoration: 'none' }} to={`/users/${comment.userId}`}>
