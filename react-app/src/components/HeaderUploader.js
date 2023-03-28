@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 
 
 
-const UploadHeaderPicture = ({ setImg }) => {
+const UploadHeaderPicture = ({ setImage }) => {
     // const history = useHistory(); // so that we can redirect after the image upload is successful
     // const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
@@ -53,7 +53,7 @@ const UploadHeaderPicture = ({ setImg }) => {
             if (res.ok) {
                 const data = await res.json();
                 setImageLoading(false);
-                setImg(data.url)
+                setImage(data.url)
             }
             else {
                 setImageLoading(false);

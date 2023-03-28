@@ -75,6 +75,7 @@ const EditUser = ({ hideModal, setLoaded }) => {
         event.target.style.height = 'auto';
         event.target.style.height = event.target.scrollHeight + 'px';
     }
+    console.log(profile_image)
 
     return (
         <>
@@ -88,9 +89,9 @@ const EditUser = ({ hideModal, setLoaded }) => {
                 </div>
                 <div className='h-full w-full flex justify-start flex-col'>
                     <div className='relative flex justify-start w-full flex-col'>
-                        <div>
-                            <UploadHeaderPicture setImg={setHeader_image} />
-                            <img className=' h-32 w-full object-cover' src={header_image} alt='headerImage' />
+                        <div className='relative'>
+                            <UploadHeaderPicture setImage={setHeader_image} />
+                            <img className='h-32 w-full object-cover' src={header_image} alt='headerImage' />
                         </div>
                         <div className='w-5/6 m-auto relative bottom-12'>
                             <UploadProfilePicture setImg={setProfile_image} />
