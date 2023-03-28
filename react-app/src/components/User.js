@@ -152,8 +152,9 @@ function User() {
                 </div>
                 <div style={{ marginBottom: '1em' }}>
                   <div>
-                    <div style={{ display: 'flex', backgroundImage: `url(${user.headerImage})`, height: '10rem', backgroundSize: '36rem 10rem', width: '100%', alignItems: 'flex-end', marginBottom: '70px', objectFit: 'contain' }}>
-                      <img style={{ marginLeft: '20px', position: 'relative', top: '68px', height: '133.5px', width: '133.5px', objectFit: 'fill' }} className='imgNav' src={user.profileImage} />
+                    <div className='relative mb-24'>
+                      <img className=' h-40 w-full object-cover' src={user.headerImage} alt='header image' />
+                      <img className='absolute h-36 w-36 object-cover rounded-full  top-[5.5rem] left-6' style={{ border: '4px solid black' }} src={user.profileImage} />
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                       <div style={{ display: 'flex', flexDirection: 'column' }}>
