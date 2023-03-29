@@ -51,7 +51,7 @@ const EditCaw = ({ hideModal }) => {
 
 
     return (
-        <form className='editFormModal' onSubmit={handleSubmit}>
+        <form className={` ${image ? 'h-[42rem]' : 'h-[20rem]'} w-[40rem] border-[.5px] border-white bg-black text-white flex flex-col justify-center items-center rounded-xl`} onSubmit={handleSubmit}>
             <div className='relative top-0 flex w-full items-center px-5 py-3'>
                 <p className='cursor-pointer' onClick={() => hideModal()}>X</p>
                 <h2 className='text-2xl ml-12 font-black'>Edit Caw</h2>
@@ -77,12 +77,12 @@ const EditCaw = ({ hideModal }) => {
                             value={caw}
                             onChange={handleChange}
                         />
-                        <img className='h-96 w-96 aspect-square rounded-md' src={image} alt='image' />
+                        {image && <img className='h-96 w-96 aspect-square rounded-md' src={image} alt='image' />}
                     </div>
                 </div>
             </div>
             <div className='flex w-full justify-end pb-2 px-6'>
-                <button className='w-20 h-8 m-0 rounded-3xl bg-[#eff3f4] text-black cursor-pointer' disabled={errors ? true : false} type='submit'>Update</button>
+                <button className='w-20 h-8 m-0 rounded-3xl bg-[#eff3f4] text-black cursor-pointer font-bold' disabled={errors ? true : false} type='submit'>Update</button>
             </div>
         </form>
     )
