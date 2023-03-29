@@ -51,17 +51,17 @@ const EditCaw = ({ hideModal }) => {
 
 
     return (
-        <form className={` ${image ? 'h-[42rem]' : 'h-[20rem]'} w-[40rem] border-[.5px] border-white bg-black text-white flex flex-col justify-center items-center rounded-xl`} onSubmit={handleSubmit}>
+        <form className={` ${image ? 'h-[40rem]' : 'h-[20rem]'} w-[36rem] border-[.5px] border-white bg-black text-white flex flex-col justify-center items-center rounded-xl`} onSubmit={handleSubmit}>
             <div className='relative top-0 flex w-full items-center px-5 py-3'>
                 <p className='cursor-pointer' onClick={() => hideModal()}>X</p>
                 <h2 className='text-2xl ml-12 font-black'>Edit Caw</h2>
             </div>
-            <div className='w-full flex h-full px-8 mt-4'>
+            <div className='w-full flex h-full pl-8 mt-2 overflow-y-scroll'>
                 <div className='w-full flex items-start'>
                     <div className='h-full'>
                         <img className=' h-24 w-28 rounded-full' src={edit_caw.user.profileImage} alt='profile pic' />
                     </div>
-                    <div className='ml-8' style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', width: '100%', alignItems: 'center' }}>
+                    <div className='' style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', width: '100%', alignItems: 'center' }}>
                         <div>
                             {errors &&
                                 errors.map((error, ind) => (
@@ -70,7 +70,7 @@ const EditCaw = ({ hideModal }) => {
                             }
                         </div>
                         <textarea
-                            className='text-white bg-black text-md w-full'
+                            className='text-white bg-black text-md w-full pl-8 pr-4'
                             style={{ border: 'none', resize: 'none', marginBottom: '10px' }}
                             type='text'
                             name='firstName'
