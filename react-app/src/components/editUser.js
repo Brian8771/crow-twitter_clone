@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { getAllCaws, getCawsFromUserId } from '../store/caws';
 import { editUser, getCurretProfile } from '../store/session';
 import UploadProfilePicture from './ProfileUploader';
@@ -9,13 +8,11 @@ import '../styles/LoginForm.css';
 
 const EditUser = ({ hideModal, setLoaded }) => {
     const dispatch = useDispatch()
-    const history = useHistory()
     const edit_user = useSelector(state => state.session.user)
     const [bio, setBio] = useState(edit_user.bio)
     const [username, setUsername] = useState(edit_user.username)
     const [profile_image, setProfile_image] = useState(edit_user.profileImage)
     const [header_image, setHeader_image] = useState(edit_user.headerImage);
-    const [value, setValue] = useState('');
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = async (e) => {
@@ -35,10 +32,7 @@ const EditUser = ({ hideModal, setLoaded }) => {
         setLoaded(true)
         await dispatch(getAllCaws())
         hideModal()
-        // history.push(`/${edit_caw.id}`)
         setBio('');
-        // history.push('/1')
-        // history.push('/')
     }
 
     useEffect(() => {
@@ -52,12 +46,6 @@ const EditUser = ({ hideModal, setLoaded }) => {
         if (username.match(/^\s*$/) && username.length > 0) {
             newErrors.push('Username cannot be empty')
         }
-        // if (!profile_image.endsWith('.png') || !profile_image.endsWith('.jpg')) {
-        //     newErrors.push('Profile Image must end with .png')
-        // }
-        // if (!header_image.endsWith('.png') || !header_image.endsWith('.jpg')) {
-        //     newErrors.push('Header Image must end with .png')
-        // }
         if (bio.length === 0) {
             newErrors.push('Bio cannot be empty')
         }
@@ -80,7 +68,7 @@ const EditUser = ({ hideModal, setLoaded }) => {
     return (
         <>
             <form className='editUserModal' onSubmit={handleSubmit}>
-                <div className='sticky top-0 flex justify-between w-full items-center px-4 py-2'>
+                <div className='sticky top-0 flex justify-between w-full items-center px-4 py-3'>
                     <div className='flex items-center'>
                         <p className='cursor-pointer' onClick={() => hideModal()}>X</p>
                         <h2 className='text-xl font-semibold ml-5'>Edit Profile</h2>
@@ -91,14 +79,14 @@ const EditUser = ({ hideModal, setLoaded }) => {
                     <div className='relative flex justify-start w-full flex-col'>
                         <div className='relative'>
                             <UploadHeaderPicture setImage={setHeader_image} />
-                            <img className='h-32 w-full object-cover' src={header_image} alt='headerImage' />
+                            <img className='h-40 w-full object-cover' src={header_image} alt='headerImage' />
                         </div>
-                        <div className='w-5/6 m-auto relative bottom-12'>
+                        <div className='w-5/6 m-auto relative bottom-20'>
                             <UploadProfilePicture setImg={setProfile_image} />
-                            <img className='h-24 w-24 rounded-full' src={profile_image} alt='profileImage' />
+                            <img className='h-36 w-36 rounded-full' src={profile_image} alt='profileImage' />
                         </div>
                     </div>
-                    <div className='flex justify-center'>
+                    <div className='flex items-center flex-col'>
                         {errors &&
                             errors.map((error, ind) => (
                                 <div style={{ color: 'red', marginBottom: '10px' }} key={ind}>{error}</div>
@@ -131,19 +119,6 @@ const EditUser = ({ hideModal, setLoaded }) => {
                                 value={bio}
                             />
                         </div>
-                        {/* <div style={{ display: 'flex', flexDirection: 'row', width: '100%', justifyContent: 'space-around' }}>
-                            <label style={{ width: '2rem' }}>
-                                Profile Image
-                            </label>
-                            {/* <input
-                            className='text-black text-sm'
-                            style={{ width: '60%', height: '2rem', border: 'none', resize: 'none', marginBottom: '10px' }}
-                            type='text'
-                            value={profile_image}
-                            onChange={(e) => setProfile_image(e.target.value)}
-                        /> */}
-                        {/* </div> */}
-
                     </div>
                 </div>
             </form>

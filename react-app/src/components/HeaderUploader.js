@@ -3,37 +3,8 @@ import React, { useRef, useState } from "react";
 
 
 const UploadHeaderPicture = ({ setImage }) => {
-    // const history = useHistory(); // so that we can redirect after the image upload is successful
-    // const [image, setImage] = useState(null);
     const [imageLoading, setImageLoading] = useState(false);
     const formRef = useRef(null);
-
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     const formData = new FormData();
-    //     formData.append("image", image);
-
-    //     // aws uploads can be a bit slow—displaying
-    //     // some sort of loading message is a good idea
-    //     setImageLoading(true);
-
-    //     const res = await fetch('/api/caws/awsUploader', {
-    //         method: "POST",
-    //         body: formData,
-    //     });
-    //     if (res.ok) {
-    //         const data = await res.json();
-    //         setImageLoading(false);
-    //         setImg(data.url)
-    //     }
-    //     else {
-    //         setImageLoading(false);
-    //         // a real app would probably use more advanced
-    //         // error handling
-    //         console.log(res)
-    //         console.log("error");
-    //     }
-    // }
 
     const updateImage = async (e) => {
 
@@ -66,7 +37,7 @@ const UploadHeaderPicture = ({ setImage }) => {
     }
 
     return (
-        <form className=" absolute top-12 left-52" ref={formRef} id="imageForm">
+        <form className=" absolute top-12 left-64" ref={formRef} id="imageForm">
             <div className="image-upload flex">
 
                 <label htmlFor="file-input" className="h-12 w-12 flex justify-center items-center rounded-full" style={{ backgroundColor: 'rgba(0 0 0 / .5)' }}>
@@ -81,7 +52,6 @@ const UploadHeaderPicture = ({ setImage }) => {
                     accept="image/*"
                     onChange={updateImage}
                 />
-                {/* <button id='submit' type="submit">Submit</button> */}
             </div>
         </form>
     )
