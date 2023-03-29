@@ -11,7 +11,14 @@ const EditCaw = ({ hideModal }) => {
     const history = useHistory()
     const edit_caw = useSelector(state => state.caws.caw)
     const [caw, setCaw] = useState(edit_caw.caw)
+    const image = edit_caw.image
     const [errors, setErrors] = useState([]);
+
+    function handleChange(event) {
+        setCaw(event.target.value)
+        event.target.style.height = 'auto';
+        event.target.style.height = event.target.scrollHeight + 'px';
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -45,28 +52,37 @@ const EditCaw = ({ hideModal }) => {
 
     return (
         <form className='editFormModal' onSubmit={handleSubmit}>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', width: '100%' }}>
-                <div>
-                    <h2 className='text-2xl mb-4 font-black'>Edit Caw</h2>
+            <div className='relative top-0 flex w-full items-center px-5 py-3'>
+                <p className='cursor-pointer' onClick={() => hideModal()}>X</p>
+                <h2 className='text-2xl ml-12 font-black'>Edit Caw</h2>
+            </div>
+            <div className='w-full flex h-full px-8 mt-4'>
+                <div className='w-full flex items-start'>
+                    <div className='h-full'>
+                        <img className=' h-24 w-28 rounded-full' src={edit_caw.user.profileImage} alt='profile pic' />
+                    </div>
+                    <div className='ml-8' style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', width: '100%', alignItems: 'center' }}>
+                        <div>
+                            {errors &&
+                                errors.map((error, ind) => (
+                                    <div style={{ color: 'red', marginBottom: '10px' }} key={ind}>{error}</div>
+                                ))
+                            }
+                        </div>
+                        <textarea
+                            className='text-white bg-black text-md w-full'
+                            style={{ border: 'none', resize: 'none', marginBottom: '10px' }}
+                            type='text'
+                            name='firstName'
+                            value={caw}
+                            onChange={handleChange}
+                        />
+                        <img className='h-96 w-96 aspect-square rounded-md' src={image} alt='image' />
+                    </div>
                 </div>
-                <div>
-                    {errors &&
-                        errors.map((error, ind) => (
-                            <div style={{ color: 'red', marginBottom: '10px' }} key={ind}>{error}</div>
-                        ))
-                    }
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', width: '70%', alignItems: 'center' }}>
-                    <textarea
-                        className='text-black text-sm'
-                        style={{ width: '90%', height: '5rem', border: 'none', resize: 'none', marginBottom: '10px' }}
-                        type='text'
-                        name='firstName'
-                        value={caw}
-                        onChange={(e) => setCaw(e.target.value)}
-                    />
-                    <button className='submitButton' disabled={errors ? true : false} type='submit'>Edit</button>
-                </div>
+            </div>
+            <div className='flex w-full justify-end pb-2 px-6'>
+                <button className='w-20 h-8 m-0 rounded-3xl bg-[#eff3f4] text-black cursor-pointer' disabled={errors ? true : false} type='submit'>Update</button>
             </div>
         </form>
     )
