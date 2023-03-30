@@ -6,9 +6,9 @@
     overflow-x: hidden;
 }
 
-.homePageContainer::-webkit-scrollbar {
+/* .homePageContainer::-webkit-scrollbar {
     display: none;
-}
+} */
 
 .navBar {
     width: 30%;
