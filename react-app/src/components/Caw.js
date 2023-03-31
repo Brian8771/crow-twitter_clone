@@ -7,7 +7,6 @@ import likedIcon from '../images/liked.png'
 
 const Caw = ({ caw, setLoaded }) => {
     const dispatch = useDispatch();
-    console.log(caw)
     const handleLikes = async (id) => {
         await dispatch(likeCawThunk(id))
         setLoaded(false)
@@ -46,14 +45,14 @@ const Caw = ({ caw, setLoaded }) => {
 
     return (
         <>
-            {setLoaded && <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', borderBottom: '#2f3336 1px solid', padding: '10px 10px', borderLeft: 'black .5px solid', borderRight: 'black .5px solid', backgroundColor: 'black' }}>
+            {setLoaded && <div className='flex items-start p-[10px] bg-black' style={{ borderBottom: '#2f3336 1px solid', borderLeft: 'black .5px solid', borderRight: 'black .5px solid' }}>
                 <div className='px-2.5 py-1.5 mr-3'>
                     <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
                 </div>
-                <div className='test' style={{ flexDirection: 'column', alignItems: 'flex-start', width: '85%' }}>
+                <div className='test flex-col items-start w-[85%]'>
                     <NavLink style={{ textDecoration: 'transparent', width: 'fit-content', display: 'flex' }} to={`/users/${caw.user.id}`}>
 
-                        <p style={{ color: 'white', width: 'fit-content' }} className='pTag'><span className='firstNameP'>{caw.user.firstName}</span> <span style={{ color: 'gray' }}>@{caw.user.username} <span style={{ marginLeft: '6px' }}>{timeAfterCreated(caw)}</span></span></p>
+                        <p className='pTag text-white w-fit'><span className='firstNameP'>{caw.user.firstName}</span> <span style={{ color: 'gray' }}>@{caw.user.username} <span className='ml-[6px]'>{timeAfterCreated(caw)}</span></span></p>
                     </NavLink>
                     <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
                         <p className='pTag' style={{ paddingTop: '10px', color: 'white' }} >{caw.caw}</p>

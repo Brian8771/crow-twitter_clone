@@ -65,7 +65,6 @@ const HomePage = () => {
                 <div >
                     <CreateCaw setLoaded={setLoaded} setLoader={setLoaders} />
                 </div>
-                {loaders && <div></div>}
 
 
 
