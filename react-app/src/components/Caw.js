@@ -50,19 +50,19 @@ const Caw = ({ caw, setLoaded }) => {
                     <img className='h-12 w-12 rounded-full' src={caw.user.profileImage} alt='profilePic' />
                 </div>
                 <div className='test flex-col items-start w-[85%]'>
-                    <NavLink style={{ textDecoration: 'transparent', width: 'fit-content', display: 'flex' }} to={`/users/${caw.user.id}`}>
+                    <NavLink className='text-white' style={{ textDecoration: 'transparent', width: 'fit-content', display: 'flex' }} to={`/users/${caw.user.id}`}>
 
                         <p className='pTag text-white w-fit'><span className='firstNameP'>{caw.user.firstName}</span> <span style={{ color: 'gray' }}>@{caw.user.username} <span className='ml-[6px]'>{timeAfterCreated(caw)}</span></span></p>
                     </NavLink>
                     <NavLink style={{ textDecoration: 'none' }} to={`/caw/${caw.id}`}>
-                        <p className='pTag' style={{ paddingTop: '10px', color: 'white' }} >{caw.caw}</p>
-                        {caw.image && <img className='cawImage' src={caw.image} alt='image' />}
+                        <p className='pTag text-white pt-[10px]' >{caw.caw}</p>
+                        {caw.image && <img className='cawImage mb-3 aspect-square' src={caw.image} alt='image' />}
                     </NavLink>
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+                    <div className='flex justify-center'>
                         <div className='likeButton' onClick={() => handleLikes(caw.id)} >
                             {caw.likeStatus === 1 ?
                                 <div className='svgContainer'>
-                                    <img src={likedIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
+                                    <img src={likedIcon} alt="like-button-icon" className="like-button-icon h-4 w-4 cursor-pointer" />
                                 </div>
                                 :
                                 // <img src={likeIcon} alt="like-button-icon" className="like-button-icon" style={{ height: '16px', width: '16px', cursor: 'pointer' }} />
@@ -73,7 +73,7 @@ const Caw = ({ caw, setLoaded }) => {
                                 </div>
                             }
                             {caw.likeStatus === 1 ?
-                                <p style={{ marginLeft: '12px', cursor: 'pointer', color: '#f9197f' }}>{caw.totalLikes}</p> :
+                                <p className='ml-3 cursor-pointer text-[#f9197f]'>{caw.totalLikes}</p> :
                                 <p className='numberOfLikes'>{caw.totalLikes}</p>
                             }
                         </div>

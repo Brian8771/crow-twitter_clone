@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
-import { getAllCaws, likeCawThunk } from '../store/caws';
+import { getAllCaws } from '../store/caws';
 import { followUser, getCurretProfile, unfollowUser } from '../store/session';
 import '../styles/Homepage.css'
 import backArrow from '../images/arrow-back.svg'
-import { likeCommentThunk } from '../store/comments';
 import EditUserModal from './EditUserModal';
 import UserFollowersModal from './UserFollowersModal';
 import UserFollowingsModal from './UserFollowingsModal';
@@ -66,7 +65,7 @@ function User() {
       return <Caw caw={caw} setLoaded={setLoaded} />
     })
 
-  const option2 = (user.like_caws.length && isLoaded) ?
+  const option2 = user.like_caws?.length > 0 && isLoaded ?
     getLikedCaws().map(caw => {
       return <Caw caw={caw} setLoaded={setLoaded} />
     }) : <div className='flex justify-center mt-4'>
@@ -110,7 +109,7 @@ function User() {
                 <div className='pb-1.5 pt-4 sticky top-0 z-10 flex' style={{ backgroundColor: 'rgba(0 0 0 / .85)' }}>
                   <div className='flex justify-center items-center'>
                     <NavLink className='no-underline' to='/'>
-                      <img className=' h-5 w-5 mx-0 my-[10px]' src={backArrow} alt='backarrow' />
+                      <img className=' h-5 w-5 mx-2 my-[10px]' src={backArrow} alt='backarrow' />
                     </NavLink>
                   </div>
                   <div className='h-12 ml-6'>

@@ -6,12 +6,11 @@ import '../styles/Homepage.css'
 import UploadPicture from './imageUploader';
 
 
-const CreateCaw = ({ setLoaded, setLoader }) => {
+const CreateCaw = () => {
     const [errors, setErrors] = useState([]);
     const [caw, setCaw] = useState('');
     const [image, setImg] = useState('');
     const dispatch = useDispatch()
-    const history = useHistory()
     const user = useSelector(state => state.session.user);
 
     const deleteImg = (e) => {
@@ -37,9 +36,7 @@ const CreateCaw = ({ setLoaded, setLoader }) => {
         // await setLoaded(false);
         setCaw('');
         setImg('')
-        await setLoader(true)
         await dispatch(getAllCaws());
-        await setLoader(false)
         // await setLoaded(true)
         // await setErrors(cawCreated)
         // history.push('/1')

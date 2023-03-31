@@ -42,7 +42,6 @@
 }
 
 .header {
-    color: black;
     border-right: .5px black solid;
     border-left: .5px black solid;
     margin: 0;
@@ -51,7 +50,7 @@
 
 .pTag {
     margin: 0;
-    color: black;
+    color: white;
     font-family: TwitterChirp, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-size: 15px;
     overflow-wrap: break-word;
